@@ -1,0 +1,8 @@
+{
+  "name": "KuPon",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "a24be54f"
+}

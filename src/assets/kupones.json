@@ -1,0 +1,319 @@
+[{
+            "categoria":"gastronomia",
+            "comercio":"Restaurant 1",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg"
+                },
+                {
+            "categoria":"eventos",
+            "comercio":"Locos por los Toques",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg"
+                },
+                {
+            "categoria":"enseñanza",
+            "comercio":"Escuelita de tintin",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F"
+                },
+                {
+            "categoria":"turismo",
+            "comercio":"A volar guachín!",
+            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"market",
+            "comercio":"Supermercado Supermerkado",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"otros",
+            "comercio":"Loca academia de Policía",
+            "titulo":"Promocion en de locossssssss local! 30% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg"
+                },
+                {
+            "categoria":"vestimenta",
+            "comercio":"Ponete Churr@",
+            "titulo":"Promocion en este local! Ponete churro papa!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg"
+                },
+                {
+            "categoria":"tecnologia",
+            "comercio":"Techno Local",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg"
+                },{
+            "categoria":"gastronomia",
+            "comercio":"Restaurant 1",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg"
+                },
+                {
+            "categoria":"eventos",
+            "comercio":"Locos por los Toques",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg"
+                },
+                {
+            "categoria":"enseñanza",
+            "comercio":"Escuelita de tintin",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F"
+                },
+                {
+            "categoria":"turismo",
+            "comercio":"A volar guachín!",
+            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"market",
+            "comercio":"Supermercado Supermerkado",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"otros",
+            "comercio":"Loca academia de Policía",
+            "titulo":"Promocion en de locossssssss local! 30% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg"
+                },
+                {
+            "categoria":"vestimenta",
+            "comercio":"Ponete Churr@",
+            "titulo":"Promocion en este local! Ponete churro papa!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg"
+                },
+                {
+            "categoria":"tecnologia",
+            "comercio":"Techno Local",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg"
+                },{
+            "categoria":"gastronomia",
+            "comercio":"Restaurant 1",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg"
+                },
+                {
+            "categoria":"eventos",
+            "comercio":"Locos por los Toques",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg"
+                },
+                {
+            "categoria":"enseñanza",
+            "comercio":"Escuelita de tintin",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F"
+                },
+                {
+            "categoria":"turismo",
+            "comercio":"A volar guachín!",
+            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"market",
+            "comercio":"Supermercado Supermerkado",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"otros",
+            "comercio":"Loca academia de Policía",
+            "titulo":"Promocion en de locossssssss local! 30% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg"
+                },
+                {
+            "categoria":"vestimenta",
+            "comercio":"Ponete Churr@",
+            "titulo":"Promocion en este local! Ponete churro papa!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg"
+                },
+                {
+            "categoria":"tecnologia",
+            "comercio":"Techno Local",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg"
+                },{
+            "categoria":"gastronomia",
+            "comercio":"Restaurant 1",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg"
+                },
+                {
+            "categoria":"eventos",
+            "comercio":"Locos por los Toques",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg"
+                },
+                {
+            "categoria":"enseñanza",
+            "comercio":"Escuelita de tintin",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F"
+                },
+                {
+            "categoria":"turismo",
+            "comercio":"A volar guachín!",
+            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"market",
+            "comercio":"Supermercado Supermerkado",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"otros",
+            "comercio":"Loca academia de Policía",
+            "titulo":"Promocion en de locossssssss local! 30% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg"
+                },
+                {
+            "categoria":"vestimenta",
+            "comercio":"Ponete Churr@",
+            "titulo":"Promocion en este local! Ponete churro papa!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg"
+                },
+                {
+            "categoria":"tecnologia",
+            "comercio":"Techno Local",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg"
+                },{
+            "categoria":"gastronomia",
+            "comercio":"Restaurant 1",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg"
+                },
+                {
+            "categoria":"eventos",
+            "comercio":"Locos por los Toques",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg"
+                },
+                {
+            "categoria":"enseñanza",
+            "comercio":"Escuelita de tintin",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F"
+                },
+                {
+            "categoria":"turismo",
+            "comercio":"A volar guachín!",
+            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"market",
+            "comercio":"Supermercado Supermerkado",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"otros",
+            "comercio":"Loca academia de Policía",
+            "titulo":"Promocion en de locossssssss local! 30% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg"
+                },
+                {
+            "categoria":"vestimenta",
+            "comercio":"Ponete Churr@",
+            "titulo":"Promocion en este local! Ponete churro papa!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg"
+                },
+                {
+            "categoria":"tecnologia",
+            "comercio":"Techno Local",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg"
+                },{
+            "categoria":"gastronomia",
+            "comercio":"Restaurant 1",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg"
+                },
+                {
+            "categoria":"eventos",
+            "comercio":"Locos por los Toques",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg"
+                },
+                {
+            "categoria":"enseñanza",
+            "comercio":"Escuelita de tintin",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F"
+                },
+                {
+            "categoria":"turismo",
+            "comercio":"A volar guachín!",
+            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"market",
+            "comercio":"Supermercado Supermerkado",
+            "titulo":"Promocion en este local! 50% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg"
+                },
+                {
+            "categoria":"otros",
+            "comercio":"Loca academia de Policía",
+            "titulo":"Promocion en de locossssssss local! 30% Off",
+            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
+            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg"
+                }
+        
+    ]

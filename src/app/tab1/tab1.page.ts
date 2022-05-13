@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from '../services/data.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +10,15 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  categories: Observable<any>;
+
+  constructor( private dataService: DataService) { }
+
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  ngOnInit() {
+    this.categories = this.dataService.getCategories();
+    // console.log(this.categories);
+  }
 
 }
+

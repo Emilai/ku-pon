@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="4">
+        <ion-title>
+          <ion-img src="../../../assets/icon/favicon.png" id="headerIcon"></ion-img>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-button (click)="salir()" slot="end" size="small" shape="round" strong="true">
+      <ion-icon name="arrow-back-outline" slot="icon-only" class="return" size="large"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-img src="https://i.ytimg.com/vi/eNLjdPI9zdE/maxresdefault.jpg">
+
+    </ion-img>
+    <ion-card-header>
+
+      <ion-button (click)="onClick()" shape="round">
+        Comprar KuPon
+      </ion-button>
+            <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()" class="ion-float-right"></ion-icon>
+      <ion-card-subtitle class="comercio">Comercio</ion-card-subtitle>
+      
+      <ion-card-title class="titulo ion-margin-vertical">Titulo</ion-card-title>
+      <ion-badge color="primary" class="precio ion-margin-vertical">$500</ion-badge>
+
+      <ion-card-subtitle>Vencimiento</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Awesome content
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

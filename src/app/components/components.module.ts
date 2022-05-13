@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { CardComponent } from './card/card.component';
 import { SliderComponent } from './slider/slider.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CategoriesComponent } from './categories/categories.component';
   imports: [
     CommonModule,
     IonicModule,
-    SwiperModule
+    SwiperModule,
+    PipesModule
   ]
 
 })

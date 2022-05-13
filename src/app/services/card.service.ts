@@ -11,4 +11,8 @@ export class CardService {
   getCards() {
     return this.http.get<any[]>('../../assets/kupones.json');
   }
+
+  getSliders() {
+    return this.http.get<any[]>('../../assets/sliders.json');
+  }
 }

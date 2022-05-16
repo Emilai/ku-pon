@@ -17,4 +17,30 @@ font-size: 30px;
 
 .precio {
 font-size: large;
+color: #fafafa;
+}
+
+#headerIcon {
+    height: 40px;
+}
+
+.heartIcon {
+    color: #fafafa;
+}
+
+.headerFab {
+    font-size: 40px;
+    color: #fafafa;
+    --ionicon-stroke-width: 50px;
+}
+
+#ionFab {
+    width: 30px;
+    height: 30px;
+    margin: 12px;
+
+}
+
+.kuponBtn {
+    color:#fafafa;
 }

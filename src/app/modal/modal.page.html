@@ -1,17 +1,18 @@
-<ion-header>
-  <ion-toolbar>
+<ion-toolbar fixed>
+  <ion-grid fixed>
     <ion-row>
       <ion-col size="4">
-        <ion-title>
-          <ion-img src="../../../assets/icon/favicon.png" id="headerIcon"></ion-img>
-        </ion-title>
+        <ion-img src="../../../assets/icon/favicon.png" id="headerIcon"></ion-img>
       </ion-col>
+      <ion-col size="4"></ion-col>
+      <ion-fab horizontal="end">
+        <ion-fab-button id="ionFab" size="small" color="primary" (click)="salir()">
+          <ion-icon name="arrow-back-outline" class="headerFab"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
     </ion-row>
-    <ion-button (click)="salir()" slot="end" size="small" shape="round" strong="true">
-      <ion-icon name="arrow-back-outline" slot="icon-only" class="return" size="large"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
-</ion-header>
+  </ion-grid>
+</ion-toolbar>
 
 <ion-content>
 
@@ -21,10 +22,10 @@
     </ion-img>
     <ion-card-header>
 
-      <ion-button (click)="onClick()" shape="round">
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn">
         Comprar KuPon
       </ion-button>
-            <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()" class="ion-float-right"></ion-icon>
+            <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()" class="ion-float-right heartIcon"></ion-icon>
       <ion-card-subtitle class="comercio">Comercio</ion-card-subtitle>
       
       <ion-card-title class="titulo ion-margin-vertical">Titulo</ion-card-title>

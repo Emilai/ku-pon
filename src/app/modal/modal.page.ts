@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Kupon } from 'src/app/interfaces';
+import { CardService } from '../services/card.service';
+
 
 
 @Component({
@@ -10,13 +13,13 @@ import { ModalController } from '@ionic/angular';
 export class ModalPage implements OnInit {
 
   fav = false;
+  info: Kupon;
 
+  constructor( private modalCtrl: ModalController, public cardService: CardService) { }
 
-
-  constructor( private modalCtrl: ModalController) { }
-
-  ngOnInit() {
-
+  async ngOnInit() {
+    await this.cardService.kuponData;
+    this.info = this.cardService.kuponData;
   }
 
   salir() {
@@ -25,6 +28,7 @@ export class ModalPage implements OnInit {
 
   onClick() {
     console.log('Comprar kupon');
+    console.log(this.info);
   }
 
   addFav() {

@@ -9,13 +9,15 @@ import { ModalPageRoutingModule } from './modal-routing.module';
 import { ModalPage } from './modal.page';
 import { ComponentsModule } from '../components/components.module';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ModalPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    // CardComponent checkear para pasar data a modal desde Card
   ],
   declarations: [ModalPage]
 })

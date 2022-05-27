@@ -10,6 +10,7 @@ export class CardService {
 
   kuponData: Kupon;
 
+
   constructor(private http: HttpClient) { }
 
 
@@ -20,4 +21,10 @@ export class CardService {
   getSliders() {
     return this.http.get<any[]>('../../assets/sliders.json');
   }
+
+  getOneCard() {
+    return this.kuponData;
+  }
+
+
 }

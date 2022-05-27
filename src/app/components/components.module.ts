@@ -7,7 +7,6 @@ import { SwiperModule } from 'swiper/angular';
 import { HeaderComponent } from './header/header.component';
 import { CardComponent } from './card/card.component';
 import { SliderComponent } from './slider/slider.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
@@ -15,14 +14,12 @@ import { PipesModule } from '../pipes/pipes.module';
     HeaderComponent,
     CardComponent,
     SliderComponent,
-    CategoriesComponent
   ],
 
   exports: [
     HeaderComponent,
     CardComponent,
     SliderComponent,
-    CategoriesComponent
   ],
   imports: [
     CommonModule,

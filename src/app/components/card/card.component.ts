@@ -13,8 +13,6 @@ import { Kupon } from 'src/app/interfaces';
 export class CardComponent implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
-  // cards: Observable<any>;
-
   cards: Kupon[] = [];
   textoBuscar = '';
 
@@ -29,17 +27,22 @@ export class CardComponent implements OnInit {
 
   }
 
+
   onSearchChange(event) {
     this.textoBuscar = event.detail.value;
 }
 
 async mostrarModal(card: Kupon) {
   const modal = await this.modalCtrl.create({
-    component: ModalPage
+    component: ModalPage,
+    showBackdrop: true,
+    canDismiss: true,
+    animated: true,
   });
-  await modal.present();
   this.cardService.kuponData = card;
-  console.log(card);
+  await modal.present();
+  // this.cardService.kuponData = card;
+  console.log(this.cardService.kuponData);
 }
 
 

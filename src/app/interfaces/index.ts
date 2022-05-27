@@ -5,4 +5,5 @@ export interface Kupon {
     descripcion: string;
     img: string;
     key: string;
+    precio: number;
 }

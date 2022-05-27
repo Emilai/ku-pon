@@ -15,11 +15,13 @@ export class ModalPage implements OnInit {
   fav = false;
   info: Kupon;
 
-  constructor( private modalCtrl: ModalController, public cardService: CardService) { }
+  constructor( private modalCtrl: ModalController, public cardService: CardService) {
+
+   }
 
   async ngOnInit() {
-    await this.cardService.kuponData;
-    this.info = this.cardService.kuponData;
+    // this.info = await this.cardService.kuponData;
+    this.info = this.cardService.getOneCard();
   }
 
   salir() {
@@ -28,7 +30,6 @@ export class ModalPage implements OnInit {
 
   onClick() {
     console.log('Comprar kupon');
-    console.log(this.info);
   }
 
   addFav() {

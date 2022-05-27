@@ -17,7 +17,7 @@
 <ion-content>
 
   <ion-card>
-    <ion-img src="https://i.ytimg.com/vi/eNLjdPI9zdE/maxresdefault.jpg">
+    <ion-img src="{{info.img}}">
 
     </ion-img>
     <ion-card-header>
@@ -26,15 +26,15 @@
         Comprar KuPon
       </ion-button>
             <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()" class="ion-float-right heartIcon"></ion-icon>
-      <ion-card-subtitle class="comercio">Comercio</ion-card-subtitle>
+      <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
       
-      <ion-card-title class="titulo ion-margin-vertical">Titulo</ion-card-title>
-      <ion-badge color="primary" class="precio ion-margin-vertical">$500</ion-badge>
+      <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
+      <ion-badge color="primary" class="precio ion-margin-vertical">${{info.precio}}</ion-badge>
 
       <ion-card-subtitle>Vencimiento</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      Awesome content
+      {{info.descripcion}}
     </ion-card-content>
   </ion-card>
 

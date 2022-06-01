@@ -1,190 +1,40 @@
-[{
-            "categoria":"gastronomia",
-            "comercio":"Restaurant 1",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg",
-            "key": "filtro prueba coso"
-                },
-                {
-            "categoria":"eventos",
-            "comercio":"Locos por los Toques",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg",
-            "key": "filtro dos ponele chuco"
-                },
-                {
-            "categoria":"enseñanza",
-            "comercio":"Escuelita de tintin",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F",
-            "key": "filtro salamero cosito el nene"
-                },
-                {
-            "categoria":"turismo",
-            "comercio":"A volar guachín!",
-            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg",
-            "key": "filtro clarita mama perla"
-                },
-                {
-            "categoria":"market",
-            "comercio":"Supermercado Supermerkado",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg",
-            "key": "filtro emi kupon muchos"
-                },
-                {
-            "categoria":"otros",
-            "comercio":"Loca academia de Policía",
-            "titulo":"Promocion en de locossssssss local! 30% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg",
-            "key": "filtro barato kupon salame nene"
-                },
-                {
-            "categoria":"vestimenta",
-            "comercio":"Ponete Churr@",
-            "titulo":"Promocion en este local! Ponete churro papa!",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg",
-            "key": "filtro nene mama emi clara"
-                },
-                {
-            "categoria":"tecnologia",
-            "comercio":"Techno Local",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg",
-            "key": "filtro otro parecido"
-                },{
-            "categoria":"gastronomia",
-            "comercio":"Restaurant 1",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"eventos",
-            "comercio":"Locos por los Toques",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"enseñanza",
-            "comercio":"Escuelita de tintin",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F",
-            "key": "filtro"
-                },
-                {
-            "categoria":"turismo",
-            "comercio":"A volar guachín!",
-            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"market",
-            "comercio":"Supermercado Supermerkado",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"otros",
-            "comercio":"Loca academia de Policía",
-            "titulo":"Promocion en de locossssssss local! 30% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"vestimenta",
-            "comercio":"Ponete Churr@",
-            "titulo":"Promocion en este local! Ponete churro papa!",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"tecnologia",
-            "comercio":"Techno Local",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg",
-            "key": "filtro"
-                },{
-            "categoria":"gastronomia",
-            "comercio":"Restaurant 1",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://media-cdn.tripadvisor.com/media/photo-s/03/0a/f3/bd/pizzeria-l-expresso.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"eventos",
-            "comercio":"Locos por los Toques",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://media-cdn.tripadvisor.com/media/photo-s/0a/b2/0b/eb/ta-img-20160324-185410.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"enseñanza",
-            "comercio":"Escuelita de tintin",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://scontent.fmvd1-1.fna.fbcdn.net/v/t1.6435-9/100946645_622988748575677_7469339936135577600_n.jpg?_nc_cat=106&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=OTQxUqGB3T4AX8E7JeQ&_nc_ht=scontent.fmvd1-1.fna&oh=00_AT94SHnBNg63Ao48Gab2IViNU_sxiSHq1FWSwxJYuvH-mg&oe=62A0531F",
-            "key": "filtro"
-                },
-                {
-            "categoria":"turismo",
-            "comercio":"A volar guachín!",
-            "titulo":"Salimos a pasear sin plata, pa que no nos roben!",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"market",
-            "comercio":"Supermercado Supermerkado",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://upload.wikimedia.org/wikipedia/commons/d/d7/SmilingMermaid.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"otros",
-            "comercio":"Loca academia de Policía",
-            "titulo":"Promocion en de locossssssss local! 30% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://www.cinemascomics.com/wp-content/uploads/2018/09/loca-academia-de-policia-8.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"vestimenta",
-            "comercio":"Ponete Churr@",
-            "titulo":"Promocion en este local! Ponete churro papa!",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://www.aqueenofmagic.com/wp-content/uploads/2018/04/queen-i-want-to-break-free-aqueenofmagic.jpg",
-            "key": "filtro"
-                },
-                {
-            "categoria":"tecnologia",
-            "comercio":"Techno Local",
-            "titulo":"Promocion en este local! 50% Off",
-            "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://previews.123rf.com/images/vgstudio/vgstudio1709/vgstudio170900016/86059135-empresario-enojado-loco-crema-al-tel%C3%A9fono-celular.jpg",
-            "key": "filtro"
-                }]
+[{  
+    "id": "202201",
+    "categoria": "gastronomia",
+    "comercio": "Don Bigote",
+    "titulo": "Cena",
+    "descripcion": "Kupon por un valor de $500 para utilizar en tu cena.",
+    "condiciones": "Válido todos los días para consumo mayor a $2.500.",
+    "img": "https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/c9/ac/0d/don-bigote.jpg",
+    "key": "gastronomia don bigote comida parrilla cena 500 montevideo",
+    "precio": 120,
+    "valor": 500,
+    "premium": true
+  },
+  {
+    "id": "202202",
+    "categoria": "gastronomia",
+    "comercio": "Sumo BrewPub",
+    "titulo": "Par de Pintas",
+    "descripcion": "Kupon por un valor de $150 para utilizar en la compra de 2 Pintas a elección en el local.",
+    "condiciones": "Válido todos los días.",
+    "img": "https://lh3.googleusercontent.com/p/AF1QipOp6HcZ9ynBrLNdgicrez76IjDNc3WdKu-K_AqL=w768-h768-n-o-v1",
+    "key": "gastronomia sumo cerveza brew cerveceria birra pinta",
+    "precio": 0,
+    "valor": 150,
+    "premium": false
+  },
+  {
+    "id": "202203",
+    "categoria": "turismo",
+    "comercio": "Continental Viajes",
+    "titulo": "Punta Cana",
+    "descripcion": "Kupon por un valor de $5.500 para utilizar en la compra de un paquete all inclusive a Punta Cana. Condiciones: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte",
+    "condiciones": "Valido para los meses de Marzo, Abril, Mayo, Junio, Agosto, Octubre y Noviembre.",
+    "img": "https://media.staticontent.com/media/pictures/83239c0a-50e5-44c5-bbb2-bea8292543e4",
+    "key": "viaje turismo punta cana travel agencia paquete all inclusive",
+    "precio": 450,
+    "valor": 5500,
+    "premium": false
+  }
+]

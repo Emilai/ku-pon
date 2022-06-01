@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "KuPon",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "uy.kupon",
+  "appName": "KuPon",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }

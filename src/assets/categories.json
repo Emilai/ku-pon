@@ -1,33 +1,41 @@
 [{
             "categoria":"Gastronomía",
+            "catId":"gastronomia",
             "icon":"restaurant"
                 },
         {
             "categoria":"Eventos",
+            "catId":"eventos",
             "icon":"ticket"
                 },
         {
             "categoria":"Vestimenta",
+            "catId":"vestimenta",
             "icon":"shirt"
                 },
         {
             "categoria":"Tecnología",
+            "catId":"tecnologia",
             "icon":"game-controller"
                 },
         {
             "categoria":"Turismo",
+            "catId":"turismo",
             "icon":"airplane"
                 },
         {
             "categoria":"Market",
+            "catId":"market",
             "icon":"basket"
                 },
         {
             "categoria":"Enseñanza",
+            "catId":"ensenanza",
             "icon":"bulb"
                 },
         {
             "categoria":"Otros",
+            "catId":"otros",
             "icon":"duplicate"
                 }
     ]

@@ -1,0 +1,28 @@
+.cardContent {
+  display: inline-block;
+  text-align: center;
+  height: 350px;
+  margin: 0;
+}
+
+.cardImg {
+  object-fit: cover;
+  height: 150px;
+  width: 100%;
+}
+.cardTitle {
+  font-size: medium;
+}
+
+.precio {
+font-size: large;
+color: #fafafa;
+}
+
+span {
+  font-weight: bolder;
+}
+
+.sectionTitle {
+  text-align: center;
+}

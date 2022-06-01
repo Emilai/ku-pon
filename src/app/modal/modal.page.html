@@ -22,20 +22,29 @@
     </ion-img>
     <ion-card-header>
 
-      <ion-button (click)="onClick()" shape="round" class="kuponBtn">
-        Comprar KuPon
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0">
+        Comprar KuPon: ${{info.precio}}
       </ion-button>
-            <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()" class="ion-float-right heartIcon"></ion-icon>
-      <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
-      
-      <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
-      <ion-badge color="primary" class="precio ion-margin-vertical">${{info.precio}}</ion-badge>
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio === 0">
+        Descargar KuPon GRATIS
+      </ion-button>
+      <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()"
+        class="ion-float-right heartIcon"></ion-icon>
+      <ion-card-subtitle class="comercio ion-padding">{{info.comercio}}</ion-card-subtitle>
 
-      <ion-card-subtitle>Vencimiento</ion-card-subtitle>
+      <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
+      <ion-card-title class="ion-margin-vertical">Kupon valor<span> ${{info.valor}}</span></ion-card-title>
+
     </ion-card-header>
+
     <ion-card-content>
+      <ion-card-subtitle class="subtitle">Descripción:</ion-card-subtitle>
       {{info.descripcion}}
+      <hr>
+      <ion-card-subtitle class="subtitle">Condiciones:</ion-card-subtitle>
+      {{info.condiciones}}
     </ion-card-content>
+
   </ion-card>
 
 </ion-content>

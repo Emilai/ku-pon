@@ -1,15 +1,15 @@
 [{
             "categoria":"gastronomia",
             "comercio":"Don Bigote",
-            "titulo":"Parrillín para 2 a $1200",
+            "titulo":"$500 en tu cena",
             "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
-            "img":"https://scontent.fmvd2-1.fna.fbcdn.net/v/t39.30808-6/270287833_355005456463991_9032642349488484470_n.png?stp=dst-png_p600x600&_nc_cat=103&ccb=1-6&_nc_sid=e3f864&_nc_ohc=08ad04SsMBoAX9Xs2ZX&_nc_ht=scontent.fmvd2-1.fna&oh=00_AT-qp-TVxa0eMZ6N500FpY9xcV5rGnoTVvjooktPtOaaPQ&oe=6289CD26",
+            "img":"https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/c9/ac/0d/don-bigote.jpg",
             "key": "filtro prueba coso"
                 },
                 {
             "categoria":"gastronomia",
             "comercio":"Sumo Brew Pub",
-            "titulo":"Pinta 2 x 1",
+            "titulo":"$200",
             "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
             "img":"https://lh3.googleusercontent.com/p/AF1QipOp6HcZ9ynBrLNdgicrez76IjDNc3WdKu-K_AqL=w768-h768-n-o-v1",
             "key": "filtro dos ponele chuco"
@@ -17,7 +17,7 @@
                 {
             "categoria":"tecnologia",
             "comercio":"Sistema UFO",
-            "titulo":"20% de Descuento en Audix",
+            "titulo":"$1000 en toda la línea Audix",
             "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
             "img":"https://www.sistemaufo.com/imgs/presentaciones/presentaciones0_7215.jpg?6320",
             "key": "filtro salamero cosito el nene"
@@ -25,7 +25,7 @@
                 {
             "categoria":"enseñanza",
             "comercio":"Salados",
-            "titulo":"Matrícula 50% off!",
+            "titulo":"$1500 en tu matrícula",
             "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
             "img":"https://scontent.fmvd4-1.fna.fbcdn.net/v/t1.18169-9/21743014_516411042036790_366517883179388546_n.jpg?_nc_cat=100&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=bYh4fYDUrAEAX9QP03S&_nc_ht=scontent.fmvd4-1.fna&oh=00_AT8_AwZqeiM-BgdWPn79t7YvEFKNtKeydajkFq7DTcKRyg&oe=62A50E8F",
             "key": "filtro clarita mama perla"
@@ -33,7 +33,7 @@
                 {
             "categoria":"market",
             "comercio":"Super Express",
-            "titulo":"Colita de Cuadríl 30% off",
+            "titulo":"$500",
             "descripcion":"Esta es la descripción de la promoción, la cual tiene que ser un poco extensa para ocupar cierto espacio y ver como queda",
             "img":"https://scontent.fmvd4-1.fna.fbcdn.net/v/t1.6435-9/188678253_306447171153033_1084804391952185238_n.png?_nc_cat=100&ccb=1-6&_nc_sid=e3f864&_nc_ohc=_zqoJrudLZEAX-9BvwT&_nc_ht=scontent.fmvd4-1.fna&oh=00_AT9GMNPxvKatoObrjc04D5HGh1SMLb-yZsGRMi5FxWQbsg&oe=62A4B673",
             "key": "filtro emi kupon muchos"

@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,8 @@ import { environment } from '../environments/environment';
         // Register the ServiceWorker as soon as the application is stable
         // or after 30 seconds (whichever comes first).
         registrationStrategy: 'registerWhenStable:30000'
-      })
+      }),
+      IonicStorageModule.forRoot(),
     ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

@@ -6,6 +6,32 @@
 
 <ion-content [fullscreen]="true">
   <ion-content [fullscreen]="true">
-  <h1>Tab 2</h1>
-</ion-content>
+  <h1 class="ion-padding sectionTitle">KuPones Favoritos</h1>
+  <ion-grid fixed>
+  <ion-row>
+    <ion-col size="6" *ngFor="let card of articles">
+      <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
+        <img src="{{card.img}}" class="cardImg" />
+
+        <ion-card-content>
+          <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
+
+          <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
+          <br>
+
+          <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>${{card.valor}}</span></ion-card-subtitle>
+          <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
+          </ion-card-title>
+          <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>
+          </ion-card-title>
+          <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+        </ion-card-content>
+
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
 </ion-content>

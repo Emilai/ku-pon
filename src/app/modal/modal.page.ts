@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Kupon } from 'src/app/interfaces';
 import { CardService } from '../services/card.service';
+import { StorageService } from '../services/storage.service';
 
 
 
@@ -12,16 +13,23 @@ import { CardService } from '../services/card.service';
 })
 export class ModalPage implements OnInit {
 
-  fav = false;
+  fav: boolean;
   info: Kupon;
 
-  constructor( private modalCtrl: ModalController, public cardService: CardService) {
+  constructor( private modalCtrl: ModalController, public cardService: CardService, private storageService: StorageService) {
 
    }
 
   async ngOnInit() {
     // this.info = await this.cardService.kuponData;
     this.info = this.cardService.getOneCard();
+    const kuponInFav = this.storageService.isInFav(this.info);
+    this.fav = kuponInFav;
+  }
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @HostListener('window:popstate', ['$event'])
+  dismissModal() {
+    this.modalCtrl.dismiss();
   }
 
   salir() {
@@ -34,5 +42,6 @@ export class ModalPage implements OnInit {
 
   addFav() {
     this.fav = !this.fav;
+    this.storageService.saveRemoveCard(this.info);
 }
 }

@@ -14,13 +14,17 @@ export class HeaderComponent implements OnInit {
 
   wpp() {
     console.log('Wpp working');
+    window.location.href = 'https://wa.me/59891089497';
     // this.router.navigateByUrl('https://wa.me/59898608201');
   };
   insta(){
     console.log('instagram working');
+    window.location.href = 'https://www.instagram.com/kupon.uy/';
   };
   web(){
     console.log('web working');
+    window.location.href = 'https://www.kupon.uy/';
+
   }
 
 }

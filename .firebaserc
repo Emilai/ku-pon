@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "kupon-2cd30"
+  },
+  "targets": {
+    "kupon-2cd30": {
+      "hosting": {
+        "app": [
+          "kupon"
+        ]
+      }
+    }
   }
 }

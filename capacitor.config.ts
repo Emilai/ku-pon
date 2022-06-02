@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'uy.kupon',
+  appId: 'uy.kupon.kupon',
   appName: 'KuPon',
   webDir: 'www',
 };

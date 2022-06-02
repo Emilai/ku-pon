@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <app-header></app-header>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
+
+  <form [formGroup]="credentials" (ngSubmit)="register()">
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email invalido</ion-note>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="password" placeholder="Password" formControlName="password" ></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Email invalido</ion-note>
+    </ion-item>
+
+
+    <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid">
+      Registrar Cuenta
+    </ion-button>
+    <ion-button (click)="back()" expand="block" fill="clear" shape="round">
+      Volver a Login
+    </ion-button>
+
+  </form>
+
+  <hr class="hr">
+
+<h4>Login with google</h4>
+
+</ion-content>

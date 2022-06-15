@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { Usuario } from 'src/app/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -41,10 +42,23 @@ export class RegisterPage implements OnInit {
     await loading.present();
 
     const user = await this.authService.register(this.credentials.value);
+    const usuario: Usuario = {
+      id: user.user.uid,
+      nombre: user.user.email,
+      email: user.user.email,
+      img: '',
+      premium: false,
+      admin: false,
+      superadmin: false
+    };
+    const path = 'Usuarios';
+    const id = user.user.uid;
+    await this.authService.createUser(usuario, path, id);
     await loading.dismiss();
 
     if (user) {
       this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
+      this.showAlert('Bienvenido a KuPon', 'Cuenta creada con exito.');
     } else {
       this.showAlert('Registro fallido', 'Por favor intente denuevo');
     }
@@ -63,5 +77,6 @@ export class RegisterPage implements OnInit {
   back() {
     this.router.navigateByUrl('/login', { replaceUrl: true });
   }
+
 
 }

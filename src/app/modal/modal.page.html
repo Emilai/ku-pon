@@ -22,8 +22,11 @@
     </ion-img>
     <ion-card-header>
 
-      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0">
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0" [disabled]="!authService.userInfo.premium && info.premium">
         Comprar KuPon: ${{info.precio}}
+      </ion-button>
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0 && !authService.userInfo.premium && info.premium">
+        Pasar a PREMIUM
       </ion-button>
       <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio === 0">
         Descargar KuPon GRATIS

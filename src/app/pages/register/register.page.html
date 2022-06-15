@@ -21,17 +21,18 @@
     </ion-item>
 
 
-    <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid">
+    <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid" class="loginBtn">
       Registrar Cuenta
     </ion-button>
-    <ion-button (click)="back()" expand="block" fill="clear" shape="round">
-      Volver a Login
-    </ion-button>
+
 
   </form>
 
   <hr class="hr">
 
-<h4>Login with google</h4>
+      <ion-button (click)="back()" expand="block" fill="clear" shape="round">
+      Volver a Login
+    </ion-button>
+
 
 </ion-content>

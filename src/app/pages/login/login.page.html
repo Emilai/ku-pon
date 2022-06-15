@@ -23,17 +23,24 @@
     </ion-item>
 
 
-    <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid">
+    <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid" class="loginBtn">
       Ingresar
     </ion-button>
 
-    <ion-button type="button" (click)="register()" expand="block" fill="clear" shape="round">
-      Registrar nueva cuenta
-    </ion-button>
+
   </form>
 
 <hr class="hr">
 
-<h4>Login with google</h4>
+    <ion-button type="button" (click)="register()" expand="block" fill="clear" shape="round">
+      Registrar nueva cuenta
+    </ion-button>
+
+<!-- <ion-button (click)="signIn()" expand="block" fill="clear" shape="round">
+Login with google
+</ion-button>
+
+<h2 *ngIf="user">{{user.givenName}}</h2> -->
+
 
 </ion-content>

@@ -14,6 +14,9 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
         // or after 30 seconds (whichever comes first).
         registrationStrategy: 'registerWhenStable:30000'
       }),
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireAnalyticsModule,
+      AngularFirestoreModule,
       IonicStorageModule.forRoot(),
       provideFirebaseApp(() => initializeApp(environment.firebase)),
       provideAuth(() => getAuth()),

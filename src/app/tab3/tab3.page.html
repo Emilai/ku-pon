@@ -10,21 +10,21 @@
   <ion-grid fixed>
     <ion-row>
 
-      <ion-col size="3">
-        <ion-card-header>
-          <ion-avatar>
-            <img src="https://www.softzone.es/app/uploads-softzone.es/2018/04/guest.png?x=480&quality=20" />
-          </ion-avatar>
-        </ion-card-header>
+      <ion-col size="8" class="ion-padding">
+        <ion-card-content>
+          <ion-card-title>{{authService.userInfo.nombre}}</ion-card-title>
+          <ion-card-subtitle>{{authService.userInfo.email}}</ion-card-subtitle>
+
+        </ion-card-content>
       </ion-col>
 
-
-      <ion-col size="9" class="ion-padding">
-        <ion-card-content>
-          <ion-card-subtitle>Usuario: </ion-card-subtitle>
-          <ion-card-subtitle>E-mail: </ion-card-subtitle>
-          <ion-card-subtitle>Tipo de Cuenta: </ion-card-subtitle>
-        </ion-card-content>
+      <ion-col size="4" class="chip">
+        <ion-card-subtitle>
+          <ion-chip color="primary" mode="ios" outline="true">
+            <ion-label *ngIf="authService.userInfo.premium === false">Cuenta Lite</ion-label>
+            <ion-label *ngIf="authService.userInfo.premium === true">Premium</ion-label>
+          </ion-chip>
+        </ion-card-subtitle>
       </ion-col>
 
     </ion-row>
@@ -40,7 +40,7 @@
 
   <ion-card class="helpBox">
     <ion-card-header>
-            <ion-card-title>Como utilizar KuPon</ion-card-title>
+      <ion-card-title>Como utilizar KuPon</ion-card-title>
       <ion-card-subtitle>Elegí tu KuPon</ion-card-subtitle>
 
     </ion-card-header>

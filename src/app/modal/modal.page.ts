@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Kupon } from 'src/app/interfaces';
 import { CardService } from '../services/card.service';
 import { StorageService } from '../services/storage.service';
+import { AuthService } from '../services/auth.service';
 
 
 
@@ -12,11 +13,15 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage implements OnInit {
-
+  user: any;
   fav: boolean;
   info: Kupon;
 
-  constructor( private modalCtrl: ModalController, public cardService: CardService, private storageService: StorageService) {
+  constructor(
+    private modalCtrl: ModalController,
+    public cardService: CardService,
+    private storageService: StorageService,
+    public authService: AuthService) {
 
    }
 
@@ -25,6 +30,7 @@ export class ModalPage implements OnInit {
     this.info = this.cardService.getOneCard();
     const kuponInFav = this.storageService.isInFav(this.info);
     this.fav = kuponInFav;
+    await this.authService.userData();
   }
   // eslint-disable-next-line @typescript-eslint/member-ordering
   @HostListener('window:popstate', ['$event'])

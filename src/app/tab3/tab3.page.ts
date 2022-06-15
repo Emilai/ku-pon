@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -10,14 +11,22 @@ import { AuthService } from '../services/auth.service';
 })
 export class Tab3Page {
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  user: any;
 
-  login(){
-    console.log('loging in');
+  constructor(
+    public authService: AuthService,
+    private router: Router
+  ) {
+
   }
+
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  async ngOnInit() {
+    this.user = this.authService.auth.currentUser;
+    await this.authService.userData();
+    }
+
+
 
   async logout() {
     await this.authService.logout();
@@ -25,6 +34,7 @@ export class Tab3Page {
   }
 
   premium() {
-    console.log('premium');
-  }
+    console.log(this.authService.userInfo);
+      }
+
 }

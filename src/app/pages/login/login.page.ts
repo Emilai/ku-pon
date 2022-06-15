@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, isPlatform, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+// import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
+
 export class LoginPage implements OnInit {
   credentials: FormGroup;
 
+  user: any;
 
   constructor(
     private fb: FormBuilder,
@@ -19,7 +24,15 @@ export class LoginPage implements OnInit {
     private alertController: AlertController,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {
+
+    // GoogleAuth.initialize({
+    //   clientId: '330398142779-g8fpn595stbm3qjvua6bu416orbufrgv.apps.googleusercontent.com',
+    //   scopes: ['profile', 'email'],
+    //   grantOfflineAccess: true,
+    // });
+  }
+
 
   get email() {
     return this.credentials.get('email');
@@ -36,6 +49,7 @@ export class LoginPage implements OnInit {
     });
   }
 
+
   async register() {
     this.router.navigateByUrl('/register', { replaceUrl: true });
   }
@@ -50,7 +64,7 @@ export class LoginPage implements OnInit {
     if (user) {
       this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });
     } else {
-      this.showAlert('Ingreso fallido', 'Por favor intente denuevo');
+      this.showAlert('Cuenta Invalida', 'Por favor intente denuevo');
     }
   }
 
@@ -62,5 +76,17 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
+
+  // async signIn() {
+  //   this.user = await GoogleAuth.signIn();
+  //   console.log('user: ', this.user);
+  // }
+
+  // async refresh() {
+  //   const authCode = await GoogleAuth.refresh();
+  //   console.log('refresh: ', authCode);
+  // }
+
+
 
 }

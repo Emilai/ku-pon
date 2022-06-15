@@ -6,6 +6,7 @@ import { StorageService } from '../services/storage.service';
 import { ModalPageRoutingModule } from '../modal/modal-routing.module';
 
 import { ModalPage } from '../modal/modal.page';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tab2',
@@ -14,12 +15,23 @@ import { ModalPage } from '../modal/modal.page';
 })
 export class Tab2Page {
 
+  user: any;
+
   get articles(): Kupon[] {
     return this.storageService.getLocalKupons;
   }
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  constructor(private storageService: StorageService, public cardService: CardService, private modalCtrl: ModalController) {}
+  constructor(private storageService: StorageService,
+    public cardService: CardService,
+    private modalCtrl: ModalController,
+    public authService: AuthService) {}
+
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  async ngOnInit() {
+    this.user = this.authService.auth.currentUser;
+    await this.authService.userData();
+  }
 
   async mostrarModal(card: Kupon) {
     const modal = await this.modalCtrl.create({

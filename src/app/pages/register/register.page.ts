@@ -13,6 +13,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterPage implements OnInit {
 
   credentials: FormGroup;
+  userInfo= {
+    nombre: '',
+    tel: undefined
+  };
 
   constructor(
 
@@ -33,7 +37,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -42,15 +46,18 @@ export class RegisterPage implements OnInit {
     await loading.present();
 
     const user = await this.authService.register(this.credentials.value);
+
     const usuario: Usuario = {
       id: user.user.uid,
-      nombre: user.user.email,
+      nombre: this.userInfo.nombre,
       email: user.user.email,
+      tel: this.userInfo.tel,
       img: '',
       premium: false,
       admin: false,
       superadmin: false
     };
+
     const path = 'Usuarios';
     const id = user.user.uid;
     await this.authService.createUser(usuario, path, id);

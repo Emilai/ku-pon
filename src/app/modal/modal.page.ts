@@ -1,9 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Kupon } from 'src/app/interfaces';
+import { AuthService } from '../services/auth.service';
 import { CardService } from '../services/card.service';
 import { StorageService } from '../services/storage.service';
-import { AuthService } from '../services/auth.service';
+
 
 
 
@@ -21,7 +22,8 @@ export class ModalPage implements OnInit {
     private modalCtrl: ModalController,
     public cardService: CardService,
     private storageService: StorageService,
-    public authService: AuthService) {
+    public authService: AuthService,
+    private alertController: AlertController) {
 
    }
 
@@ -43,11 +45,36 @@ export class ModalPage implements OnInit {
   }
 
   onClick() {
-    console.log('Comprar kupon');
+    this.showAlert('Ya tienes tu KuPon', 'Aqui incorporaremos la pasarela de pagos');
   }
 
   addFav() {
     this.fav = !this.fav;
     this.storageService.saveRemoveCard(this.info);
 }
+
+  premium() {
+    this.showAlert('Ya eres Premium', 'Esto aun es un placeholder');
+  }
+
+  async showAlert(header, message) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  location(){
+    window.location.href = 'https://maps.google.com/?q='+ this.info.location;
+  }
+
+  whatsapp() {
+    window.location.href = 'https://wa.me/'+ this.info.whatsapp;
+  }
+
+  instagram() {
+    window.location.href = this.info.instagram;
+  }
 }

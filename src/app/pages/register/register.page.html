@@ -8,6 +8,16 @@
 
   <ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
 
+  
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Nombre" [(ngModel)]="userInfo.nombre"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="tel" placeholder="Teléfono" [(ngModel)]="userInfo.tel"></ion-input>
+
+    </ion-item>
+
   <form [formGroup]="credentials" (ngSubmit)="register()">
 
     <ion-item class="ion-margin-bottom">
@@ -17,7 +27,7 @@
 
     <ion-item class="ion-margin-bottom">
       <ion-input type="password" placeholder="Password" formControlName="password" ></ion-input>
-      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Email invalido</ion-note>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Passwordinvalido</ion-note>
     </ion-item>
 
 

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AlertController, IonAccordionGroup } from '@ionic/angular';
 
 
 
@@ -9,18 +10,19 @@ import { AuthService } from '../services/auth.service';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page {
+export class Tab3Page implements OnInit {
 
   user: any;
 
   constructor(
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController
   ) {
 
   }
 
-  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+
   async ngOnInit() {
     this.user = this.authService.auth.currentUser;
     await this.authService.userData();
@@ -34,7 +36,15 @@ export class Tab3Page {
   }
 
   premium() {
-    console.log(this.authService.userInfo);
+    this.showAlert('Ya eres Premium', 'Esto aun es un placeholder');
       }
 
+  async showAlert(header, message) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 }

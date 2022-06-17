@@ -1,6 +1,27 @@
 <ion-grid fixed>
   <ion-row>
 
+      <ion-grid fixed class="ion-padding">
+    <ion-row >
+      <ion-col size="3" *ngFor="let categorie of categories |async" class="categorieCol">
+        <ion-fab-button class="categorieRow categorieBtn" (click)="categorieFilter(categorie.catId)">
+          <ion-col>
+
+            <ion-row class="categorieRow">
+              <ion-icon name="{{categorie.icon}}" class="categorieIcon"></ion-icon>
+            </ion-row>
+            
+
+          </ion-col>
+
+        </ion-fab-button>
+        <ion-row class="categorieRow">
+              <p class="categorieName">{{categorie.categoria}}</p>
+            </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
     <ion-searchbar placeholder="Buscar KuPon!" inputmode="text" (ionChange)="onSearchChange($event)" [debounce]="250"
       animated mode="ios">
     </ion-searchbar>
@@ -26,5 +47,6 @@
       </ion-card>
 
     </ion-col>
+
   </ion-row>
 </ion-grid>

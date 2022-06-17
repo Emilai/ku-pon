@@ -34,8 +34,8 @@
             "icon":"bulb"
                 },
         {
-            "categoria":"Otros",
-            "catId":"otros",
+            "categoria":"Todos",
+            "catId":"",
             "icon":"duplicate"
                 }
     ]

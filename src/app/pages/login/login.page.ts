@@ -77,15 +77,6 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  // async signIn() {
-  //   this.user = await GoogleAuth.signIn();
-  //   console.log('user: ', this.user);
-  // }
-
-  // async refresh() {
-  //   const authCode = await GoogleAuth.refresh();
-  //   console.log('refresh: ', authCode);
-  // }
 
 
 

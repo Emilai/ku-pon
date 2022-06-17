@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
+  catSelected = '';
   constructor( private http: HttpClient) { }
 
   getCategories() {

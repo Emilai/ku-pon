@@ -21,7 +21,7 @@
       <ion-col size="4" class="chip">
         <ion-card-subtitle>
           <ion-chip color="primary" mode="ios" outline="true">
-            <ion-label *ngIf="authService.userInfo.premium === false">Cuenta Lite</ion-label>
+            <ion-label *ngIf="authService.userInfo.premium === false">Lite</ion-label>
             <ion-label *ngIf="authService.userInfo.premium === true">Premium</ion-label>
           </ion-chip>
         </ion-card-subtitle>
@@ -29,7 +29,7 @@
 
     </ion-row>
   </ion-grid>
-  <ion-button (click)="premium()" expand="block" fill="solid" shape="round" class="ion-padding loginBtn">
+  <ion-button (click)="premium()" expand="block" fill="solid" shape="round" class="ion-padding loginBtn" *ngIf="authService.userInfo.premium === false">
     Contratar Plan Premium
   </ion-button>
 
@@ -38,12 +38,69 @@
     Cerrar Sesión
   </ion-button>
 
-  <ion-card class="helpBox">
-    <ion-card-header>
-      <ion-card-title>Como utilizar KuPon</ion-card-title>
-      <ion-card-subtitle>Elegí tu KuPon</ion-card-subtitle>
+<ion-card class="faq">
+  <ion-card-header>
+    <ion-card-title>Como Utilizar KuPon</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+<ion-accordion-group>
+  <ion-accordion value="one">
+    <ion-item slot="header">
+      <ion-label>Elegí tu KuPon</ion-label>
+    </ion-item>
 
-    </ion-card-header>
-  </ion-card>
+    <ion-list slot="content">
+      <ion-item>
+        <p>Elegí dentro de las categorías el KuPon que te interesa utilizar.</p>
+      </ion-item>
+    </ion-list>
+
+  </ion-accordion>
+  <ion-accordion value="two">
+    <ion-item slot="header">
+      <ion-label>KuPones con Costo</ion-label>
+    </ion-item>
+    <ion-list slot="content">
+      <ion-item>
+        <p>Si el KuPon tiene costo, podes comprarlo con cualquiera de nuestros medios de pago. Una vez lo tengas, lo podrás utilizar en el comercio indicado.</p>
+      </ion-item>
+    </ion-list>
+  </ion-accordion>
+  <ion-accordion value="three">
+    <ion-item slot="header">
+      <ion-label>KuPones Gratis</ion-label>
+    </ion-item>
+
+    <ion-list slot="content">
+      <ion-item>
+        <p>Estos KuPones solo tienes que descargarlos, y utilizarlos cuando quieras!</p>
+      </ion-item>
+    </ion-list>
+  </ion-accordion>
+
+  <ion-accordion value="four">
+    <ion-item slot="header">
+      <ion-label>Condiciones</ion-label>
+    </ion-item>
+    <ion-list slot="content">
+      <ion-item>
+        <p>Cada KuPon tiene condiciones de uso. Verifícalas para poder utilizarlo sin ningún problema!</p>
+      </ion-item>
+    </ion-list>
+  </ion-accordion>
+
+  <ion-accordion value="five">
+    <ion-item slot="header">
+      <ion-label>Contáctanos</ion-label>
+    </ion-item>
+    <ion-list slot="content">
+      <ion-item>
+        <p>Ante cualquier consulta, solo contáctanos a través de la barra superior de la App. Allí encontrarás nuestro Whatsapp, Instagram, y nuestra página web!</p>
+      </ion-item>
+    </ion-list>
+  </ion-accordion>
+</ion-accordion-group>
+  </ion-card-content>
+</ion-card>
 
 </ion-content>

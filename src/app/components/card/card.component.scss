@@ -22,3 +22,38 @@ color: #fafafa;
 span {
   font-weight: bolder;
 }
+
+
+
+.categorieIcon {
+    font-size: 33px;
+}
+
+.categorieRow {
+    display: inline-block;
+    text-align: center;
+    color: #fafafa;
+}
+
+.categorieCol {
+    text-align: center;    
+}
+
+.categorieName{
+    font-size: 12px;
+}
+
+.cardTitle {
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.cardSubTitle {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.categorieBtn {
+    height: 55px;
+    width: 55px;
+}

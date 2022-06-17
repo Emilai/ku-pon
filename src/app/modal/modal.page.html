@@ -17,23 +17,35 @@
 <ion-content>
 
   <ion-card>
-    <ion-img src="{{info.img}}">
 
-    </ion-img>
-    <ion-card-header>
+    <ion-img src="{{info.img}}"></ion-img>
 
-      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0" [disabled]="!authService.userInfo.premium && info.premium">
+    <div class="ion-padding">
+      <ion-icon *ngIf="info.location" name="location-outline" class="icons" (click)="location()" target="_blank">
+      </ion-icon>
+      <ion-icon *ngIf="info.whatsapp" name="logo-whatsapp" class="icons" (click)="whatsapp()" target="_blank">
+      </ion-icon>
+      <ion-icon *ngIf="info.instagram" name="logo-instagram" class="icons" (click)="instagram()" target="_blank">
+      </ion-icon>
+      <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()"
+        class="ion-float-right heartIcon"></ion-icon>
+    </div>
+
+    <ion-card-header class="cardHeader">
+
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0"
+        [disabled]="!authService.userInfo.premium && info.premium">
         Comprar KuPon: ${{info.precio}}
       </ion-button>
-      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0 && !authService.userInfo.premium && info.premium">
+      <ion-button (click)="premium()" shape="round" class="kuponBtn"
+        *ngIf="info.precio > 0 && !authService.userInfo.premium && info.premium">
         Pasar a PREMIUM
       </ion-button>
       <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio === 0">
         Descargar KuPon GRATIS
       </ion-button>
-      <ion-icon [name]="fav ? 'heart': 'heart-outline'" size="large" (click)="addFav()"
-        class="ion-float-right heartIcon"></ion-icon>
-      <ion-card-subtitle class="comercio ion-padding">{{info.comercio}}</ion-card-subtitle>
+      
+      <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
 
       <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
       <ion-card-title class="ion-margin-vertical">Kupon valor<span> ${{info.valor}}</span></ion-card-title>

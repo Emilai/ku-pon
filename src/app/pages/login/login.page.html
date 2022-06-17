@@ -6,41 +6,53 @@
 
 <ion-content class="ion-padding">
 
+ <ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
 
-<ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
+  <div *ngIf="!forgetBox">
+    
+    <form [formGroup]="credentials" (ngSubmit)="login()">
 
+      <ion-item class="ion-margin-bottom">
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email invalido</ion-note>
+      </ion-item>
 
-  <form [formGroup]="credentials" (ngSubmit)="login()">
-
-    <ion-item class="ion-margin-bottom">
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
-      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email invalido</ion-note>
-    </ion-item>
-
-    <ion-item class="ion-margin-bottom">
-      <ion-input type="password" placeholder="Password" formControlName="password" ></ion-input>
-      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Email invalido</ion-note>
-    </ion-item>
-
-
-    <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid" class="loginBtn">
-      Ingresar
-    </ion-button>
+      <ion-item class="ion-margin-bottom">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+        <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Email invalido</ion-note>
+      </ion-item>
 
 
-  </form>
+      <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid" class="loginBtn">
+        Ingresar
+      </ion-button>
 
-<hr class="hr">
+
+    </form>
+
+    <hr class="hr">
 
     <ion-button type="button" (click)="register()" expand="block" fill="clear" shape="round">
       Registrar nueva cuenta
     </ion-button>
+    <hr>
+    <ion-button type="button" (click)="passwordReset()" expand="block" fill="clear" shape="round" color="danger">
+      Olvidé mi Contraseña
+    </ion-button>
+  </div>
 
-<!-- <ion-button (click)="signIn()" expand="block" fill="clear" shape="round">
-Login with google
-</ion-button>
 
-<h2 *ngIf="user">{{user.givenName}}</h2> -->
+  <div *ngIf="forgetBox">
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Email" [(ngModel)]="forgetEmail"></ion-input>
+    </ion-item>
+    <ion-button (click)="forgotPassword(forgetEmail)" expand="block" fill="clear" shape="round" color="danger">
+      Resetear Contraseña
+    </ion-button>
+    <ion-button (click)="passwordReset()" expand="block" fill="clear" shape="round">
+      Volver a Login
+    </ion-button>
+  </div>
 
 
 </ion-content>

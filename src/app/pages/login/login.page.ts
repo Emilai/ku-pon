@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, isPlatform, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
-// import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+
 
 
 @Component({
@@ -17,6 +17,8 @@ export class LoginPage implements OnInit {
   credentials: FormGroup;
 
   user: any;
+  forgetEmail = '';
+  forgetBox = false;
 
   constructor(
     private fb: FormBuilder,
@@ -24,14 +26,7 @@ export class LoginPage implements OnInit {
     private alertController: AlertController,
     private authService: AuthService,
     private router: Router
-  ) {
-
-    // GoogleAuth.initialize({
-    //   clientId: '330398142779-g8fpn595stbm3qjvua6bu416orbufrgv.apps.googleusercontent.com',
-    //   scopes: ['profile', 'email'],
-    //   grantOfflineAccess: true,
-    // });
-  }
+  ) {}
 
 
   get email() {
@@ -77,7 +72,14 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-
+  passwordReset() {
+    this.forgetBox = !this.forgetBox;
+  }
+  async forgotPassword(email) {
+    await this.authService.forgotPass(email);
+    this.showAlert('Mail de reseteo de Password enviado', 'Checkea tu email');
+    this.forgetBox = !this.forgetBox;
+  }
 
 
 }

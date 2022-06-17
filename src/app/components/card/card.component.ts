@@ -59,7 +59,6 @@ async mostrarModal(card: Kupon) {
 
   categorieFilter(categorie) {
     this.textoBuscar = categorie;
-    console.log(this.textoBuscar);
   }
 
 

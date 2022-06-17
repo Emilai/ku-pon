@@ -99,6 +99,45 @@
       </ion-item>
     </ion-list>
   </ion-accordion>
+
+  <ion-accordion value="datosUsuario">
+    <ion-item slot="header">
+      <ion-label>Mis Datos</ion-label>
+    </ion-item>
+
+    <ion-list slot="content" *ngIf="!actualizarDatos">
+      <ion-item>
+        <p>Nombre: {{authService.userInfo.nombre}}</p>
+      </ion-item>
+      <ion-item>
+        <p>Email: {{authService.userInfo.email}}</p>        
+      </ion-item>
+      <ion-item>
+        <p>Telefono: {{authService.userInfo.tel}}</p>
+      </ion-item>
+      <!-- <ion-button (click)="actualizar()" expand="block" fill="clear" shape="round">
+        Actualizar Mis Datos
+      </ion-button> -->
+    </ion-list>
+
+    <ion-list slot="content" *ngIf="actualizarDatos">
+      <ion-item>
+        <ion-input type="text" placeholder="Nombre" [(ngModel)]="userInfo.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Teléfono" [(ngModel)]="userInfo.tel"></ion-input>
+      </ion-item>
+
+       <ion-button (click)="actualizar()" expand="block" fill="clear" shape="round" color="danger">
+        Cancelar
+      </ion-button>
+
+      <ion-button (click)="actualizarDatosUsuario()" expand="block" fill="clear" shape="round">
+        Actualizar
+      </ion-button>
+    </ion-list>
+
+  </ion-accordion>
 </ion-accordion-group>
   </ion-card-content>
 </ion-card>

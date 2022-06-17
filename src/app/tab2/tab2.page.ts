@@ -79,8 +79,6 @@ export class Tab2Page implements OnInit {
     });
     this.cardService.kuponData = card;
     await modal.present();
-    // this.cardService.kuponData = card;
-    console.log(this.cardService.kuponData);
   }
 
   cargarKupones() {

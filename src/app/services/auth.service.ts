@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ export class AuthService {
   userAuthData: any;
   userInfo: any = 'user info vacio';
 
-  constructor(public auth: Auth, private firestore: AngularFirestore) {
+  constructor(public auth: Auth, private firestore: AngularFirestore, private router: Router) {
    }
 
   async register({email, password}) {
@@ -39,6 +40,16 @@ export class AuthService {
     return signOut(this.auth);
    }
 
+   async forgotPass(email) {
+
+    try {
+      return sendPasswordResetEmail(this.auth, email).then(() => {
+        console.log('Password Reset send');
+      });
+    } catch (err) {
+      console.log(err);
+    }
+   }
   createUser(data: any, path: string, id: string) {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const collection = this.firestore.collection(path);
@@ -58,6 +69,14 @@ export class AuthService {
       console.log(error);
     }
   };
+
+  async update(collection, id, data) {
+    try {
+      return await this.firestore.collection(collection).doc(id).set(data);
+    } catch(error) {
+      console.log('error en update ', error);
+    }
+  }
 
   }
 

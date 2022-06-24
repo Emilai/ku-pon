@@ -1,0 +1,22 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="6" *ngFor="let card of cards">
+      <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
+        <img src="{{card.img}}" class="cardImg" />
+
+        <ion-card-content>
+          <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
+
+          <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
+          <br>
+
+          <ion-card-title class="cardTitle" >Valor del KuPon: <span>${{card.valor}}</span>
+          </ion-card-title>
+          <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+        </ion-card-content>
+
+      </ion-card>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>

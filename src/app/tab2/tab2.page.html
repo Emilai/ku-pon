@@ -5,7 +5,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-content [fullscreen]="true">
     <h1 class="ion-padding sectionTitle">KuPones Favoritos</h1>
     <ion-grid fixed>
       <ion-row>
@@ -86,6 +85,10 @@
 
       <ion-item class="ion-margin-bottom">
         <ion-input type="number" placeholder="Valor" [(ngModel)]="kuponInfo.valor"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-bottom">
+        <ion-input type="text" placeholder="Código" [(ngModel)]="kuponInfo.code"></ion-input>
       </ion-item>
 
       <ion-button (click)="cargarKupon()" expand="block" fill="clear" shape="round">

@@ -4,6 +4,7 @@ import { Kupon } from 'src/app/interfaces';
 import { AuthService } from '../services/auth.service';
 import { CardService } from '../services/card.service';
 import { StorageService } from '../services/storage.service';
+import { LiveKuponsService } from '../services/live-kupons.service';
 
 
 
@@ -23,7 +24,8 @@ export class ModalPage implements OnInit {
     public cardService: CardService,
     private storageService: StorageService,
     public authService: AuthService,
-    private alertController: AlertController) {
+    private alertController: AlertController,
+    public liveKuponsService: LiveKuponsService) {
 
    }
 
@@ -33,6 +35,7 @@ export class ModalPage implements OnInit {
     const kuponInFav = this.storageService.isInFav(this.info);
     this.fav = kuponInFav;
     await this.authService.userData();
+    // await this.liveKuponsService.getliveKupons();
   }
   // eslint-disable-next-line @typescript-eslint/member-ordering
   @HostListener('window:popstate', ['$event'])
@@ -44,7 +47,9 @@ export class ModalPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  onClick() {
+  async onClick() {
+    await this.liveKuponsService.createliveKupon(this.info);
+    console.log(this.liveKuponsService.liveKupons);
     this.showAlert('Ya tienes tu KuPon', 'Aqui incorporaremos la pasarela de pagos');
   }
 
@@ -77,4 +82,5 @@ export class ModalPage implements OnInit {
   instagram() {
     window.location.href = this.info.instagram;
   }
+
 }

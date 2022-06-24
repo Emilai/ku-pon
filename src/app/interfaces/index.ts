@@ -13,6 +13,7 @@ export interface Kupon {
     precio: number;
     valor: number;
     premium: boolean;
+    code: string;
 }
 
 export interface Usuario {
@@ -21,6 +22,7 @@ export interface Usuario {
     email: string;
     tel: number;
     img: string;
+    empresa: string;
     premium: boolean;
     admin: boolean;
     superadmin: boolean;

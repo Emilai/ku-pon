@@ -1,0 +1,55 @@
+<ion-toolbar fixed>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="4">
+        <ion-img src="../../../assets/icon/favicon.png" id="headerIcon"></ion-img>
+      </ion-col>
+      <ion-col size="4"></ion-col>
+      <ion-fab horizontal="end">
+        <ion-fab-button id="ionFab" size="small" color="primary" (click)="salir()">
+          <ion-icon name="arrow-back-outline" class="headerFab"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-row>
+  </ion-grid>
+</ion-toolbar>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-img src="{{info.img}}"></ion-img>
+
+    <div class="ion-padding">
+      <ion-icon *ngIf="info.location" name="location-outline" class="icons" (click)="location()" target="_blank">
+      </ion-icon>
+      <ion-icon *ngIf="info.whatsapp" name="logo-whatsapp" class="icons" (click)="whatsapp()" target="_blank">
+      </ion-icon>
+      <ion-icon *ngIf="info.instagram" name="logo-instagram" class="icons" (click)="instagram()" target="_blank">
+      </ion-icon>
+    </div>
+
+    <ion-card-header class="cardHeader">
+
+      <ion-button (click)="kuponCode()" shape="round" class="kuponBtn">
+        Codigo: {{info.code}}
+      </ion-button>
+      
+      <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
+
+      <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
+      <ion-card-title class="ion-margin-vertical">Kupon valor<span> ${{info.valor}}</span></ion-card-title>
+
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card-subtitle class="subtitle">Descripción:</ion-card-subtitle>
+      {{info.descripcion}}
+      <hr>
+      <ion-card-subtitle class="subtitle">Condiciones:</ion-card-subtitle>
+      {{info.condiciones}}
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

@@ -37,7 +37,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -53,6 +53,7 @@ export class RegisterPage implements OnInit {
       email: user.user.email,
       tel: this.userInfo.tel,
       img: '',
+      empresa: '',
       premium: false,
       admin: false,
       superadmin: false

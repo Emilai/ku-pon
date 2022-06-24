@@ -32,7 +32,6 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin)
   }
 
-
 ];
 @NgModule({
   imports: [

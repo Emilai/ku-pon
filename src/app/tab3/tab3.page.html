@@ -38,7 +38,7 @@
     Cerrar Sesión
   </ion-button>
 
-<ion-card class="faq">
+<ion-card class="faq ion-padding">
   <ion-card-header>
     <ion-card-title>Como Utilizar KuPon</ion-card-title>
   </ion-card-header>
@@ -74,6 +74,18 @@
     <ion-list slot="content">
       <ion-item>
         <p>Estos KuPones solo tienes que descargarlos, y utilizarlos cuando quieras!</p>
+      </ion-item>
+    </ion-list>
+  </ion-accordion>
+
+  <ion-accordion value="premium">
+    <ion-item slot="header">
+      <ion-label>KuPones Premium</ion-label>
+    </ion-item>
+
+    <ion-list slot="content">
+      <ion-item>
+        <p>Para poder acceder a estos KuPones debes tener contratado nuestro plan Premium.</p>
       </ion-item>
     </ion-list>
   </ion-accordion>
@@ -141,5 +153,23 @@
 </ion-accordion-group>
   </ion-card-content>
 </ion-card>
+
+<ion-card class="ion-padding" *ngIf="authService.userInfo.admin">
+  <ion-card-header>
+    <ion-card-title>Confirmar KuPon utilizado</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+      <ion-item>
+        <ion-input type="text" placeholder="Email del Usuario" [(ngModel)]="verify.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Codigo del KuPon" [(ngModel)]="verify.code"></ion-input>
+      </ion-item>
+      <ion-button (click)="verifyKupon()" expand="block" shape="round" class="ion-padding loginBtn">
+        Confirmar
+      </ion-button>
+  </ion-card-content>
+</ion-card>
+
 
 </ion-content>

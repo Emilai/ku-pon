@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe, LowerCasePipe } from '@angular/common';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -42,7 +43,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
       provideStorage(() => getStorage()),
     ],
 
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+                DatePipe, LowerCasePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

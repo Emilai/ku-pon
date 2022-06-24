@@ -50,11 +50,13 @@ export class AuthService {
       console.log(err);
     }
    }
+
   createUser(data: any, path: string, id: string) {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const collection = this.firestore.collection(path);
     return collection.doc(id).set(data);
   }
+
 
 
  async userData() {

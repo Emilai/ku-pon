@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { CardService } from 'src/app/services/card.service';
-import { IonInfiniteScroll, ModalController } from '@ionic/angular';
+import { IonContent, IonInfiniteScroll, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { ModalPage } from 'src/app/modal/modal.page';
 import { Kupon } from 'src/app/interfaces';
@@ -12,16 +12,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonContent, { static: false }) content: IonContent;
 
   cards: any [] = [];
   textoBuscar = '';
   user: any;
   categories: Observable<any>;
   catSelected = '';
+  cardContent = document.getElementById('cardContent');
 
   constructor(private cardService: CardService, private modalCtrl: ModalController,
-    private dataService: DataService, public authService: AuthService) { }
+    private dataService: DataService, public authService: AuthService
+    ) { }
 
   async ngOnInit() {
 
@@ -40,6 +42,7 @@ export class CardComponent implements OnInit {
     // console.log(this.categories);
     this.user = this.authService.auth.currentUser;
     await this.authService.userData();
+
   }
 
   onSearchChange(event) {
@@ -59,8 +62,14 @@ async mostrarModal(card: Kupon) {
 
   categorieFilter(categorie) {
     this.textoBuscar = categorie;
+    this.content.scrollToPoint(0, 300, 500);
+
+  }
+
+  corporativos() {
+    console.log('corporativo');
   }
 
 
-
 }
+

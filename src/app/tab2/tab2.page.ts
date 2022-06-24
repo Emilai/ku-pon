@@ -33,6 +33,7 @@ export class Tab2Page implements OnInit {
     precio: undefined,
     valor: undefined,
     premium: false,
+    code: '',
   };
 
   kuponInfo2 = {
@@ -49,6 +50,7 @@ export class Tab2Page implements OnInit {
     precio: undefined,
     valor: undefined,
     premium: false,
+    code: '',
   };
 
   get articles(): Kupon[] {

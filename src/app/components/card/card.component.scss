@@ -1,7 +1,9 @@
 .cardContent {
   display: inline-block;
   text-align: center;
-  height: 350px;
+  height: 380px;
+  width: auto;
+  max-width: 190px;
   margin: 0;
 }
 
@@ -23,8 +25,6 @@ span {
   font-weight: bolder;
 }
 
-
-
 .categorieIcon {
     font-size: 33px;
 }
@@ -36,11 +36,12 @@ span {
 }
 
 .categorieCol {
-    text-align: center;    
+    text-align: center; 
 }
 
 .categorieName{
     font-size: 12px;
+    margin: 0 10px 0 10px;
 }
 
 .cardTitle {
@@ -56,4 +57,36 @@ span {
 .categorieBtn {
     height: 55px;
     width: 55px;
+}
+
+.benefitsBtn {
+  color: #fafafa;
+}
+
+.colContent {
+  display: flex;
+padding: auto;
+}
+
+
+@media only screen and (min-width: 500px) {
+
+.categorieName{
+    font-size: 12px;
+    margin: 0 20px 0 20px;
+}
+
+// .cardContent {
+//   width: 200px;
+// }
+
+}
+
+@media only screen and (min-width: 760px) {
+
+.categorieName{
+    font-size: 12px;
+    margin: 0 40px 0 40px;
+}
+
 }

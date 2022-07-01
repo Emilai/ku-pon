@@ -1,9 +1,10 @@
 <ion-content  [scrollEvents]="true" [fullscreen]="true">
+
+<app-slider></app-slider>
   
-  <ion-button *ngIf="authService.userInfo.empresa" (click)="corporativos()" expand="block" fill="clear" shape="round" class="ion-padding">
+  <ion-button *ngIf="authService.userInfo.empresa" (click)="corporativos()" expand="block" shape="round" class="ion-padding benefitsBtn">
     Beneficios {{authService.userInfo.empresa}}
   </ion-button>
-<app-slider></app-slider>
 
 <ion-grid fixed>
   <ion-row>
@@ -32,7 +33,7 @@
     <ion-searchbar placeholder="Buscar KuPon!" inputmode="text" (ionChange)="onSearchChange($event)" [debounce]="250"
       animated mode="ios" #cardContent id="cardContent">
     </ion-searchbar>
-    <ion-col size="6" *ngFor="let card of cards | filtro:textoBuscar">
+    <ion-col class="colContent" *ngFor="let card of cards | filtro:textoBuscar">
       <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
         <img src="{{card.img}}" class="cardImg" />
 

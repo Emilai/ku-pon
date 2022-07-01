@@ -3,7 +3,6 @@ import { AlertController, IonInfiniteScroll, LoadingController, ModalController 
 import { Kupon } from '../interfaces';
 import { CardService } from '../services/card.service';
 import { StorageService } from '../services/storage.service';
-import { ModalPageRoutingModule } from '../modal/modal-routing.module';
 
 import { ModalPage } from '../modal/modal.page';
 import { AuthService } from '../services/auth.service';

@@ -1,7 +1,13 @@
+.sectionTitle {
+  text-align: center;
+}
+
 .cardContent {
   display: inline-block;
   text-align: center;
-  height: 350px;
+  height: 380px;
+  width: auto;
+  max-width: 190px;
   margin: 0;
 }
 
@@ -23,6 +29,42 @@ span {
   font-weight: bolder;
 }
 
-.sectionTitle {
-  text-align: center;
+.cardTitle {
+    padding-left: 0px;
+    font-size: 20px;
+}
+
+.cardSubTitle {
+    padding-top: 0px;
+    padding-left: 0px;
+}
+
+
+.colContent {
+  display: flex;
+padding: auto;
+}
+
+.kuponesBtn {
+  color: #fafafa;
+  font-weight: bolder;
+  margin-bottom: 50px;
+}
+
+@media only screen and (min-width: 500px) {
+
+.categorieName{
+    font-size: 12px;
+    margin: 0 20px 0 20px;
+}
+
+}
+
+@media only screen and (min-width: 760px) {
+
+.categorieName{
+    font-size: 12px;
+    margin: 0 40px 0 40px;
+}
+
 }

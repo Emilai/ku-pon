@@ -76,9 +76,15 @@ export class LoginPage implements OnInit {
     this.forgetBox = !this.forgetBox;
   }
   async forgotPassword(email) {
-    await this.authService.forgotPass(email);
-    this.showAlert('Mail de reseteo de Password enviado', 'Checkea tu email');
-    this.forgetBox = !this.forgetBox;
+    try {
+      await this.authService.forgotPass(email);
+      this.showAlert('Mail de reseteo de Password enviado', 'Checkea tu email');
+      this.forgetBox = !this.forgetBox;
+
+    } catch (err){
+      console.log('error> ', err);
+      this.showAlert('Usuario Incorrecto', 'Checkea tu email');
+    }
   }
 
 

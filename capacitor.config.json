@@ -4,10 +4,5 @@
   "webDir": "www",
   "bundledWebRuntime": false,
   "plugins": {
-    "GoogleAuth": {
-      "scopes": ["profile, email"],
-      "ClientId": "330398142779-g8fpn595stbm3qjvua6bu416orbufrgv.apps.googleusercontent.com",
-      "forceCodeForRefreshToken": true
-    }
   }
 }

@@ -2,7 +2,7 @@
   display: inline-block;
   text-align: center;
   height: 380px;
-  width: 160px;
+  width: 170px;
   margin: 0;
 }
 
@@ -62,11 +62,6 @@ span {
   color: #fafafa;
 }
 
-.colContent {
-  display: flex;
-padding: auto;
-}
-
 
 @media only screen and (min-width: 500px) {
 
@@ -75,9 +70,6 @@ padding: auto;
     margin: 0 20px 0 20px;
 }
 
-// .cardContent {
-//   width: 200px;
-// }
 
 }
 

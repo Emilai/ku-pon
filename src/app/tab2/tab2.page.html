@@ -8,7 +8,7 @@
     <h1 class="ion-padding sectionTitle">KuPones Favoritos</h1>
     <ion-grid fixed>
       <ion-row>
-        <ion-col class="colContent" *ngFor="let card of articles">
+        <ion-col size="6" size-sm="6" size-md="4" size-lg="3" *ngFor="let card of articles">
           <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
             <img src="{{card.img}}" class="cardImg" />
 

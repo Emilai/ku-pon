@@ -21,30 +21,28 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule,
-     IonicModule.forRoot(),
-      AppRoutingModule,
-      HttpClientModule,
-      ServiceWorkerModule.register('ngsw-worker.js', {
-        enabled: environment.production,
-        // Register the ServiceWorker as soon as the application is stable
-        // or after 30 seconds (whichever comes first).
-        registrationStrategy: 'registerWhenStable:30000'
-      }),
-      AngularFireModule.initializeApp(environment.firebase),
-      AngularFireAnalyticsModule,
-      AngularFirestoreModule,
-      IonicStorageModule.forRoot(),
-      provideFirebaseApp(() => initializeApp(environment.firebase)),
-      provideAuth(() => getAuth()),
-      provideFirestore(() => getFirestore()),
-      provideStorage(() => getStorage()),
+    declarations: [AppComponent],
+    imports: [BrowserModule,
+        IonicModule.forRoot(),
+        AppRoutingModule,
+        HttpClientModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAnalyticsModule,
+        AngularFirestoreModule,
+        IonicStorageModule.forRoot(),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
     ],
-
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-                DatePipe, LowerCasePipe],
-  bootstrap: [AppComponent],
+    providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        DatePipe, LowerCasePipe],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

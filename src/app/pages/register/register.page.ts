@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Usuario } from 'src/app/interfaces';
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterPage implements OnInit {
 
-  credentials: FormGroup;
+  credentials: UntypedFormGroup;
   userInfo= {
     nombre: '',
     tel: undefined
@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit {
 
   constructor(
 
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthService,

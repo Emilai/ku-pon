@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,14 +14,14 @@ import { AuthService } from 'src/app/services/auth.service';
 
 
 export class LoginPage implements OnInit {
-  credentials: FormGroup;
+  credentials: UntypedFormGroup;
 
   user: any;
   forgetEmail = '';
   forgetBox = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthService,

@@ -71,6 +71,23 @@ export class AuthService {
     }
   };
 
+  async userData2() {
+    try {
+      // await this.firestore.collection('Usuarios').doc(this.auth.currentUser.uid).get().subscribe(userData => {
+      //   const userInfo = userData.data();
+      //   this.userInfo = userInfo;
+      //   console.log(this.userInfo);
+      //   return userInfo;
+      // });
+      return await this.firestore.collection('Usuarios').doc(this.auth.currentUser.uid).get();
+
+      //probar retornando promesa y no la data o subscribe en RJX
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   async update(collection, id, data) {
     try {
       return await this.firestore.collection(collection).doc(id).set(data);

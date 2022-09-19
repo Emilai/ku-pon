@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "330398142779",
+    "project_id": "kupon-2cd30",
+    "storage_bucket": "kupon-2cd30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330398142779:android:d8513eb13bcbc80fb5271e",
+        "android_client_info": {
+          "package_name": "uy.kupon.kupon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330398142779-490mc2hu00knq9moj7b60akcr1m34qff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7EmAPyGwoJHBLpg3yv0PdZ11R5-jQPkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330398142779-490mc2hu00knq9moj7b60akcr1m34qff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

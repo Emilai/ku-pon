@@ -54,6 +54,7 @@ export class RegisterPage implements OnInit {
       tel: this.userInfo.tel,
       img: '',
       empresa: '',
+      grupos: ['General'],
       premium: false,
       admin: false,
       superadmin: false

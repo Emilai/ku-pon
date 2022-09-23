@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Kupon } from 'src/app/interfaces';
@@ -5,7 +6,9 @@ import { AuthService } from '../services/auth.service';
 import { CardService } from '../services/card.service';
 import { StorageService } from '../services/storage.service';
 import { LiveKuponsService } from '../services/live-kupons.service';
+import { MercadopagoService } from '../services/mercadopago.service';
 
+import { get } from 'scriptjs';
 
 
 
@@ -18,6 +21,17 @@ export class ModalPage implements OnInit {
   user: any;
   fav: boolean;
   info: Kupon;
+  init_point: any;
+
+  preference = {
+    items: [
+      {
+        title: 'Mi producto',
+        unit_price: 100,
+        quantity: 1,
+      }
+    ]
+  };
 
   constructor(
     private modalCtrl: ModalController,
@@ -25,11 +39,15 @@ export class ModalPage implements OnInit {
     private storageService: StorageService,
     public authService: AuthService,
     private alertController: AlertController,
-    public liveKuponsService: LiveKuponsService) {
+    public liveKuponsService: LiveKuponsService,
+    private mp: MercadopagoService) {
 
    }
 
   async ngOnInit() {
+    get('https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js', () => {
+      //library has been loaded...
+    });
     // this.info = await this.cardService.kuponData;
     this.info = this.cardService.getOneCard();
     const kuponInFav = this.storageService.isInFav(this.info);
@@ -50,7 +68,31 @@ export class ModalPage implements OnInit {
   async onClick() {
     await this.liveKuponsService.createliveKupon(this.info);
     console.log(this.liveKuponsService.liveKupons);
-    this.showAlert('Ya tienes tu KuPon', 'Aqui incorporaremos la pasarela de pagos');
+    this.showAlert('Ya tienes tu KuPon', 'Disfrutalo cuando quieras!');
+  }
+
+  async pay() {
+
+    // this.mp.goCheckOut(this.preference).subscribe(result => {
+    //   // Read result of the Cloud Function.
+    //   this.init_point = result.data.result;
+    //   console.log(this.init_point);
+    //   window.location.href = this.init_point;
+    // }).catch(error => {
+    //   console.log(error);
+    //   return error;
+    // });
+    await this.requestPay();
+    window.location.href = this.init_point;
+
+    // await this.liveKuponsService.createliveKupon(this.info);
+    // console.log(this.liveKuponsService.liveKupons);
+    // this.showAlert('Ya tienes tu KuPon', 'Aqui incorporaremos la pasarela de pagos');
+  }
+
+ async requestPay() {
+    await this.mp.mercadopago(this.info.comercio, this.info.precio, this.info.img);
+    this.init_point = this.mp.initPoint;
   }
 
   addFav() {

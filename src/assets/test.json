@@ -1,0 +1,13 @@
+{
+    "external_reference": "ABC",
+    "notification_url": "https://hookb.in/dmG8PrOzE1CxBzMxP9lB",
+
+    "items": [
+        {
+            "title": "Producto de Prueba",
+            "quantity": 1,
+            "unit_price": 200,
+            "picture_url": "https://www.petdarling.com/wp-content/uploads/2021/01/cachorros.jpg"
+        }
+    ]
+}

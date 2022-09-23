@@ -33,7 +33,7 @@
 
     <ion-card-header class="cardHeader">
 
-      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio > 0"
+      <ion-button (click)="pay()" shape="round" class="kuponBtn" *ngIf="info.precio > 0"
         [disabled]="!authService.userInfo.premium && info.premium">
         Comprar KuPon: ${{info.precio}}
       </ion-button>
@@ -61,5 +61,7 @@
     </ion-card-content>
 
   </ion-card>
+
+
 
 </ion-content>

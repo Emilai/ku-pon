@@ -14,7 +14,9 @@ export class MercadopagoService {
   initPoint: any;
   respuesta: any;
 
-  constructor(private httpClient: HttpClient, private firebase: AngularFireFunctions) { }
+  constructor(
+    private httpClient: HttpClient,
+    private firebase: AngularFireFunctions) { }
 
   goCheckOut(products) {
     const CheckOut = this.firebase.httpsCallable('checkout');
@@ -42,8 +44,8 @@ export class MercadopagoService {
         }
       ],
       "back_urls": {
-        "success": "http://localhost:8100/",
-        "failure": "http://localhost:8100/",
+        "success": "http://kupon.uy/",
+        "failure": "http://kupon.uy/",
       },
       "auto_return": "approved",
       "binary_mode": true
@@ -63,6 +65,6 @@ export class MercadopagoService {
         // console.log(this.initPoint);
       })
       .catch(error => console.log('error', error));
-
   }
+
 }

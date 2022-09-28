@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { AlertController, Platform, IonRouterOutlet } from '@ionic/angular';
 
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { App, URLOpenListenerEvent } from '@capacitor/app';
 
 
 @Component({
@@ -16,9 +18,12 @@ export class AppComponent {
   constructor(
     private alertController: AlertController,
     private platform: Platform,
-    private location: Location
+    private location: Location,
+    private router: Router,
+    private zone: NgZone
   ) {
     this.backButtonEvent();
+    this.initializeApp();
   }
 
   backButtonEvent() {
@@ -48,4 +53,17 @@ export class AppComponent {
     await alert.present();
   }
 
+  initializeApp(){
+    App.addListener('appUrlOpen', (event: URLOpenListenerEvent) => {
+      this.zone.run(() => {
+        const domain = 'kupon.uy';
+        const pathArray = event.url.split(domain);
+        const appPath = pathArray.pop();
+
+        if (appPath) {
+          this.router.navigateByUrl(appPath);
+        }
+      });
+    });
+  }
 }

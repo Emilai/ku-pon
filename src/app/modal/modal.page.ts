@@ -9,6 +9,7 @@ import { LiveKuponsService } from '../services/live-kupons.service';
 import { MercadopagoService } from '../services/mercadopago.service';
 
 import { get } from 'scriptjs';
+import { MercadoModalPage } from '../mercado-modal/mercado-modal.page';
 
 
 
@@ -83,7 +84,7 @@ export class ModalPage implements OnInit {
     //   return error;
     // });
     await this.requestPay();
-    window.location.href = this.init_point;
+      this.mostrarModal();
 
     // await this.liveKuponsService.createliveKupon(this.info);
     // console.log(this.liveKuponsService.liveKupons);
@@ -123,6 +124,16 @@ export class ModalPage implements OnInit {
 
   instagram() {
     window.location.href = this.info.instagram;
+  }
+
+  async mostrarModal() {
+    const modal = await this.modalCtrl.create({
+      component: MercadoModalPage,
+      showBackdrop: true,
+      canDismiss: true,
+      animated: true,
+    });
+    await modal.present();
   }
 
 }

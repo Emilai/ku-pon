@@ -23,6 +23,7 @@
     "@angular/router": "^14.2.0",
     "@angular/service-worker": "^14.2.0",
     "@auth0/auth0-angular": "^1.9.0",
+    "@awesome-cordova-plugins/http": "^5.45.0",
     "@capacitor-community/fcm": "^2.0.2",
     "@capacitor/android": "^4.0.0",
     "@capacitor/app": "^4.0.0",

@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "uy.kupon.kupon",
+               "sha256_cert_fingerprints": ["79:E2:08:1B:7E:23:EE:34:1C:30:A6:08:C8:9A:1B:BD:F9:BB:7A:36:A3:80:6A:E3:23:C1:BF:B0:35:E5:9F:73"] }
+}]

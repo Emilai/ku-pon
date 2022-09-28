@@ -30,7 +30,11 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
     ...canActivate(redirectUnauthorizedToLogin)
+  },  {
+    path: 'mercado-modal',
+    loadChildren: () => import('./mercado-modal/mercado-modal.module').then( m => m.MercadoModalPageModule)
   }
+
 
 ];
 @NgModule({

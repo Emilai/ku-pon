@@ -44,8 +44,8 @@ export class MercadopagoService {
         }
       ],
       "back_urls": {
-        "success": "http://kupon.uy/",
-        "failure": "http://kupon.uy/",
+        "success": "success",
+        "failure": "fail",
       },
       "auto_return": "approved",
       "binary_mode": true

@@ -18,6 +18,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
         provideStorage(() => getStorage()),
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-        DatePipe, LowerCasePipe],
+        DatePipe, LowerCasePipe, InAppBrowser],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

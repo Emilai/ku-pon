@@ -13,4 +13,5 @@ ext {
     cordovaAndroidVersion = '10.1.1'
     coreSplashScreenVersion = '1.0.0-rc01'
     androidxWebkitVersion = '1.4.0'
+    androidxBrowserVersion = '1.4.0'
 }

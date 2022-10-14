@@ -1,5 +1,5 @@
-<ion-toolbar fixed>
-  <ion-grid fixed>
+<ion-toolbar fixed class="ion-margin-top">
+  <ion-grid fixed class="ion-margin-top">
     <ion-row>
       <ion-col size="4">
         <ion-img src="../../../assets/icon/favicon.png" id="headerIcon"></ion-img>
@@ -16,9 +16,16 @@
 
 <ion-content>
 
-  <ion-card>
+  <ion-card mode="md">
 
     <ion-img src="{{info.img}}"></ion-img>
+    <div class="ratingDiv">
+      <ion-chip class="ratingChip">
+        <ion-label>Calificación: {{avgRating | async}}</ion-label>
+        <ion-icon name="star" color="primary"></ion-icon>
+      </ion-chip>
+    </div>
+
 
     <div class="ion-padding">
       <ion-icon *ngIf="info.location" name="location-outline" class="icons" (click)="location()" target="_blank">
@@ -33,22 +40,35 @@
 
     <ion-card-header class="cardHeader">
 
-      <ion-button (click)="pay()" shape="round" class="kuponBtn" *ngIf="info.precio > 0"
+      <ion-button (click)="pay()" shape="round" class="kuponBtn" *ngIf="info.precio > 0 && init_point"
         [disabled]="!authService.userInfo.premium && info.premium">
         Comprar KuPon: ${{info.precio}}
       </ion-button>
-      <ion-button (click)="premium()" shape="round" class="kuponBtn"
+      <!-- <ion-button (click)="premium()" shape="round" class="kuponBtn"
         *ngIf="info.precio > 0 && !authService.userInfo.premium && info.premium">
         Pasar a PREMIUM
-      </ion-button>
+      </ion-button> -->
       <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio === 0">
         Descargar KuPon GRATIS
       </ion-button>
-      
+
       <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
 
+      <div class="ratingDiv2">
+        <ion-card-subtitle class="subRating">Califica este KuPon:</ion-card-subtitle>
+        <fieldset class="rating">
+          <ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
+            <input (click)="starHandler(num)" [id]="'star'+num" [value]="num" name="rating" type="radio" />
+            <label class="full" [for]="'star'+num"></label>
+          </ng-container>
+        </fieldset>
+      </div>
+
       <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
+
       <ion-card-title class="ion-margin-vertical">Kupon valor<span> ${{info.valor}}</span></ion-card-title>
+
+
 
     </ion-card-header>
 

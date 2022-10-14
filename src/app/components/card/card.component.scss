@@ -6,6 +6,9 @@
   margin: 0;
 }
 
+.colContent{
+  text-align: center;
+}
 .cardImg {
   object-fit: cover;
   height: 150px;
@@ -39,7 +42,7 @@ span {
 }
 
 .categorieName{
-    font-size: 12px;
+    font-size: 10px;
     margin: 0 10px 0 10px;
 }
 
@@ -63,21 +66,21 @@ span {
 }
 
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 490px) {
 
 .categorieName{
-    font-size: 12px;
+    font-size: 14px;
+    margin: 0 10px 0 10px;
+}
+
+
+}
+
+@media only screen and (min-width: 525px) {
+
+.categorieName{
+    font-size: 16px;
     margin: 0 20px 0 20px;
-}
-
-
-}
-
-@media only screen and (min-width: 760px) {
-
-.categorieName{
-    font-size: 12px;
-    margin: 0 40px 0 40px;
 }
 
 }

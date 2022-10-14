@@ -29,9 +29,9 @@
 
     </ion-row>
   </ion-grid>
-  <ion-button (click)="premium()" expand="block" fill="solid" shape="round" class="ion-padding loginBtn" *ngIf="authService.userInfo.premium === false">
+  <!-- <ion-button (click)="premium()" expand="block" fill="solid" shape="round" class="ion-padding loginBtn" *ngIf="authService.userInfo.premium === false">
     Contratar Plan Premium
-  </ion-button>
+  </ion-button> -->
 
 
   <ion-button (click)="logout()" expand="block" fill="solid" shape="round" class="ion-padding loginBtn" color="danger">
@@ -111,8 +111,15 @@
       </ion-item>
     </ion-list>
   </ion-accordion>
+</ion-accordion-group>
 
-  <ion-accordion value="datosUsuario">
+  </ion-card-content>
+</ion-card>
+
+<ion-card class="faq ion-padding">
+  <ion-card-content>
+    <ion-accordion-group>
+        <ion-accordion value="datosUsuario">
     <ion-item slot="header">
       <ion-label>Mis Datos</ion-label>
     </ion-item>
@@ -127,9 +134,9 @@
       <ion-item>
         <p>Telefono: {{authService.userInfo.tel}}</p>
       </ion-item>
-      <!-- <ion-button (click)="actualizar()" expand="block" fill="clear" shape="round">
-        Actualizar Mis Datos
-      </ion-button> -->
+      <ion-button (click)="deleteAccountOption()" expand="block" fill="clear" shape="round" color="danger">
+        Borrar Cuenta
+      </ion-button>
     </ion-list>
 
     <ion-list slot="content" *ngIf="actualizarDatos">
@@ -150,13 +157,14 @@
     </ion-list>
 
   </ion-accordion>
-</ion-accordion-group>
+    </ion-accordion-group>
   </ion-card-content>
+
 </ion-card>
 
-<ion-card class="ion-padding" *ngIf="authService.userInfo.admin">
+<ion-card class="ion-padding" *ngIf="verifyBox">
   <ion-card-header>
-    <ion-card-title>Confirmar KuPon utilizado</ion-card-title>
+    <ion-card-title>Confirmar KuPon</ion-card-title>
   </ion-card-header>
   <ion-card-content>
       <ion-item>
@@ -170,6 +178,10 @@
       </ion-button>
   </ion-card-content>
 </ion-card>
+
+<ion-button *ngIf="authService.userInfo.admin" (click)="verificar()" expand="block" shape="round" class="ion-padding loginBtn ion-margin">
+  Verificación de KuPones
+</ion-button>
 
 
 </ion-content>

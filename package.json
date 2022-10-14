@@ -44,6 +44,7 @@
     "@types/scriptjs": "^0.0.2",
     "cordova-plugin-inappbrowser": "^5.0.0",
     "mercadopago": "^1.5.14",
+    "ngx-star-rating": "^2.1.0",
     "rxjs": "~6.6.0",
     "scriptjs": "^2.5.9",
     "swiper": "^8.1.4",

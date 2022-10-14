@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, HostListener, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { AlertController, ModalController } from '@ionic/angular';
-import { MercadopagoService } from '../services/mercadopago.service';
-import { Browser } from '@capacitor/browser';
-import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { AuthService } from '../services/auth.service';
+import { LiveKuponsService } from '../services/live-kupons.service';
 
 @Component({
   selector: 'app-mercado-modal',
@@ -15,36 +13,29 @@ export class MercadoModalPage implements OnInit {
 
   html: any;
   iframe = true;
+  cards: any;
 
   constructor(
     private modalCtrl: ModalController,
-    private http: HttpClient,
-    private sanitizer: DomSanitizer,
-    private mp: MercadopagoService,
-    private iab: InAppBrowser,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    public liveKuponsService: LiveKuponsService,
+    public authService: AuthService) { }
 
-  ngOnInit() {
-    this.html = this.sanitizer.bypassSecurityTrustResourceUrl(
-      this.mp.initPoint
-    );
-    this.openCapacitorSite2();
+  async ngOnInit() {
+    await this.authService.userData();
+    await this.liveKuponsService.getCompanyKupons(this.authService.userInfo.code).then(cards => {
+      cards.subscribe(kupones => {
+        this.cards = kupones.map(kuponRef => {
+          const kupon = kuponRef.payload.doc.data();
+          // eslint-disable-next-line @typescript-eslint/dot-notation
+          kupon['id'] = kuponRef.payload.doc.id;
+          return kupon;
+        });
+      });
+    });
+
   }
 
-  // openCapacitorSite = async () => {
-  //   await Browser.open({ url: this.mp.initPoint });
-  //   await Browser.addListener('browserFinished', () => {
-  //     console.log('browserFinished');
-  //   });
-  // };
-
-  async openCapacitorSite2() {
-    const pageRef = await this.iab.create(this.mp.initPoint);
-    pageRef.on('exit').subscribe(event => {
-      pageRef.close();
-      this.showAlert('Funcionando on Exit', event.composedPath());
-    });
-  };
 
   @HostListener('window:popstate', ['$event'])
   dismissModal() {
@@ -62,5 +53,16 @@ export class MercadoModalPage implements OnInit {
       buttons: ['OK']
     });
     await alert.present();
+  }
+  location(web) {
+    window.location.href = web;
+  }
+
+  whatsapp(tel) {
+    window.location.href = 'https://wa.me/' + tel;
+  }
+
+  instagram(insta) {
+    window.location.href = insta;
   }
 }

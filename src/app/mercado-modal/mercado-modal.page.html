@@ -1,5 +1,5 @@
-<ion-toolbar fixed>
-  <ion-grid fixed>
+<ion-toolbar fixed class="ion-margin-top">
+  <ion-grid fixed class="ion-margin-top">
     <ion-row>
       <ion-col size="4">
         <ion-img src="../../../assets/icon/favicon.png" id="headerIcon"></ion-img>
@@ -15,11 +15,25 @@
 </ion-toolbar>
 
 <ion-content>
-<!-- <iframe *ngIf="iframe"
-    width="100%"
-    height="100%"
-    [src]="html"
-    frameborder="0"
-    allowfullscreen
-  ></iframe> -->
+  <ion-card *ngFor="let card of cards">
+    <ion-img src="{{card.img}}"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{card.comercio}}</ion-card-subtitle>
+      <ion-card-title>{{card.titulo}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{card.descripcion}}
+    </ion-card-content>
+    <ion-card-header>
+      <div class="ion-padding">
+        <ion-icon *ngIf="card.web" name="globe-outline" class="icons" (click)="location(card.web)" target="_blank">
+        </ion-icon>
+        <ion-icon *ngIf="card.tel" name="logo-whatsapp" class="icons" (click)="whatsapp(card.tel)" target="_blank">
+        </ion-icon>
+        <ion-icon *ngIf="card.instagram" name="logo-instagram" class="icons" (click)="instagram(card.instagram)" target="_blank">
+        </ion-icon>
+      </div>
+    </ion-card-header>
+
+  </ion-card>
 </ion-content>

@@ -12,6 +12,7 @@ export class LiveKuponsService {
   chekedKupons: any;
   myDate = new Date();
   currentDate: any;
+  companyKupons: any;
 
 
   constructor(public auth: Auth, private firestore: AngularFirestore, private datePipe: DatePipe ) {
@@ -22,7 +23,6 @@ export class LiveKuponsService {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const collection = this.firestore.collection('liveKupons');
     return collection.doc(this.auth.currentUser.email).collection('live').doc(data.code).set(data);
-    //cambie data.id por data.code habria que cargar un nuevo kupon y probar
   }
 
   async getliveKupons() {
@@ -66,4 +66,15 @@ export class LiveKuponsService {
       console.log('Error on registering KuPon: ', err);
     }
   }
+
+  async getCompanyKupons(code) {
+    try {
+      const companyKupons = this.firestore.collection('empresas').doc(code).collection('beneficios').snapshotChanges();
+      this.companyKupons = companyKupons;
+      return companyKupons;
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }

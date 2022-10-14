@@ -73,26 +73,39 @@ export class AuthService {
 
   async userData2() {
     try {
-      // await this.firestore.collection('Usuarios').doc(this.auth.currentUser.uid).get().subscribe(userData => {
-      //   const userInfo = userData.data();
-      //   this.userInfo = userInfo;
-      //   console.log(this.userInfo);
-      //   return userInfo;
-      // });
-      return await this.firestore.collection('Usuarios').doc(this.auth.currentUser.uid).get();
 
-      //probar retornando promesa y no la data o subscribe en RJX
+      return await this.firestore.collection('Usuarios').doc(this.auth.currentUser.uid).get();
 
     } catch (error) {
       console.log(error);
     }
   };
 
+  async deleteUserData() {
+    try {
+      return await this.firestore.collection('Usuarios').doc(this.auth.currentUser.uid).delete();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  deleteAuthData() {
+    this.auth.currentUser.delete();
+  }
+
   async update(collection, id, data) {
     try {
       return await this.firestore.collection(collection).doc(id).set(data);
     } catch(error) {
       console.log('error en update ', error);
+    }
+  }
+
+  async codes() {
+    try {
+      return await this.firestore.collection('codigos').doc('codigo').get();
+    } catch (error) {
+      console.log('error en codes ', error);
     }
   }
 

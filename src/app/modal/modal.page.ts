@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
@@ -7,9 +8,11 @@ import { CardService } from '../services/card.service';
 import { StorageService } from '../services/storage.service';
 import { LiveKuponsService } from '../services/live-kupons.service';
 import { MercadopagoService } from '../services/mercadopago.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { get } from 'scriptjs';
-import { MercadoModalPage } from '../mercado-modal/mercado-modal.page';
+import { DomSanitizer } from '@angular/platform-browser';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
 
@@ -23,16 +26,8 @@ export class ModalPage implements OnInit {
   fav: boolean;
   info: Kupon;
   init_point: any;
-
-  preference = {
-    items: [
-      {
-        title: 'Mi producto',
-        unit_price: 100,
-        quantity: 1,
-      }
-    ]
-  };
+  stars: Observable<any>;
+  avgRating: Observable<any>;
 
   constructor(
     private modalCtrl: ModalController,
@@ -41,21 +36,32 @@ export class ModalPage implements OnInit {
     public authService: AuthService,
     private alertController: AlertController,
     public liveKuponsService: LiveKuponsService,
-    private mp: MercadopagoService) {
+    private mp: MercadopagoService,
+    private sanitizer: DomSanitizer,
+    private iab: InAppBrowser) {
 
    }
 
   async ngOnInit() {
-    get('https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js', () => {
-      //library has been loaded...
-    });
-    // this.info = await this.cardService.kuponData;
+
     this.info = this.cardService.getOneCard();
     const kuponInFav = this.storageService.isInFav(this.info);
     this.fav = kuponInFav;
     await this.authService.userData();
-    // await this.liveKuponsService.getliveKupons();
+    await this.requestPay();
+
+    this.stars = this.cardService.getKuponStars(this.info.id);
+
+    this.avgRating = this.stars.pipe(map(arr => {
+      const ratings = arr.map(v => v.value);
+      return ratings.length ? ratings.reduce((total, val) => total + val) / arr.length : 'Aún no hay Calificaciones';
+    }));
   }
+
+  starHandler(value) {
+    this.cardService.setStar(this.authService.userInfo.email, this.info.id, value);
+  }
+
   // eslint-disable-next-line @typescript-eslint/member-ordering
   @HostListener('window:popstate', ['$event'])
   dismissModal() {
@@ -69,30 +75,15 @@ export class ModalPage implements OnInit {
   async onClick() {
     await this.liveKuponsService.createliveKupon(this.info);
     console.log(this.liveKuponsService.liveKupons);
-    this.showAlert('Ya tienes tu KuPon', 'Disfrutalo cuando quieras!');
+    this.showAlert('Ya tienes tu KuPon', 'Puedes verlo en "Mis KuPones". Disfrutalo cuando quieras!');
   }
 
   async pay() {
-
-    // this.mp.goCheckOut(this.preference).subscribe(result => {
-    //   // Read result of the Cloud Function.
-    //   this.init_point = result.data.result;
-    //   console.log(this.init_point);
-    //   window.location.href = this.init_point;
-    // }).catch(error => {
-    //   console.log(error);
-    //   return error;
-    // });
-    await this.requestPay();
-      this.mostrarModal();
-
-    // await this.liveKuponsService.createliveKupon(this.info);
-    // console.log(this.liveKuponsService.liveKupons);
-    // this.showAlert('Ya tienes tu KuPon', 'Aqui incorporaremos la pasarela de pagos');
+    this.openMercadoPago();
   }
 
  async requestPay() {
-    await this.mp.mercadopago(this.info.comercio, this.info.precio, this.info.img);
+   await this.mp.mercadopago(this.info.comercio, this.info.precio, this.info.img, this.authService.userInfo.nombre, this.authService.userInfo.email);
     this.init_point = this.mp.initPoint;
   }
 
@@ -126,14 +117,26 @@ export class ModalPage implements OnInit {
     window.location.href = this.info.instagram;
   }
 
-  async mostrarModal() {
-    const modal = await this.modalCtrl.create({
-      component: MercadoModalPage,
-      showBackdrop: true,
-      canDismiss: true,
-      animated: true,
+  async openMercadoPago() {
+
+    const fail = 'fail';
+    const success = 'success';
+
+    const pageRef = this.iab.create(this.init_point, '_blank', 'location=no,toolbar=no,zoom=no');
+
+    pageRef.on('loadstart').subscribe(event => {
+      console.log(event.url);
+
+      if (event.url.includes(fail)) {
+        pageRef.close();
+        this.showAlert('Hubo un error en el proceso de pago', 'Intentalo nuevamente y disfruta tu KuPon!');
+
+      } else if (event.url.includes(success)) {
+        pageRef.close();
+        this.onClick();
+      }
     });
-    await modal.present();
   }
+
 
 }

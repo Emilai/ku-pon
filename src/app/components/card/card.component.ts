@@ -6,6 +6,7 @@ import { ModalPage } from 'src/app/modal/modal.page';
 import { Kupon } from 'src/app/interfaces';
 import { DataService } from 'src/app/services/data.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { MercadoModalPage } from '../../mercado-modal/mercado-modal.page';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -20,6 +21,8 @@ export class CardComponent implements OnInit {
   categories: Observable<any>;
   catSelected = '';
   cardContent = document.getElementById('cardContent');
+  stars: Observable<any>;
+  avgRating: Observable<any>;
 
   constructor(private cardService: CardService, private modalCtrl: ModalController,
     private dataService: DataService, public authService: AuthService
@@ -66,8 +69,14 @@ async mostrarModal(card: Kupon) {
 
   }
 
-  corporativos() {
-    console.log('corporativo');
+  async corporativos() {
+    const modal = await this.modalCtrl.create({
+      component: MercadoModalPage,
+      showBackdrop: true,
+      canDismiss: true,
+      animated: true,
+    });
+    await modal.present();
   }
 
 

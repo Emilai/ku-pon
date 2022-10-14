@@ -24,7 +24,6 @@ export class LivePage implements OnInit {
   }
 
   async ngOnInit() {
-    // this.info = await this.cardService.kuponData;
     this.info = this.cardService.getOneCard();
     await this.authService.userData();
     console.log(this.info);
@@ -41,7 +40,7 @@ export class LivePage implements OnInit {
   }
 
   kuponCode() {
-
+    this.showAlert('Datos para verificar tu KuPon:', `Usuario: ${this.authService.userInfo.email} - Código: ${this.info.code}`);
   }
 
   async showAlert(header, message) {

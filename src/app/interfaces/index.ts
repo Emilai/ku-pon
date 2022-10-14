@@ -23,6 +23,7 @@ export interface Usuario {
     tel: number;
     img: string;
     empresa: string;
+    code: string;
     grupos: string[];
     premium: boolean;
     admin: boolean;

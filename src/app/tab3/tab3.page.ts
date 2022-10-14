@@ -54,6 +54,8 @@ export class Tab3Page implements OnInit {
   checkedKupon: any;
   reset: any = '';
   checked: any = '';
+  verifyBox = false;
+  verifyBtn = true;
 
   constructor(
     public authService: AuthService,
@@ -137,22 +139,56 @@ export class Tab3Page implements OnInit {
               console.log('Fail', this.checked);
             };
           } else {
-            this.showAlert('Datos erroneos!', 'Verifica los datos del KuPon 1');
+            this.showAlert('Datos erroneos!', 'Verifica los datos del KuPon');
           }
 
-
-          // } catch (err) {
-          //   this.showAlert('Error!', 'El KuPon solicitado no existe para dicho Usuario. Verifique los datos ingresados');
-          //   console.log('Fail', err);
-          // }
         });
 
-        // return kupon;
       });
     } catch (error) {
       // Aca sale un error si el kupon se ingresa vacio
 
       this.showAlert('Datos erroneos!', 'Debes ingresar los datos del KuPon');
     }
+  }
+
+  async showAlert2(header, message) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Confirmar',
+        handler: () => {
+          this.deleteAccount();
+          this.authService.deleteAuthData();
+        }
+      }]
+    });
+    await alert.present();
+  }
+
+  deleteAccountOption() {
+    this.showAlert2('Su cuenta será borrada', 'Desea hacerlo?');
+  }
+
+  async deleteAccount() {
+    await this.authService.deleteUserData();
+    await this.authService.logout();
+    this.router.navigateByUrl('/login', {
+      replaceUrl: true
+    });
+    this.showAlert('Su cuenta ha sido eliminada', 'Para volver a utilizar KuPon deberá registrarse nuevamente.');
+  }
+
+  verificar() {
+    this.verifyBox = !this.verifyBox;
+    this.verifyBtn = !this.verifyBtn;
   }
 }

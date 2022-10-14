@@ -15,8 +15,12 @@ export class RegisterPage implements OnInit {
   credentials: UntypedFormGroup;
   userInfo= {
     nombre: '',
+    code: '',
+    empresa: '',
     tel: undefined
   };
+  codes: any;
+  checked = false;
 
   constructor(
 
@@ -34,18 +38,24 @@ export class RegisterPage implements OnInit {
     return this.credentials.get('password');
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
-  }
+    (await this.authService.codes()).subscribe(userData => {
+      const codeInfo = userData.data();
+      this.codes = codeInfo;
+      // console.log(this.codes);
+    });
+}
 
   async register() {
     const loading = await this.loadingController.create();
     await loading.present();
 
     const user = await this.authService.register(this.credentials.value);
+    const codeToLowerCase = this.userInfo.code.toLowerCase();
 
     const usuario: Usuario = {
       id: user.user.uid,
@@ -53,7 +63,8 @@ export class RegisterPage implements OnInit {
       email: user.user.email,
       tel: this.userInfo.tel,
       img: '',
-      empresa: '',
+      empresa: this.userInfo.empresa,
+      code: codeToLowerCase,
       grupos: ['General'],
       premium: false,
       admin: false,
@@ -86,6 +97,17 @@ export class RegisterPage implements OnInit {
   back() {
     this.router.navigateByUrl('/login', { replaceUrl: true });
   }
+  async check() {
 
+    const codigo = this.userInfo.code.toLowerCase();
 
+    if (this.codes[codigo]) {
+      this.userInfo.empresa = this.codes[codigo];
+      this.register();
+    } else if (codigo === ''){
+      this.register();
+    } else {
+      this.showAlert('Codigo erroneo', 'Por favor intente denuevo');
+    }
+  }
 }

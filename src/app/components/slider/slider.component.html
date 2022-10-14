@@ -1,4 +1,4 @@
-<swiper [autoplay]="true" [keyboard]="true" [pagination]="true" [zoom]="true">
+<swiper [autoplay]="true" [keyboard]="true" [pagination]="true" [zoom]="true" mode="md">
 
     <ng-template swiperSlide *ngFor="let card of cards | filtro: 'slider'">
       <ion-card (click)="mostrarModal(card)">

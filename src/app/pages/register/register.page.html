@@ -8,16 +8,26 @@
 
   <ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
 
-  
-    <ion-item class="ion-margin-bottom">
-      <ion-input type="text" placeholder="Nombre" [(ngModel)]="userInfo.nombre" required></ion-input>
-    </ion-item>
 
-    <ion-item class="ion-margin-bottom" *ngIf="userInfo.nombre">
-      <ion-input type="tel" placeholder="Teléfono" [(ngModel)]="userInfo.tel" required minlength="9" id="tel"></ion-input>
-    </ion-item>
+  <ion-item class="ion-margin-bottom">
+    <ion-input type="text" placeholder="Nombre" [(ngModel)]="userInfo.nombre" required></ion-input>
+  </ion-item>
 
-  <form [formGroup]="credentials" (ngSubmit)="register()" *ngIf="userInfo.tel && userInfo.nombre">
+  <ion-item class="ion-margin-bottom" *ngIf="userInfo.nombre">
+    <ion-input type="tel" placeholder="Teléfono" [(ngModel)]="userInfo.tel" required minlength="9" id="tel"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom" *ngIf="userInfo.tel && userInfo.nombre">
+  <ion-checkbox slot="start" [(ngModel)]="checked"></ion-checkbox>
+  <ion-label class="textCheckBox">Perteneces a una Empresa con Convenio?</ion-label>
+</ion-item>
+
+  <ion-item class="ion-margin-bottom" *ngIf="checked">
+    <ion-input type="text" placeholder="Ingresa el Código de Empresa" [(ngModel)]="userInfo.code" id="code">
+    </ion-input>
+  </ion-item>
+
+  <form [formGroup]="credentials" (ngSubmit)="check()" *ngIf="userInfo.tel && userInfo.nombre">
 
     <ion-item class="ion-margin-bottom">
       <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
@@ -25,10 +35,10 @@
     </ion-item>
 
     <ion-item class="ion-margin-bottom">
-      <ion-input type="password" placeholder="Password" formControlName="password" ></ion-input>
-      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password invalido (minimo 8 caracteres)</ion-note>
+      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password invalido (minimo 8
+        caracteres)</ion-note>
     </ion-item>
-
 
     <ion-button type="submit" expand="block" shape="round" [disabled]="!credentials.valid" class="loginBtn">
       Registrar Cuenta
@@ -39,9 +49,9 @@
 
   <hr class="hr">
 
-      <ion-button (click)="back()" expand="block" fill="clear" shape="round">
-      Volver a Login
-    </ion-button>
+  <ion-button (click)="back()" expand="block" fill="clear" shape="round">
+    Volver a Login
+  </ion-button>
 
 
 </ion-content>

@@ -27,7 +27,6 @@
             </ion-card-content>
 
           </ion-card>
-
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -39,70 +38,5 @@
       </ion-card-header>
     </ion-card>
 
-    <ion-button *ngIf="authService.userInfo.superadmin === true" (click)="cargarKupones()" expand="block" shape="round"
-      class="ion-padding kuponesBtn">
-      Cargar KuPones
-    </ion-button>
-
-    <div *ngIf="kuponInput" class="ion-padding">
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Categoria" [(ngModel)]="kuponInfo.categoria"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Comercio" [(ngModel)]="kuponInfo.comercio"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Whatsapp" [(ngModel)]="kuponInfo.whatsapp"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Instagram" [(ngModel)]="kuponInfo.instagram"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Location" [(ngModel)]="kuponInfo.location"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Titulo" [(ngModel)]="kuponInfo.titulo"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Descripcion" [(ngModel)]="kuponInfo.descripcion"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Condiciones" [(ngModel)]="kuponInfo.condiciones"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Img" [(ngModel)]="kuponInfo.img"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Key" [(ngModel)]="kuponInfo.key"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="number" placeholder="Precio" [(ngModel)]="kuponInfo.precio"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="number" placeholder="Valor" [(ngModel)]="kuponInfo.valor"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-bottom">
-        <ion-input type="text" placeholder="Código" [(ngModel)]="kuponInfo.code"></ion-input>
-      </ion-item>
-
-      <ion-button (click)="cargarKupon()" expand="block" fill="clear" shape="round">
-        Cargar Kupon
-      </ion-button>
-
-
-    </div>
 
   </ion-content>

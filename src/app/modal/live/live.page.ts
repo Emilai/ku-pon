@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CardService } from 'src/app/services/card.service';
 import { LiveKuponsService } from 'src/app/services/live-kupons.service';
 
+
 @Component({
   selector: 'app-live',
   templateUrl: './live.page.html',
@@ -40,12 +41,13 @@ export class LivePage implements OnInit {
   }
 
   kuponCode() {
-    this.showAlert('Datos para verificar tu KuPon:', `Usuario: ${this.authService.userInfo.email} - Código: ${this.info.code}`);
+    this.showAlert('Datos para verificar tu KuPon:', `Usuario: ${this.authService.userInfo.email}`, `Código: ${this.info.code}`);
   }
 
-  async showAlert(header, message) {
+  async showAlert(header, subHeader, message) {
     const alert = await this.alertController.create({
       header,
+      subHeader,
       message,
       buttons: ['OK']
     });

@@ -8,7 +8,7 @@
 
  <ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
 
-  <div *ngIf="!forgetBox">
+  <div *ngIf="!forgetBox" class="gralDiv">
     
     <form [formGroup]="credentials" (ngSubmit)="login()">
 
@@ -41,7 +41,7 @@
   </div>
 
 
-  <div *ngIf="forgetBox">
+  <div *ngIf="forgetBox" class="gralDiv">
     <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Email" [(ngModel)]="forgetEmail"></ion-input>
     </ion-item>

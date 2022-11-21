@@ -5,6 +5,7 @@ export interface Kupon {
     whatsapp?: string;
     instagram?: string;
     location?: string;
+    web?: string;
     titulo: string;
     descripcion: string;
     condiciones: string;

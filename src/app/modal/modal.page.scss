@@ -3,8 +3,14 @@
   color: #fafafa;
 }
 
+.top {
+  margin-top: 35px;
+}
+
 #headerIcon {
   height: 40px;
+  display: inline-flex;
+    margin-left: 8px;
 }
 
 .comercio {
@@ -36,9 +42,9 @@
 }
 
 #ionFab {
-  width: 30px;
-  height: 30px;
-  margin: 12px;
+    width: 30px;
+    height: 30px;
+    margin: 12px 0 12px 12px;
 }
 
 .kuponBtn {

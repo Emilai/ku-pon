@@ -24,14 +24,14 @@
             "icon":"airplane"
                 },
         {
-            "categoria":"Market",
-            "catId":"market",
-            "icon":"basket"
-                },
-        {
             "categoria":"Enseñanza",
             "catId":"ensenanza",
             "icon":"bulb"
+                },
+        {
+            "categoria":"Otros",
+            "catId":"otros",
+            "icon":"grid-outline"
                 },
         {
             "categoria":"Todos",

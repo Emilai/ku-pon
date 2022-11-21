@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { SwiperModule } from 'swiper/angular';
+import { FormsModule } from '@angular/forms';
 
 
 import { HeaderComponent } from './header/header.component';
@@ -28,7 +29,8 @@ import { LivekuponsComponent } from './livekupons/livekupons.component';
     CommonModule,
     IonicModule,
     SwiperModule,
-    PipesModule
+    PipesModule,
+    FormsModule
   ]
 
 })

@@ -22,7 +22,7 @@ export class AuthService {
       this.userAuthData = user;
       return user;
     } catch (e) {
-      return null;
+      return undefined;
     }
     }
 

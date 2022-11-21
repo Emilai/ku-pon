@@ -4,6 +4,8 @@ import { Kupon } from 'src/app/interfaces';
 import { LiveKuponsService } from 'src/app/services/live-kupons.service';
 import { LivePage } from 'src/app/modal/live/live.page';
 import { CardService } from 'src/app/services/card.service';
+import { ReservaPage } from '../../reserva/reserva.page';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-livekupons',
@@ -13,9 +15,11 @@ import { CardService } from 'src/app/services/card.service';
 export class LivekuponsComponent implements OnInit {
 
   cards: any[] = [];
+  reserva = false;
 
   constructor( public liveKuponsService: LiveKuponsService,
     private modalCtrl: ModalController,
+    public authService: AuthService,
     public cardService: CardService) { }
 
 
@@ -30,6 +34,7 @@ export class LivekuponsComponent implements OnInit {
         });
       });
     });
+    await this.authService.userData();
   }
 
   async mostrarModal(card: Kupon) {
@@ -43,4 +48,19 @@ export class LivekuponsComponent implements OnInit {
     await modal.present();
   }
 
+  async reservar(card) {
+    const modal = await this.modalCtrl.create({
+      component: ReservaPage,
+      showBackdrop: true,
+      canDismiss: true,
+      animated: true,
+    });
+    this.cardService.kuponData = card;
+    await modal.present();
+  }
+
+  wpp(num) {
+
+    window.location.href = 'https://wa.me/' + num.whatsapp;
+  }
 }

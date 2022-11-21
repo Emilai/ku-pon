@@ -1,61 +1,178 @@
-<ion-content  [scrollEvents]="true" [fullscreen]="true">
+<ion-content [scrollEvents]="true" [fullscreen]="true">
 
-<app-slider></app-slider>
-  
-  <ion-button *ngIf="authService.userInfo.empresa" (click)="corporativos()" expand="block" shape="round" class="ion-padding benefitsBtn">
-    Beneficios {{authService.userInfo.empresa}}
-  </ion-button>
+  <app-slider></app-slider>
+  <div class="btnDiv">
+    <ion-button *ngIf="authService.userInfo.superadmin === true" (click)="cargarKupones()" expand="block" shape="round"
+      class="ion-padding benefitsBtn">
+      Cargar KuPones
+    </ion-button>
 
-<ion-grid fixed>
-  <ion-row>
+    <ion-button *ngIf="authService.userInfo.admin" (click)="verificar()" expand="block" shape="round"
+      class="ion-padding benefitsBtn">
+      Verificación de KuPones
+    </ion-button>
 
-      <ion-grid fixed class="ion-padding">
-    <ion-row >
-      <ion-col size="3" *ngFor="let categorie of categories |async" class="categorieCol" mode="md">
-        <ion-fab-button class="categorieRow categorieBtn" (click)="categorieFilter(categorie.catId)" mode="md">
-          <ion-col>
+    <ion-button *ngIf="authService.userInfo.empresa" (click)="corporativos()" expand="block" shape="round"
+      class="ion-padding benefitsBtn">
+      Beneficios {{authService.userInfo.empresa}}
+    </ion-button>
+  </div>
+
+  <ion-card class="ion-padding ion-margin" *ngIf="verifyBox">
+    <ion-card-header>
+      <ion-card-title>Confirmar KuPon</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input type="text" placeholder="Email del Usuario" [(ngModel)]="verify.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Codigo del KuPon" [(ngModel)]="verify.code"></ion-input>
+      </ion-item>
+      <ion-button (click)="verifyKupon()" expand="block" shape="round" class="ion-padding benefitsBtn">
+        Confirmar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid fixed *ngIf="!(kuponInput || verifyBox)">
+    <ion-row>
+
+      <ion-grid fixed class="ion-padding catRow">
+        <ion-row>
+          <ion-col size="3" *ngFor="let categorie of categories |async" class="categorieCol" mode="md">
+            <ion-fab-button class="categorieRow categorieBtn" (click)="categorieFilter(categorie.catId)" mode="md">
+              <ion-col>
+                <ion-row class="categorieRow">
+                  <ion-icon name="{{categorie.icon}}" class="categorieIcon" mode="md"></ion-icon>
+                </ion-row>
+              </ion-col>
+
+            </ion-fab-button>
             <ion-row class="categorieRow">
-              <ion-icon name="{{categorie.icon}}" class="categorieIcon" mode="md"></ion-icon>
-            </ion-row>
-          </ion-col>
-
-        </ion-fab-button>
-        <ion-row class="categorieRow">
               <p class="categorieName">{{categorie.categoria}}</p>
             </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-searchbar placeholder="Buscar KuPon!" inputmode="text" (ionChange)="onSearchChange($event)" [debounce]="250"
+        animated mode="ios" #cardContent id="cardContent">
+      </ion-searchbar>
+
+      <!-- <ion-col size="6" size-sm="6" size-md="4" size-lg="3" class="colContent"
+        *ngFor="let card of cards | filtro:textoBuscar">
+        <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
+          <img src="{{card.img}}" class="cardImg" />
+
+          <ion-card-content>
+            <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
+
+            <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
+            <br>
+
+            <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>${{card.valor}}</span></ion-card-subtitle>
+            <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
+            </ion-card-title>
+            <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>
+            </ion-card-title>
+            <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-col> -->
+
+      <ion-col size="12" size-sm="12" size-md="12" size-lg="6" class="colContent"
+        *ngFor="let card of cards | filtro:textoBuscar" (click)="mostrarModal(card)">
+        <ion-card class="cardContent" mode="md">
+          <img src="{{card.img}}" class="cardImg" />
+
+          <ion-card-content class="card">
+            <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
+
+            <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
+            <br class="br">
+
+            <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>${{card.valor}}</span></ion-card-subtitle>
+            <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
+            </ion-card-title>
+            <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>
+            </ion-card-title>
+            <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+          </ion-card-content>
+          <!-- <ion-button (click)="reservar()" class="reserva" fill="clear" id="open-modal">
+          <ion-icon slot="icon-only" name="calendar-outline"></ion-icon>
+        </ion-button> -->
+        </ion-card>
       </ion-col>
+
     </ion-row>
   </ion-grid>
 
-    <ion-searchbar placeholder="Buscar KuPon!" inputmode="text" (ionChange)="onSearchChange($event)" [debounce]="250"
-      animated mode="ios" #cardContent id="cardContent">
-    </ion-searchbar>
-    
-    <ion-col size="6" size-sm="6" size-md="4" size-lg="3" class="colContent" *ngFor="let card of cards | filtro:textoBuscar">
-      <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
-        <img src="{{card.img}}" class="cardImg" />
+  <div *ngIf="kuponInput" class="ion-padding">
 
-        <ion-card-content>
-          <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Categoria" [(ngModel)]="kuponInfo.categoria"></ion-input>
+    </ion-item>
 
-          <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
-          <br>
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Comercio" [(ngModel)]="kuponInfo.comercio"></ion-input>
+    </ion-item>
 
-          <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>${{card.valor}}</span></ion-card-subtitle>
-          <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
-          </ion-card-title>
-          <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>
-          </ion-card-title>
-          <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
-        </ion-card-content>
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Whatsapp" [(ngModel)]="kuponInfo.whatsapp"></ion-input>
+    </ion-item>
 
-      </ion-card>
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Instagram" [(ngModel)]="kuponInfo.instagram"></ion-input>
+    </ion-item>
 
-    </ion-col>
+        <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Instagram" [(ngModel)]="kuponInfo.web"></ion-input>
+    </ion-item>
 
-  </ion-row>
-</ion-grid>
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Location" [(ngModel)]="kuponInfo.location"></ion-input>
+    </ion-item>
 
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Titulo" [(ngModel)]="kuponInfo.titulo"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Descripcion" [(ngModel)]="kuponInfo.descripcion"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Condiciones" [(ngModel)]="kuponInfo.condiciones"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Img" [(ngModel)]="kuponInfo.img"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Key" [(ngModel)]="kuponInfo.key"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="number" placeholder="Precio" [(ngModel)]="kuponInfo.precio"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="number" placeholder="Valor" [(ngModel)]="kuponInfo.valor"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Código" [(ngModel)]="kuponInfo.code"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="cargarKupon()" expand="block" fill="clear" shape="round">
+      Cargar Kupon
+    </ion-button>
+
+
+  </div>
 
 </ion-content>
-

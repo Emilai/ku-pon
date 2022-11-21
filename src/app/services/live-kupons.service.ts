@@ -77,4 +77,14 @@ export class LiveKuponsService {
       console.log(error);
     }
   };
+
+  registerReservation(data: any) {
+    try {
+      const collection = this.firestore.collection('reservations');
+      collection.doc(this.auth.currentUser.email).collection('reservedKupons').doc(this.currentDate + '::' + data.code).set(data);
+      console.log('reserved Kupon');
+    } catch (err) {
+      console.log('Error on registering KuPon: ', err);
+    }
+  }
 }

@@ -1,13 +1,13 @@
-<swiper [autoplay]="true" [keyboard]="true" [pagination]="true" [zoom]="true" mode="md">
+<swiper [slidesPerView]="2" [autoplay]="true" [keyboard]="true" [pagination]="false" [zoom]="false" mode="md">
+
 
     <ng-template swiperSlide *ngFor="let card of cards | filtro: 'slider'">
-      <ion-card (click)="mostrarModal(card)">
+      <ion-card (click)="mostrarModal(card)" class="card">
         <ion-img src="{{card.img}}" class="sliderImg"></ion-img>
-        <ion-card-header>
-          <ion-card-subtitle>{{card.comercio}}</ion-card-subtitle>
-          <ion-card-title>{{card.titulo}}</ion-card-title>
+        <ion-card-header class="header">
+          <ion-card-subtitle class="subtitle">{{card.comercio}}</ion-card-subtitle>
+          <ion-card-title class="title">{{card.titulo}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ng-template>
-
 </swiper>

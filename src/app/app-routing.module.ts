@@ -33,6 +33,14 @@ const routes: Routes = [
   },  {
     path: 'mercado-modal',
     loadChildren: () => import('./mercado-modal/mercado-modal.module').then( m => m.MercadoModalPageModule)
+  },
+  {
+    path: 'tablocation',
+    loadChildren: () => import('./tablocation/tablocation.module').then( m => m.TablocationPageModule)
+  },
+  {
+    path: 'reserva',
+    loadChildren: () => import('./reserva/reserva.module').then( m => m.ReservaPageModule)
   }
 
 

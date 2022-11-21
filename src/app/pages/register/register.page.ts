@@ -55,6 +55,12 @@ export class RegisterPage implements OnInit {
     await loading.present();
 
     const user = await this.authService.register(this.credentials.value);
+
+    if (!user) {
+      await loading.dismiss();
+      this.showAlert('El mail ya se encuentra registrado', 'Intente recuperar su contraseña');
+    };
+
     const codeToLowerCase = this.userInfo.code.toLowerCase();
 
     const usuario: Usuario = {
@@ -75,6 +81,7 @@ export class RegisterPage implements OnInit {
     const id = user.user.uid;
     await this.authService.createUser(usuario, path, id);
     await loading.dismiss();
+
 
     if (user) {
       this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true });

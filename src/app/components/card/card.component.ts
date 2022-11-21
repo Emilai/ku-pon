@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { CardService } from 'src/app/services/card.service';
-import { IonContent, IonInfiniteScroll, ModalController } from '@ionic/angular';
+import { AlertController, IonContent, IonInfiniteScroll, LoadingController, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { ModalPage } from 'src/app/modal/modal.page';
 import { Kupon } from 'src/app/interfaces';
 import { DataService } from 'src/app/services/data.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MercadoModalPage } from '../../mercado-modal/mercado-modal.page';
+import { LowerCasePipe } from '@angular/common';
+import { LiveKuponsService } from 'src/app/services/live-kupons.service';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -15,6 +17,7 @@ import { MercadoModalPage } from '../../mercado-modal/mercado-modal.page';
 export class CardComponent implements OnInit {
   @ViewChild(IonContent, { static: false }) content: IonContent;
 
+  kuponInput = false;
   cards: any [] = [];
   textoBuscar = '';
   user: any;
@@ -24,8 +27,64 @@ export class CardComponent implements OnInit {
   stars: Observable<any>;
   avgRating: Observable<any>;
 
+  verify = {
+    email: '',
+    code: ''
+  };
+
+  verify2 = {
+    email: '',
+    code: ''
+  };
+
+  checkedKupon: any;
+  reset: any = '';
+  checked: any = '';
+  verifyBox = false;
+  verifyBtn = true;
+
+  kuponInfo = {
+    categoria: '',
+    comercio: '',
+    whatsapp: '',
+    instagram: '',
+    web: '',
+    location: '',
+    titulo: '',
+    descripcion: '',
+    condiciones: '',
+    img: '',
+    key: '',
+    precio: undefined,
+    valor: undefined,
+    premium: false,
+    code: '',
+  };
+
+  kuponInfo2 = {
+    categoria: '',
+    comercio: '',
+    whatsapp: '',
+    instagram: '',
+    web: '',
+    location: '',
+    titulo: '',
+    descripcion: '',
+    condiciones: '',
+    img: '',
+    key: '',
+    precio: undefined,
+    valor: undefined,
+    premium: false,
+    code: '',
+  };
+
   constructor(private cardService: CardService, private modalCtrl: ModalController,
-    private dataService: DataService, public authService: AuthService
+    private dataService: DataService, public authService: AuthService,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private lowerCase: LowerCasePipe,
+    private liveKuponsService: LiveKuponsService
     ) { }
 
   async ngOnInit() {
@@ -51,6 +110,10 @@ export class CardComponent implements OnInit {
   onSearchChange(event) {
     this.textoBuscar = event.detail.value;
 }
+
+  cargarKupones() {
+    this.kuponInput = !this.kuponInput;
+  }
 
 async mostrarModal(card: Kupon) {
   const modal = await this.modalCtrl.create({
@@ -79,6 +142,68 @@ async mostrarModal(card: Kupon) {
     await modal.present();
   }
 
+  async cargarKupon() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+    await this.cardService.create('kupones', this.kuponInfo);
+    await loading.dismiss();
+    this.kuponInfo = this.kuponInfo2;
+    this.showAlert('Kupon Registrado', 'Vamo Arriba!!!');
+  }
 
+  async showAlert(header, message) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  async verifyKupon() {
+    const email = this.verify.email.toLowerCase();
+    const code = this.verify.code.toLowerCase();
+    try {
+      await this.liveKuponsService.checkLiveKupons(email, code).then(cards => {
+        cards.subscribe(async kupones => {
+          this.checkedKupon = kupones.data();
+          let kupon = kupones.data();
+
+          if (kupon) {
+            if (kupon.code === code) {
+              this.checked = kupon;
+              console.log('exito', this.checked);
+
+              await this.liveKuponsService.registerUsedKupon(this.checked);
+              await this.liveKuponsService.deleteUsedKupon(email, code);
+              await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
+
+              this.checked = this.reset;
+              kupon = this.reset;
+              this.verify = this.verify2;
+
+
+            } else {
+              this.showAlert('Datos Erroneos!', 'El Usuario no cuenta con el KuPon');
+              console.log('Fail', this.checked);
+            };
+          } else {
+            this.showAlert('Datos erroneos!', 'Verifica los datos del KuPon');
+          }
+
+        });
+
+      });
+    } catch (error) {
+      // Aca sale un error si el kupon se ingresa vacio
+
+      this.showAlert('Datos erroneos!', 'Debes ingresar los datos del KuPon');
+    }
+  }
+
+  verificar() {
+    this.verifyBox = !this.verifyBox;
+    this.verifyBtn = !this.verifyBtn;
+  }
 }
 

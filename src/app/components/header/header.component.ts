@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   wpp() {
-    window.location.href = 'https://wa.me/59891089497';
+    window.location.href = 'https://wa.me/59898608201';
   };
   insta(){
     window.location.href = 'https://www.instagram.com/kupon.uy/';

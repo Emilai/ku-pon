@@ -51,11 +51,6 @@ export class Tab3Page implements OnInit {
     code: ''
   };
 
-  checkedKupon: any;
-  reset: any = '';
-  checked: any = '';
-  verifyBox = false;
-  verifyBtn = true;
 
   constructor(
     public authService: AuthService,
@@ -111,46 +106,7 @@ export class Tab3Page implements OnInit {
 
   }
 
-  async verifyKupon() {
-    const email = this.verify.email.toLowerCase();
-    const code = this.verify.code.toLowerCase();
-    try {
-      await this.liveKuponsService.checkLiveKupons(email, code).then(cards => {
-        cards.subscribe(async kupones => {
-          this.checkedKupon = kupones.data();
-          let kupon = kupones.data();
 
-          if(kupon) {
-            if (kupon.code === code) {
-              this.checked = kupon;
-              console.log('exito', this.checked);
-
-              await this.liveKuponsService.registerUsedKupon(this.checked);
-              await this.liveKuponsService.deleteUsedKupon(email, code);
-              await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
-
-              this.checked = this.reset;
-              kupon = this.reset;
-              this.verify = this.verify2;
-
-
-            } else {
-              this.showAlert('Datos Erroneos!', 'El Usuario no cuenta con el KuPon');
-              console.log('Fail', this.checked);
-            };
-          } else {
-            this.showAlert('Datos erroneos!', 'Verifica los datos del KuPon');
-          }
-
-        });
-
-      });
-    } catch (error) {
-      // Aca sale un error si el kupon se ingresa vacio
-
-      this.showAlert('Datos erroneos!', 'Debes ingresar los datos del KuPon');
-    }
-  }
 
   async showAlert2(header, message) {
     const alert = await this.alertController.create({
@@ -187,8 +143,4 @@ export class Tab3Page implements OnInit {
     this.showAlert('Su cuenta ha sido eliminada', 'Para volver a utilizar KuPon deberá registrarse nuevamente.');
   }
 
-  verificar() {
-    this.verifyBox = !this.verifyBox;
-    this.verifyBtn = !this.verifyBtn;
-  }
 }

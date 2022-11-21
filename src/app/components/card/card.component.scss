@@ -1,19 +1,35 @@
+// .cardContent {
+//   display: inline-block;
+//   text-align: center;
+//   height: 380px;
+//   width: 170px;
+//   margin: 0;
+// }
+
 .cardContent {
-  display: inline-block;
-  text-align: center;
-  height: 380px;
-  width: 170px;
+  display: flex;
+  height: auto;
+  max-height: 150px;
+  width: 100%;
+  // justify-content: space-between;
   margin: 0;
 }
 
-.colContent{
-  text-align: center;
+.card {
+  padding: 0;
+  margin: 10px 10px 10px 10px;
+  font-size: 8px;
 }
 .cardImg {
   object-fit: cover;
-  height: 150px;
-  width: 100%;
+  height: 120px;
+  width: 120px;
 }
+
+// .colContent{
+//   text-align: center;
+// }
+
 .cardTitle {
   font-size: medium;
 }
@@ -27,6 +43,9 @@ span {
   font-weight: bolder;
 }
 
+.br {
+  font-size: 5px;
+}
 .categorieIcon {
     font-size: 33px;
 }
@@ -48,10 +67,11 @@ span {
 
 .cardTitle {
     padding-left: 0px;
-    font-size: 20px;
+    font-size: 12px;
 }
 
 .cardSubTitle {
+  font-size: 12px;
     padding-top: 0px;
     padding-left: 0px;
 }
@@ -63,9 +83,18 @@ span {
 
 .benefitsBtn {
   color: #fafafa;
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
+.btnDiv {
+  text-align: center;
+}
 
+.catRow {
+  max-width: 530px;
+}
 @media only screen and (min-width: 490px) {
 
 .categorieName{

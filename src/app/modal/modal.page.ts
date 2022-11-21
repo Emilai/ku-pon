@@ -54,7 +54,12 @@ export class ModalPage implements OnInit {
 
     this.avgRating = this.stars.pipe(map(arr => {
       const ratings = arr.map(v => v.value);
-      return ratings.length ? ratings.reduce((total, val) => total + val) / arr.length : 'Aún no hay Calificaciones';
+      const finalVal = ratings.length ? ratings.reduce((total, val) => total + val) / arr.length : 'Aún no hay Calificaciones';
+      if (finalVal !== 'Aún no hay Calificaciones') {
+        return finalVal.toFixed(1);
+      } else {
+        return finalVal;
+      }
     }));
   }
 
@@ -115,6 +120,10 @@ export class ModalPage implements OnInit {
 
   instagram() {
     window.location.href = this.info.instagram;
+  }
+
+  web() {
+    window.location.href = this.info.web;
   }
 
   async openMercadoPago() {

@@ -19,11 +19,11 @@
 
   <ion-item class="ion-margin-bottom" *ngIf="userInfo.tel && userInfo.nombre">
   <ion-checkbox slot="start" [(ngModel)]="checked"></ion-checkbox>
-  <ion-label class="textCheckBox">Perteneces a una Empresa con Convenio?</ion-label>
+  <ion-label class="textCheckBox">Tienes un Código de Registro?</ion-label>
 </ion-item>
 
   <ion-item class="ion-margin-bottom" *ngIf="checked">
-    <ion-input type="text" placeholder="Ingresa el Código de Empresa" [(ngModel)]="userInfo.code" id="code">
+    <ion-input type="text" placeholder="Ingresa el Código de Registro" [(ngModel)]="userInfo.code" id="code">
     </ion-input>
   </ion-item>
 

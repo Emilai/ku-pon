@@ -1,6 +1,12 @@
+<swiper [slidesPerView]="2" [autoplay]="true" [keyboard]="true" [pagination]="false" [zoom]="false" mode="md" *ngIf="endorsers">
+  <ng-template swiperSlide *ngFor="let endorser of endorsers">
+      <ion-card (click)="endorserLink(endorser.link)" class="card">
+        <ion-img src="{{endorser.img}}" class="endorserImg"></ion-img>
+      </ion-card>
+    </ng-template>
+</swiper>
+
 <swiper [slidesPerView]="2" [autoplay]="true" [keyboard]="true" [pagination]="false" [zoom]="false" mode="md">
-
-
     <ng-template swiperSlide *ngFor="let card of cards | filtro: 'slider'">
       <ion-card (click)="mostrarModal(card)" class="card">
         <ion-img src="{{card.img}}" class="sliderImg"></ion-img>
@@ -11,3 +17,4 @@
       </ion-card>
     </ng-template>
 </swiper>
+

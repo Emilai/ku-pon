@@ -18,7 +18,7 @@
     </ion-button>
   </div>
 
-  <ion-card class="ion-padding ion-margin" *ngIf="verifyBox">
+  <ion-card class="ion-padding ion-margin verifyBox" *ngIf="verifyBox">
     <ion-card-header>
       <ion-card-title>Confirmar KuPon</ion-card-title>
     </ion-card-header>
@@ -29,11 +29,18 @@
       <ion-item>
         <ion-input type="text" placeholder="Codigo del KuPon" [(ngModel)]="verify.code"></ion-input>
       </ion-item>
-      <ion-button (click)="verifyKupon()" expand="block" shape="round" class="ion-padding benefitsBtn">
+      <ion-button (click)="preverify()" expand="block" shape="round" class="ion-padding benefitsBtn">
         Confirmar
       </ion-button>
     </ion-card-content>
   </ion-card>
+
+  <div *ngIf="endorsers">
+  <ion-card *ngFor="let endorser of endorsers" (click)="categorieFilter(endorser.filter)" class="punta">
+    <ion-img src="{{endorser.img}}"></ion-img>
+  </ion-card>
+  </div>
+
 
   <ion-grid fixed *ngIf="!(kuponInput || verifyBox)">
     <ion-row>
@@ -60,29 +67,6 @@
         animated mode="ios" #cardContent id="cardContent">
       </ion-searchbar>
 
-      <!-- <ion-col size="6" size-sm="6" size-md="4" size-lg="3" class="colContent"
-        *ngFor="let card of cards | filtro:textoBuscar">
-        <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
-          <img src="{{card.img}}" class="cardImg" />
-
-          <ion-card-content>
-            <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
-
-            <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
-            <br>
-
-            <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>${{card.valor}}</span></ion-card-subtitle>
-            <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
-            </ion-card-title>
-            <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>
-            </ion-card-title>
-            <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
-          </ion-card-content>
-
-        </ion-card>
-
-      </ion-col> -->
-
       <ion-col size="12" size-sm="12" size-md="12" size-lg="6" class="colContent"
         *ngFor="let card of cards | filtro:textoBuscar" (click)="mostrarModal(card)">
         <ion-card class="cardContent" mode="md">
@@ -94,16 +78,14 @@
             <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
             <br class="br">
 
-            <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>${{card.valor}}</span></ion-card-subtitle>
-            <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
+            <ion-card-subtitle class="cardSubTitle">Descuento: <span>{{card.valor}}</span></ion-card-subtitle>
+            <ion-card-title class="cardTitle" *ngIf="card.precio > 0 && authService.userInfo.grupos[1] !== 'free'">Compralo por: <span>${{card.precio}}</span>
             </ion-card-title>
-            <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>
+            <ion-card-title class="cardTitle" *ngIf="card.precio === 0 || authService.userInfo.grupos[1] === 'free'"><span>KuPon GRATIS</span>
             </ion-card-title>
             <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
           </ion-card-content>
-          <!-- <ion-button (click)="reservar()" class="reserva" fill="clear" id="open-modal">
-          <ion-icon slot="icon-only" name="calendar-outline"></ion-icon>
-        </ion-button> -->
+
         </ion-card>
       </ion-col>
 
@@ -129,7 +111,7 @@
     </ion-item>
 
         <ion-item class="ion-margin-bottom">
-      <ion-input type="text" placeholder="Instagram" [(ngModel)]="kuponInfo.web"></ion-input>
+      <ion-input type="text" placeholder="Web" [(ngModel)]="kuponInfo.web"></ion-input>
     </ion-item>
 
     <ion-item class="ion-margin-bottom">
@@ -153,6 +135,10 @@
     </ion-item>
 
     <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Extra Imgs" [(ngModel)]="kuponInfo.extras"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Key" [(ngModel)]="kuponInfo.key"></ion-input>
     </ion-item>
 
@@ -161,7 +147,7 @@
     </ion-item>
 
     <ion-item class="ion-margin-bottom">
-      <ion-input type="number" placeholder="Valor" [(ngModel)]="kuponInfo.valor"></ion-input>
+      <ion-input type="text" placeholder="Valor" [(ngModel)]="kuponInfo.valor"></ion-input>
     </ion-item>
 
     <ion-item class="ion-margin-bottom">

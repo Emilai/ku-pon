@@ -18,16 +18,12 @@
           <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
           <br>
 
-          <ion-card-title class="cardTitle">Valor del KuPon: <span>${{card.valor}}</span>
+          <ion-card-title class="cardTitle">Valor del KuPon: <span>{{card.valor}}</span>
           </ion-card-title>
           <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
         </ion-card-content>
-        <ion-button (click)="reservar(card)" class="reserva" fill="clear"
-          *ngIf="authService.userInfo.superadmin === true">
-          <ion-icon slot="icon-only" name="calendar-outline"></ion-icon>
-        </ion-button>
         <ion-button (click)="wpp(card)" class="reserva" fill="clear"
-          *ngIf="!authService.userInfo.superadmin && card.whatsapp">
+          *ngIf="card.whatsapp">
           <ion-icon slot="icon-only" name="logo-whatsapp" color="success"></ion-icon>
         </ion-button>
       </ion-card>

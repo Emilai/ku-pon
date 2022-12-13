@@ -1,32 +1,32 @@
 [{
             "categoria":"Gastronomía",
             "catId":"gastronomia",
-            "icon":"restaurant"
+            "icon":"restaurant-outline"
                 },
         {
-            "categoria":"Eventos",
-            "catId":"eventos",
-            "icon":"ticket"
+            "categoria":"Servicios",
+            "catId":"servicios",
+            "icon":"construct-outline"
                 },
         {
-            "categoria":"Vestimenta",
-            "catId":"vestimenta",
-            "icon":"shirt"
+            "categoria":"Bienestar",
+            "catId":"bienestar",
+            "icon":"medkit-outline"
                 },
         {
             "categoria":"Tecnología",
             "catId":"tecnologia",
-            "icon":"game-controller"
+            "icon":"game-controller-outline"
                 },
         {
-            "categoria":"Turismo",
-            "catId":"turismo",
-            "icon":"airplane"
+            "categoria":"Entretenimiento",
+            "catId":"entretenimiento",
+            "icon":"happy-outline"
                 },
         {
             "categoria":"Enseñanza",
             "catId":"ensenanza",
-            "icon":"bulb"
+            "icon":"bulb-outline"
                 },
         {
             "categoria":"Otros",
@@ -36,6 +36,6 @@
         {
             "categoria":"Todos",
             "catId":"",
-            "icon":"duplicate"
+            "icon":"duplicate-outline"
                 }
     ]

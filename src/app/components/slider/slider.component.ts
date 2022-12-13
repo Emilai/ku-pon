@@ -4,6 +4,7 @@ import { CardService } from 'src/app/services/card.service';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from 'src/app/modal/modal.page';
 import { Kupon } from 'src/app/interfaces';
+import { WSAEINVALIDPROCTABLE } from 'constants';
 
 SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
 
@@ -16,6 +17,7 @@ export class SliderComponent implements OnInit {
 
 
   cards: any[] = [];
+  endorsers: any[] = [];
   sliders: any[] = [];
 
   constructor(private cardService: CardService, private modalCtrl: ModalController) { }
@@ -31,6 +33,18 @@ export class SliderComponent implements OnInit {
         });
       });
     });
+
+    await this.cardService.getEndorsers().then(endorserss => {
+      endorserss.subscribe(endorsers => {
+        this.endorsers = endorsers.map(endorsersRef => {
+          const endors = endorsersRef.payload.doc.data();
+          // eslint-disable-next-line @typescript-eslint/dot-notation
+          endors['id'] = endorsersRef.payload.doc.id;
+          return endors;
+        });
+      });
+    });
+
   }
 
   async mostrarModal(card: Kupon) {
@@ -42,6 +56,10 @@ export class SliderComponent implements OnInit {
     });
     this.cardService.kuponData = card;
     await modal.present();
+  }
+
+  endorserLink(link) {
+    window.location.href = link;
   }
 
 }

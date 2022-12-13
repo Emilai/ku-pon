@@ -9,10 +9,13 @@ export interface Kupon {
     titulo: string;
     descripcion: string;
     condiciones: string;
+    normalprice: string;
+    discountprice: string;
     img: string;
+    extras?: string[];
     key: string;
     precio: number;
-    valor: number;
+    valor: string;
     premium: boolean;
     code: string;
 }

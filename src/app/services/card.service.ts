@@ -27,6 +27,25 @@ export class CardService {
     }
   };
 
+  async getEndorsers() {
+    try {
+      return await this.firestore.collection('endorsers').snapshotChanges();
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  async getConvenio() {
+    try {
+      return await this.firestore.collection('convenio').snapshotChanges();
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   getSliders() {
     return this.http.get<any[]>('../../assets/sliders.json');
   }

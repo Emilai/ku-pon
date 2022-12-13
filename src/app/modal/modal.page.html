@@ -46,7 +46,7 @@
 
     <ion-card-header class="cardHeader">
 
-      <ion-button (click)="pay()" shape="round" class="kuponBtn" *ngIf="info.precio > 0 && init_point"
+      <ion-button (click)="pay()" shape="round" class="kuponBtn" *ngIf="info.precio > 0 && init_point && authService.userInfo.grupos[1] !== 'free'"
         [disabled]="!authService.userInfo.premium && info.premium">
         Comprar KuPon: ${{info.precio}}
       </ion-button>
@@ -54,9 +54,13 @@
         *ngIf="info.precio > 0 && !authService.userInfo.premium && info.premium">
         Pasar a PREMIUM
       </ion-button> -->
-      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio === 0">
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio === 0 || authService.userInfo.grupos[1] === 'free'">
         Descargar KuPon GRATIS
       </ion-button>
+
+      <!-- <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="authService.userInfo.grupos[1] === 'free'">
+        Descargar KuPon GRATIS
+      </ion-button> -->
 
       <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
 
@@ -70,23 +74,36 @@
         </fieldset>
       </div>
 
+      <hr class="hr">
+
       <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
 
-      <ion-card-title class="ion-margin-vertical">Kupon valor<span> ${{info.valor}}</span></ion-card-title>
+      <hr class="hr">
 
+      <ion-card-title class="subtitle2 ion-margin-vertical">Descuento valor: <span>{{info.valor}}</span></ion-card-title>
+      <ion-card-subtitle *ngIf="info.normalprice">Precio normal: <span class="normalprice">{{info.normalprice}}</span></ion-card-subtitle>
+      <ion-card-subtitle *ngIf="info.discountprice" class="discountprice">Con este KuPon pagás: {{info.discountprice}}</ion-card-subtitle>
 
+<hr class="hr">
 
     </ion-card-header>
 
     <ion-card-content>
       <ion-card-subtitle class="subtitle">Descripción:</ion-card-subtitle>
       {{info.descripcion}}
-      <hr>
+      <hr class="hr">
       <ion-card-subtitle class="subtitle">Condiciones:</ion-card-subtitle>
       {{info.condiciones}}
     </ion-card-content>
 
   </ion-card>
+
+  <div *ngIf="info.extras[0]">
+    <ion-card *ngFor="let img of info.extras, index as i">
+      <img src="{{img}}" alt="imagen {{i}}">
+    </ion-card>
+  </div>
+
 
 
 

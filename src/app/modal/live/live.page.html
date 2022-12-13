@@ -40,7 +40,13 @@
       <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
 
       <ion-card-title class="titulo ion-margin-vertical">{{info.titulo}}</ion-card-title>
-      <ion-card-title class="ion-margin-vertical titulo">Kupon valor<span> ${{info.valor}}</span></ion-card-title>
+      <hr class="hr">
+
+      <ion-card-title class="subtitle2 ion-margin-vertical">Descuento valor: <span>{{info.valor}}</span></ion-card-title>
+      <ion-card-subtitle *ngIf="info.normalprice">Precio normal: <span class="normalprice">{{info.normalprice}}</span></ion-card-subtitle>
+      <ion-card-subtitle *ngIf="info.discountprice" class="discountprice">Con este KuPon pagás: {{info.discountprice}}</ion-card-subtitle>
+
+<hr class="hr">
 
     </ion-card-header>
 
@@ -53,5 +59,11 @@
     </ion-card-content>
 
   </ion-card>
+
+    <div *ngIf="info.extras[0]">
+  <ion-card *ngFor="let img of info.extras, index as i">
+    <img src="{{img}}" alt="imagen {{i}}">
+  </ion-card>
+  </div>
 
 </ion-content>

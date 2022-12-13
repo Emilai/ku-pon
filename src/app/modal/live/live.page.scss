@@ -69,3 +69,16 @@ span {
 .cardHeader {
   padding-top: 0;
 }
+.hr {
+  background-color: #757070;
+  height: 3px;
+  margin-top: 15px;
+}
+
+.normalprice {
+  text-decoration: line-through;
+}
+
+.discountprice {
+ font-weight: bold;
+}

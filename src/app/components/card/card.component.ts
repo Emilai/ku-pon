@@ -43,6 +43,8 @@ export class CardComponent implements OnInit {
   verifyBox = false;
   verifyBtn = true;
 
+  endorsers: any[] = [];
+
   kuponInfo = {
     categoria: '',
     comercio: '',
@@ -53,10 +55,13 @@ export class CardComponent implements OnInit {
     titulo: '',
     descripcion: '',
     condiciones: '',
+    normalprice: '',
+    discountprice: '',
     img: '',
+    extras:[''],
     key: '',
     precio: undefined,
-    valor: undefined,
+    valor: '',
     premium: false,
     code: '',
   };
@@ -71,10 +76,13 @@ export class CardComponent implements OnInit {
     titulo: '',
     descripcion: '',
     condiciones: '',
+    normalprice: '',
+    discountprice: '',
     img: '',
+    extras: [''],
     key: '',
     precio: undefined,
-    valor: undefined,
+    valor: '',
     premium: false,
     code: '',
   };
@@ -96,6 +104,17 @@ export class CardComponent implements OnInit {
           // eslint-disable-next-line @typescript-eslint/dot-notation
           kupon['id'] = kuponRef.payload.doc.id;
           return kupon;
+        });
+      });
+    });
+
+    await this.cardService.getConvenio().then(endorserss => {
+      endorserss.subscribe(endorsers => {
+        this.endorsers = endorsers.map(endorsersRef => {
+          const endors = endorsersRef.payload.doc.data();
+          // eslint-disable-next-line @typescript-eslint/dot-notation
+          endors['id'] = endorsersRef.payload.doc.id;
+          return endors;
         });
       });
     });
@@ -147,7 +166,7 @@ async mostrarModal(card: Kupon) {
     await loading.present();
     await this.cardService.create('kupones', this.kuponInfo);
     await loading.dismiss();
-    this.kuponInfo = this.kuponInfo2;
+    // this.kuponInfo = this.kuponInfo2;
     this.showAlert('Kupon Registrado', 'Vamo Arriba!!!');
   }
 
@@ -163,6 +182,7 @@ async mostrarModal(card: Kupon) {
   async verifyKupon() {
     const email = this.verify.email.toLowerCase();
     const code = this.verify.code.toLowerCase();
+
     try {
       await this.liveKuponsService.checkLiveKupons(email, code).then(cards => {
         cards.subscribe(async kupones => {
@@ -172,7 +192,6 @@ async mostrarModal(card: Kupon) {
           if (kupon) {
             if (kupon.code === code) {
               this.checked = kupon;
-              console.log('exito', this.checked);
 
               await this.liveKuponsService.registerUsedKupon(this.checked);
               await this.liveKuponsService.deleteUsedKupon(email, code);
@@ -204,6 +223,62 @@ async mostrarModal(card: Kupon) {
   verificar() {
     this.verifyBox = !this.verifyBox;
     this.verifyBtn = !this.verifyBtn;
+  }
+
+  async preverify() {
+
+    const email = this.verify.email.toLowerCase();
+    const code = this.verify.code.toLowerCase();
+
+    try {
+      await this.liveKuponsService.checkLiveKupons(email, code).then(cards => {
+        cards.subscribe(async kupones => {
+          this.checkedKupon = kupones.data();
+          const kupon = kupones.data();
+
+          if (kupon) {
+            if (kupon.code === code) {
+              this.alert('El KuPon ingresado es Correcto', 'Desea confirmar que será utilizado?');
+
+
+            } else {
+              this.showAlert('Datos Erroneos!', 'El Usuario no cuenta con el KuPon');
+              console.log('Fail', this.checked);
+            };
+          } else {
+            this.showAlert('Datos erroneos!', 'Verifica los datos del KuPon');
+          }
+
+        });
+
+      });
+    } catch (error) {
+      // Aca sale un error si el kupon se ingresa vacio
+
+      this.showAlert('Datos erroneos!', 'Debes ingresar los datos del KuPon');
+    }
+  }
+
+
+  async alert(header, message) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Confirmar',
+        handler: () => {
+          this.verifyKupon();
+        }
+      }]
+    });
+    await alert.present();
   }
 }
 

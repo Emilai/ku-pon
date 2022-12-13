@@ -79,7 +79,7 @@ export class TablocationPage implements OnInit {
     locationButton.style.color = '#fff';
     locationButton.style.cursor = 'pointer';
     locationButton.style.fontFamily = 'Roboto,Arial,sans-serif';
-    locationButton.style.fontSize = '12px';
+    locationButton.style.fontSize = '15px';
     locationButton.style.lineHeight = '30px';
     locationButton.style.margin = '12px 12px 22px';
     locationButton.style.padding = '0 5px';
@@ -87,7 +87,7 @@ export class TablocationPage implements OnInit {
 
     const mapOptions = {
       center: latLng,
-      zoom: 8,
+      zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
     };
@@ -108,22 +108,61 @@ export class TablocationPage implements OnInit {
   updateMap() {
 
     for (const kupon of this.cards) {
-      if (kupon.loc) {
-        const latLng = new google.maps.LatLng(kupon.loc.latitude, kupon.loc.longitude);
+      if (Array.isArray(kupon.loc)) {
 
-        const marker = new google.maps.Marker({
-          map: this.map,
-          animation: google.maps.Animation.DROP,
-          position: latLng,
-          title: kupon.comercio,
-          label: kupon.comercio,
-          optimized: false,
-        });
-        this.markers.push(marker);
-        // console.log(marker);
-        marker.addListener('click', () => {
-          this.mostrarModal(kupon);
-        });
+        for (const ubicacion of kupon.loc) {
+
+          const latLng = new google.maps.LatLng(ubicacion.latitude, ubicacion.longitude);
+
+          const marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: latLng,
+            title: kupon.comercio,
+            label: {
+              text: kupon.comercio,
+              color: 'gold',
+              fontSize: '10px',
+              fontFamily: 'roboto',
+              className: 'label',
+              fontWeight: 'bold',
+            },
+            optimized: false,
+            icon: 'https://kupon.uy/kuponimg/icon2.png',
+          });
+          this.markers.push(marker);
+          // console.log(marker);
+          marker.addListener('click', () => {
+            this.mostrarModal(kupon);
+          });
+        }
+
+      };
+
+      if (kupon.loc && Array.isArray(kupon.loc) === false) {
+
+          const latLng = new google.maps.LatLng(kupon.loc.latitude, kupon.loc.longitude);
+
+          const marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.DROP,
+            position: latLng,
+            title: kupon.comercio,
+            label: {
+              text: kupon.comercio,
+              color: 'gold',
+              fontSize: '10px',
+              fontWeight: 'bold',
+            },
+            optimized: false,
+            icon: 'https://kupon.uy/kuponimg/icon2.png',
+          });
+          this.markers.push(marker);
+          // console.log(marker);
+          marker.addListener('click', () => {
+            this.mostrarModal(kupon);
+          });
+
       }
 
     }

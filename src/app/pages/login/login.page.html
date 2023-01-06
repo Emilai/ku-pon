@@ -6,20 +6,33 @@
 
 <ion-content class="ion-padding">
 
- <ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
+  <ion-img class="loginLogo" src="../../../assets/icon/favicon.png"></ion-img>
 
   <div *ngIf="!forgetBox" class="gralDiv">
-    
+
     <form [formGroup]="credentials" (ngSubmit)="login()">
 
       <ion-item class="ion-margin-bottom">
         <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        <ion-button class="type-toggle" fill="clear">
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-button>
+
+
+
         <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email invalido</ion-note>
       </ion-item>
 
       <ion-item class="ion-margin-bottom">
-        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-        <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Mínimo 8 carácteres</ion-note>
+        <ion-input [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+        </ion-input>
+        <ion-button class="type-toggle" (click)="toggleShow()" fill="clear">
+          <ion-icon class="show-option" name="{{hide ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon>
+        </ion-button>
+
+
+        <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Mínimo 8 carácteres
+        </ion-note>
       </ion-item>
 
 

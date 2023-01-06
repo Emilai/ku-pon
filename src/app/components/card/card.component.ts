@@ -193,7 +193,7 @@ async mostrarModal(card: Kupon) {
             if (kupon.code === code) {
               this.checked = kupon;
 
-              await this.liveKuponsService.registerUsedKupon(this.checked);
+              await this.liveKuponsService.registerUsedKupon(this.checked, email);
               await this.liveKuponsService.deleteUsedKupon(email, code);
               await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
 

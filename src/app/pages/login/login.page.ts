@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   user: any;
   forgetEmail = '';
   forgetBox = false;
+  hide = true;
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -85,6 +86,10 @@ export class LoginPage implements OnInit {
       console.log('error> ', err);
       this.showAlert('Usuario Incorrecto', 'Checkea tu email');
     }
+  }
+
+  toggleShow() {
+    this.hide = !this.hide;
   }
 
 }

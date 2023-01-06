@@ -35,7 +35,11 @@
     </ion-item>
 
     <ion-item class="ion-margin-bottom">
-      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+       <ion-input [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password">
+        </ion-input>
+        <ion-button class="type-toggle" (click)="toggleShow()" fill="clear">
+          <ion-icon class="show-option" name="{{hide ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon>
+        </ion-button>
       <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password invalido (minimo 8
         caracteres)</ion-note>
     </ion-item>

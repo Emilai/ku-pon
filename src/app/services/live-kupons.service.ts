@@ -57,10 +57,12 @@ export class LiveKuponsService {
     }
   }
 
-  registerUsedKupon(data: any){
+  registerUsedKupon(data: any, user: string){
     try {
       const collection = this.firestore.collection('usedKupons');
-      collection.doc(this.auth.currentUser.email).collection('usedKupons').doc(this.currentDate + '::' + data.code).set(data);
+
+      collection.doc(user).collection('usedKupons').doc(this.currentDate + '::' + data.code).set(data); //ver con Garra
+
       console.log('registered Kupon');
     } catch (err) {
       console.log('Error on registering KuPon: ', err);

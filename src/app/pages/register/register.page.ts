@@ -21,6 +21,7 @@ export class RegisterPage implements OnInit {
   };
   codes: any;
   checked = false;
+  hide = true;
 
   constructor(
 
@@ -116,5 +117,9 @@ export class RegisterPage implements OnInit {
     } else {
       this.showAlert('Codigo erroneo', 'Por favor intente denuevo');
     }
+  }
+
+  toggleShow() {
+    this.hide = !this.hide;
   }
 }

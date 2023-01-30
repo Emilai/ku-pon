@@ -8,25 +8,26 @@
             "catId":"servicios",
             "icon":"construct-outline"
                 },
-        {
-            "categoria":"Bienestar",
-            "catId":"bienestar",
-            "icon":"medkit-outline"
+                {
+            "categoria":"Tiendas",
+            "catId":"tiendas",
+            "icon":"storefront-outline"
                 },
         {
-            "categoria":"Tecnología",
-            "catId":"tecnologia",
+            "categoria":"Gaming",
+            "catId":"gaming",
             "icon":"game-controller-outline"
                 },
-        {
-            "categoria":"Entretenimiento",
-            "catId":"entretenimiento",
-            "icon":"happy-outline"
+
+                {
+            "categoria":"Adultos",
+            "catId":"adultos",
+            "icon":"male-female-outline"
                 },
         {
-            "categoria":"Enseñanza",
-            "catId":"ensenanza",
-            "icon":"bulb-outline"
+            "categoria":"Diversión",
+            "catId":"diversion",
+            "icon":"happy-outline"
                 },
         {
             "categoria":"Otros",

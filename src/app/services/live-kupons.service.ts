@@ -57,11 +57,11 @@ export class LiveKuponsService {
     }
   }
 
-  registerUsedKupon(data: any, user: string){
+  registerUsedKupon(data: any){
     try {
-      const collection = this.firestore.collection('usedKupons');
+      const collection = this.firestore.collection('kuponesUsados');
 
-      collection.doc(user).collection('usedKupons').doc(this.currentDate + '::' + data.code).set(data); //ver con Garra
+      collection.doc().set(data);
 
       console.log('registered Kupon');
     } catch (err) {

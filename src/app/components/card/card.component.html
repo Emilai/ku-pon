@@ -36,9 +36,9 @@
   </ion-card>
 
   <div *ngIf="endorsers">
-  <ion-card *ngFor="let endorser of endorsers" (click)="categorieFilter(endorser.filter)" class="punta">
-    <ion-img src="{{endorser.img}}"></ion-img>
-  </ion-card>
+    <ion-card *ngFor="let endorser of endorsers" (click)="categorieFilter(endorser.filter)" class="punta">
+      <ion-img src="{{endorser.img}}"></ion-img>
+    </ion-card>
   </div>
 
 
@@ -67,9 +67,16 @@
         animated mode="ios" #cardContent id="cardContent">
       </ion-searchbar>
 
+       <div *ngIf="textoBuscar === 'adultos'">
+          <ion-item class="ion-margin" fill="solid">
+            <ion-checkbox slot="start" [(ngModel)]="ageVerify"></ion-checkbox>
+            <ion-label class="ageConsent">Declaro ser mayor de 18 años de edad</ion-label>
+          </ion-item>
+        </div>
+
       <ion-col size="12" size-sm="12" size-md="12" size-lg="6" class="colContent"
         *ngFor="let card of cards | filtro:textoBuscar" (click)="mostrarModal(card)">
-        <ion-card class="cardContent" mode="md">
+        <ion-card *ngIf="card.categoria !== 'adultos'" class="cardContent" mode="md">
           <img src="{{card.img}}" class="cardImg" />
 
           <ion-card-content class="card">
@@ -78,15 +85,48 @@
             <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
             <br class="br">
 
-            <ion-card-subtitle class="cardSubTitle">Descuento: <span>{{card.valor}}</span></ion-card-subtitle>
-            <ion-card-title class="cardTitle" *ngIf="card.precio > 0 && authService.userInfo.grupos[1] !== 'free'">Compralo por: <span>${{card.precio}}</span>
+            <ion-card-subtitle *ngIf="card.categoria !== 'gaming'" class="cardSubTitle">Descuento:
+              <span>{{card.valor}}</span></ion-card-subtitle>
+            <ion-card-subtitle *ngIf="card.categoria === 'gaming'" class="cardSubTitle">Valor:
+              <span>{{card.valor}}</span></ion-card-subtitle>
+            <ion-card-title class="cardTitle" *ngIf="card.precio > 0 && authService.userInfo.grupos[1] !== 'free'">
+              Compralo por: <span>${{card.precio}}</span>
             </ion-card-title>
-            <ion-card-title class="cardTitle" *ngIf="card.precio === 0 || authService.userInfo.grupos[1] === 'free'"><span>KuPon GRATIS</span>
+            <ion-card-title class="cardTitle" *ngIf="card.precio === 0 || authService.userInfo.grupos[1] === 'free'">
+              <span>KuPon GRATIS</span>
             </ion-card-title>
             <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
           </ion-card-content>
 
         </ion-card>
+
+        <div *ngIf="ageVerify">
+          <ion-card *ngIf="card.categoria === 'adultos'" class="cardContent" mode="md">
+            <img src="{{card.img}}" class="cardImg" />
+
+            <ion-card-content class="card">
+              <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
+
+              <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
+              <br class="br">
+
+              <ion-card-subtitle *ngIf="card.categoria !== 'gaming'" class="cardSubTitle">Descuento:
+                <span>{{card.valor}}</span></ion-card-subtitle>
+              <ion-card-subtitle *ngIf="card.categoria === 'gaming'" class="cardSubTitle">Valor:
+                <span>{{card.valor}}</span></ion-card-subtitle>
+              <ion-card-title class="cardTitle" *ngIf="card.precio > 0 && authService.userInfo.grupos[1] !== 'free'">
+                Compralo por: <span>${{card.precio}}</span>
+              </ion-card-title>
+              <ion-card-title class="cardTitle" *ngIf="card.precio === 0 || authService.userInfo.grupos[1] === 'free'">
+                <span>KuPon GRATIS</span>
+              </ion-card-title>
+              <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+            </ion-card-content>
+
+          </ion-card>
+
+        </div>
+
       </ion-col>
 
     </ion-row>
@@ -101,6 +141,9 @@
     <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Comercio" [(ngModel)]="kuponInfo.comercio"></ion-input>
     </ion-item>
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Codigo de Comercio" [(ngModel)]="kuponInfo.comercioCode"></ion-input>
+    </ion-item>
 
     <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Whatsapp" [(ngModel)]="kuponInfo.whatsapp"></ion-input>
@@ -110,7 +153,7 @@
       <ion-input type="text" placeholder="Instagram" [(ngModel)]="kuponInfo.instagram"></ion-input>
     </ion-item>
 
-        <ion-item class="ion-margin-bottom">
+    <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Web" [(ngModel)]="kuponInfo.web"></ion-input>
     </ion-item>
 

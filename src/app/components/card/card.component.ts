@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MercadoModalPage } from '../../mercado-modal/mercado-modal.page';
 import { LowerCasePipe } from '@angular/common';
 import { LiveKuponsService } from 'src/app/services/live-kupons.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -19,13 +20,16 @@ export class CardComponent implements OnInit {
 
   kuponInput = false;
   cards: any [] = [];
-  textoBuscar = '';
+  textoBuscar = 'inicio';
   user: any;
   categories: Observable<any>;
   catSelected = '';
   cardContent = document.getElementById('cardContent');
   stars: Observable<any>;
   avgRating: Observable<any>;
+  currentDate: any;
+  myDate = new Date();
+  ageVerify = false;
 
   verify = {
     email: '',
@@ -48,6 +52,7 @@ export class CardComponent implements OnInit {
   kuponInfo = {
     categoria: '',
     comercio: '',
+    comercioCode: '',
     whatsapp: '',
     instagram: '',
     web: '',
@@ -69,6 +74,7 @@ export class CardComponent implements OnInit {
   kuponInfo2 = {
     categoria: '',
     comercio: '',
+    comercioCode: '',
     whatsapp: '',
     instagram: '',
     web: '',
@@ -92,8 +98,9 @@ export class CardComponent implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private lowerCase: LowerCasePipe,
-    private liveKuponsService: LiveKuponsService
-    ) { }
+    private liveKuponsService: LiveKuponsService,
+    private datePipe: DatePipe
+  ) { this.currentDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd-HH-m-s'); }
 
   async ngOnInit() {
 
@@ -191,9 +198,19 @@ async mostrarModal(card: Kupon) {
 
           if (kupon) {
             if (kupon.code === code) {
-              this.checked = kupon;
+              this.checked = {
+                id: kupon.id,
+                usuarioPremium: this.authService.userInfo.premium,
+                categoria: kupon.categoria,
+                valor: kupon.valor,
+                precio: kupon.precio,
+                comercio: kupon.comercio,
+                comercioCode: kupon.comercioCode,
+                usuario: email,
+                isoDate: this.currentDate
+              };
 
-              await this.liveKuponsService.registerUsedKupon(this.checked, email);
+              await this.liveKuponsService.registerUsedKupon(this.checked);
               await this.liveKuponsService.deleteUsedKupon(email, code);
               await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
 
@@ -280,5 +297,6 @@ async mostrarModal(card: Kupon) {
     });
     await alert.present();
   }
+
 }
 

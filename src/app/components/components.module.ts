@@ -10,20 +10,23 @@ import { CardComponent } from './card/card.component';
 import { SliderComponent } from './slider/slider.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { LivekuponsComponent } from './livekupons/livekupons.component';
+import { UsedkuponsComponent } from './usedkupons/usedkupons.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     CardComponent,
     SliderComponent,
-    LivekuponsComponent
+    LivekuponsComponent,
+    UsedkuponsComponent
   ],
 
   exports: [
     HeaderComponent,
     CardComponent,
     SliderComponent,
-    LivekuponsComponent
+    LivekuponsComponent,
+    UsedkuponsComponent
   ],
   imports: [
     CommonModule,

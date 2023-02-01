@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe, LowerCasePipe } from '@angular/common';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { IonicModule, IonicRouteStrategy, IonModal } from '@ionic/angular';
 
@@ -31,6 +32,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
         AppRoutingModule,
         HttpClientModule,
         NgxStarRatingModule,
+        OrderModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the application is stable

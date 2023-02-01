@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 import { Kupon } from 'src/app/interfaces';
 import { AuthService } from '../services/auth.service';
 import { CardService } from '../services/card.service';
@@ -13,6 +14,7 @@ import { map } from 'rxjs/operators';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { Auth } from '@angular/fire/auth';
 
 
 
@@ -28,6 +30,33 @@ export class ModalPage implements OnInit {
   init_point: any;
   stars: Observable<any>;
   avgRating: Observable<any>;
+  myDate = new Date();
+  currentDate: any;
+
+  kuponInfo = {
+    categoria: '',
+    id: '',
+    comercio: '',
+    comercioCode: '',
+    whatsapp: '',
+    instagram: '',
+    web: '',
+    location: '',
+    titulo: '',
+    descripcion: '',
+    condiciones: '',
+    normalprice: '',
+    discountprice: '',
+    img: '',
+    extras: [''],
+    key: '',
+    precio: undefined,
+    valor: '',
+    premium: false,
+    code: '',
+    isoDate: '',
+    usuario: ''
+  };
 
   constructor(
     private modalCtrl: ModalController,
@@ -37,9 +66,11 @@ export class ModalPage implements OnInit {
     private alertController: AlertController,
     public liveKuponsService: LiveKuponsService,
     private mp: MercadopagoService,
+    private datePipe: DatePipe,
     private sanitizer: DomSanitizer,
+    public auth: Auth,
     private iab: InAppBrowser) {
-
+    this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
    }
 
   async ngOnInit() {
@@ -61,6 +92,28 @@ export class ModalPage implements OnInit {
         return finalVal;
       }
     }));
+
+    this.kuponInfo.categoria = this.info.categoria;
+    this.kuponInfo.comercio = this.info.comercio;
+    this.kuponInfo.comercioCode = this.info.comercioCode;
+    this.kuponInfo.whatsapp = this.info.whatsapp;
+    this.kuponInfo.instagram = this.info.instagram;
+    this.kuponInfo.web = this.info.web;
+    this.kuponInfo.location = this.info.location;
+    this.kuponInfo.titulo = this.info.titulo;
+    this.kuponInfo.descripcion = this.info.descripcion;
+    this.kuponInfo.condiciones = this.info.condiciones;
+    this.kuponInfo.normalprice = this.info.normalprice;
+    this.kuponInfo.discountprice = this.info.discountprice;
+    this.kuponInfo.img = this.info.img;
+    this.kuponInfo.extras = this.info.extras;
+    this.kuponInfo.key = this.info.key;
+    this.kuponInfo.precio = this.info.precio;
+    this.kuponInfo.valor = this.info.valor;
+    this.kuponInfo.premium = this.info.premium;
+    this.kuponInfo.code = this.info.code;
+    this.kuponInfo.isoDate = this.currentDate;
+    this.kuponInfo.usuario = this.auth.currentUser.email;
   }
 
   starHandler(value) {
@@ -78,8 +131,7 @@ export class ModalPage implements OnInit {
   }
 
   async onClick() {
-    await this.liveKuponsService.createliveKupon(this.info);
-    console.log(this.liveKuponsService.liveKupons);
+    await this.liveKuponsService.createliveKupon2(this.kuponInfo);
     this.showAlert('Ya tienes tu KuPon', 'Puedes verlo en "Mis KuPones". Disfrutalo cuando quieras!');
   }
 

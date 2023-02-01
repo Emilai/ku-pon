@@ -94,6 +94,18 @@ export class TablocationPage implements OnInit {
 
     this.map = await new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     await this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(locationButton);
+
+    const myloc = new google.maps.Marker({
+      clickable: false,
+      icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+        new google.maps.Size(22, 22),
+        new google.maps.Point(0, 18),
+        new google.maps.Point(11, 11)),
+      shadow: null,
+      zIndex: 999,
+      map: this.map
+    });
+
     locationButton.addEventListener('click', () => {
       if (this.location) {
         const pos = {
@@ -101,8 +113,11 @@ export class TablocationPage implements OnInit {
           lng: this.location.coords.longitude,
         };
         this.map.setCenter(pos);
+        myloc.setPosition(pos);
+
       }
     });
+
   }
 
   updateMap() {

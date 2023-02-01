@@ -13,34 +13,46 @@ export class LiveKuponsService {
   myDate = new Date();
   currentDate: any;
   companyKupons: any;
+  userUsedKupons: any;
 
 
   constructor(public auth: Auth, private firestore: AngularFirestore, private datePipe: DatePipe ) {
-    this.currentDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd-HH-m-s');
+    this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
   }
 
-  createliveKupon(data: any) {
+  // createliveKupon(data: any) {
+  //   // eslint-disable-next-line @typescript-eslint/no-shadow
+  //   const collection = this.firestore.collection('liveKupons');
+  //   return collection.doc(this.auth.currentUser.email).collection('live').doc(data.code).set(data);
+  // }
+
+  createliveKupon2(data: any) {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const collection = this.firestore.collection('liveKupons');
-    return collection.doc(this.auth.currentUser.email).collection('live').doc(data.code).set(data);
+    return collection.doc().set(data);
   }
 
-  async getliveKupons() {
+  async getliveKupons(userMail) {
+
     try {
-      const liveKupons = this.firestore.collection('liveKupons').doc(this.auth.currentUser.email).collection('live').snapshotChanges();
-      this.liveKupons = liveKupons;
-      return liveKupons;
+
+      const liveKupons = this.firestore.collection('liveKupons', ref => ref.where('usuario', '==', userMail));
+      return liveKupons.snapshotChanges();
 
     } catch (error) {
       console.log(error);
     }
   };
 
-  async checkLiveKupons(email, id) {
+  async checkLiveKupons(comercioCode) {
     try {
-      const checkedKupons = this.firestore.collection('liveKupons').doc(email).collection('live').doc(id).get();
-      this.chekedKupons = checkedKupons;
-      return checkedKupons;
+      const liveKuponschecked =
+      this.firestore.collection('liveKupons', ref => ref.where('comercioCode', '==', comercioCode)).snapshotChanges();
+      console.log(liveKuponschecked);
+      return liveKuponschecked;
+      // const checkedKupons = this.firestore.collection('liveKupons').doc(email).collection('live').doc(id).get();
+      // this.chekedKupons = checkedKupons;
+      // return checkedKupons;
 
     } catch (error) {
       console.log('error por campo vacio en liveKuponService checkliveKupons', error);
@@ -48,9 +60,9 @@ export class LiveKuponsService {
 
   }
 
-  async deleteUsedKupon(email, id) {
+  async deleteUsedKupon(id) {
     try {
-      this.firestore.collection('liveKupons').doc(email).collection('live').doc(id).delete();
+      this.firestore.collection('liveKupons').doc(id).delete();
       console.log('deleted');
     } catch (err) {
       console.log('Error on deleting KuPon: ', err);
@@ -89,4 +101,14 @@ export class LiveKuponsService {
       console.log('Error on registering KuPon: ', err);
     }
   }
+
+  async getUsedKupons(userMail) {
+
+    try {
+      return await this.firestore.collection(`kuponesUsados`, ref => ref.where('usuario', '==', userMail)).snapshotChanges();
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }

@@ -5,7 +5,9 @@ import { LiveKuponsService } from 'src/app/services/live-kupons.service';
 import { LivePage } from 'src/app/modal/live/live.page';
 import { CardService } from 'src/app/services/card.service';
 import { ReservaPage } from '../../reserva/reserva.page';
+import { OrderPipe } from 'ngx-order-pipe';
 import { AuthService } from 'src/app/services/auth.service';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-livekupons',
@@ -20,18 +22,19 @@ export class LivekuponsComponent implements OnInit {
   constructor( public liveKuponsService: LiveKuponsService,
     private modalCtrl: ModalController,
     public authService: AuthService,
+    public auth: Auth,
+    private orderPipe: OrderPipe,
     public cardService: CardService) { }
 
 
   async ngOnInit() {
-    await this.liveKuponsService.getliveKupons().then(cards => {
+    await this.liveKuponsService.getliveKupons(this.auth.currentUser.email).then(cards => {
       cards.subscribe(kupones => {
         this.cards = kupones.map(kuponRef => {
           const kupon = kuponRef.payload.doc.data();
-          // eslint-disable-next-line @typescript-eslint/dot-notation
-          kupon['id'] = kuponRef.payload.doc.id;
           return kupon;
         });
+        this.cards = this.orderPipe.transform(this.cards, 'isoDate', true);
       });
     });
     await this.authService.userData();

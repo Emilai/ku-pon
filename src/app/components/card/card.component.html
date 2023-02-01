@@ -18,7 +18,7 @@
     </ion-button>
   </div>
 
-  <ion-card class="ion-padding ion-margin verifyBox" *ngIf="verifyBox">
+  <!-- <ion-card class="ion-padding ion-margin verifyBox" *ngIf="verifyBox">
     <ion-card-header>
       <ion-card-title>Confirmar KuPon</ion-card-title>
     </ion-card-header>
@@ -33,7 +33,30 @@
         Confirmar
       </ion-button>
     </ion-card-content>
+  </ion-card> -->
+
+  <ion-card *ngIf="comercioCards.length !== 0 && verifyBox">
+    <ion-card-header class="verifyHeader">
+      <ion-card-title class="verifyHeaderTitle">KuPones Activos</ion-card-title>
+    </ion-card-header>
   </ion-card>
+
+  <div *ngIf="comercioCards.length !== 0 && verifyBox">
+    <ion-card *ngFor="let card of comercioCards" class="comercioCards">
+      <ion-card-header class="verifyHeader">
+        <ion-card-subtitle class="verifyHeaderSubtitle">Usuario: {{card.usuario}}</ion-card-subtitle>
+        <ion-card-title class="verifyHeaderTitle">Valor: {{card.valor}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="verifyContent">
+        <p>Fecha: {{card.isoDate}}</p>
+        <ion-button (click)="preverify(card)" expand="block" fill="clear" shape="round">
+          Verificar KuPon
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 
   <div *ngIf="endorsers">
     <ion-card *ngFor="let endorser of endorsers" (click)="categorieFilter(endorser.filter)" class="punta">
@@ -67,16 +90,19 @@
         animated mode="ios" #cardContent id="cardContent">
       </ion-searchbar>
 
-       <div *ngIf="textoBuscar === 'adultos'">
-          <ion-item class="ion-margin" fill="solid">
-            <ion-checkbox slot="start" [(ngModel)]="ageVerify"></ion-checkbox>
-            <ion-label class="ageConsent">Declaro ser mayor de 18 años de edad</ion-label>
-          </ion-item>
-        </div>
+      <div *ngIf="textoBuscar === 'adultos'">
+        <ion-item class="ion-margin" fill="solid">
+          <ion-checkbox slot="start" [(ngModel)]="ageVerify"></ion-checkbox>
+          <ion-label class="ageConsent">Declaro ser mayor de 18 años de edad</ion-label>
+        </ion-item>
+      </div>
 
-      <ion-col size="12" size-sm="12" size-md="12" size-lg="6" class="colContent"
-        *ngFor="let card of cards | filtro:textoBuscar" (click)="mostrarModal(card)">
-        <ion-card *ngIf="card.categoria !== 'adultos'" class="cardContent" mode="md">
+
+
+      <ion-col size="12" size-sm="12" size-md="12" size-lg="6" ngClass="colContent"
+        *ngFor="let card of cards | filtro:textoBuscar">
+
+        <ion-card *ngIf="card.categoria !== 'adultos'" class="cardContent" mode="md" (click)="mostrarModal(card)">
           <img src="{{card.img}}" class="cardImg" />
 
           <ion-card-content class="card">

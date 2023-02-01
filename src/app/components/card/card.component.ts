@@ -10,6 +10,7 @@ import { MercadoModalPage } from '../../mercado-modal/mercado-modal.page';
 import { LowerCasePipe } from '@angular/common';
 import { LiveKuponsService } from 'src/app/services/live-kupons.service';
 import { DatePipe } from '@angular/common';
+import { OrderPipe } from 'ngx-order-pipe';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -20,6 +21,7 @@ export class CardComponent implements OnInit {
 
   kuponInput = false;
   cards: any [] = [];
+  comercioCards: any[] = [];
   textoBuscar = 'inicio';
   user: any;
   categories: Observable<any>;
@@ -99,8 +101,9 @@ export class CardComponent implements OnInit {
     private loadingController: LoadingController,
     private lowerCase: LowerCasePipe,
     private liveKuponsService: LiveKuponsService,
+    private orderPipe: OrderPipe,
     private datePipe: DatePipe
-  ) { this.currentDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd-HH-m-s'); }
+  ) { this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm'); }
 
   async ngOnInit() {
 
@@ -186,98 +189,62 @@ async mostrarModal(card: Kupon) {
     await alert.present();
   }
 
-  async verifyKupon() {
-    const email = this.verify.email.toLowerCase();
-    const code = this.verify.code.toLowerCase();
+  // async verifyKupon(kupon) {
+  //   const id = kupon.
+  //   try {
+  //             this.checked = {
+  //               id: kupon.id,
+  //               usuarioPremium: this.authService.userInfo.premium,
+  //               categoria: kupon.categoria,
+  //               valor: kupon.valor,
+  //               precio: kupon.precio,
+  //               comercio: kupon.comercio,
+  //               comercioCode: kupon.comercioCode,
+  //               img: kupon.img,
+  //               usuario: kupon.usuario,
+  //               isoDate: this.currentDate
+  //             };
 
-    try {
-      await this.liveKuponsService.checkLiveKupons(email, code).then(cards => {
-        cards.subscribe(async kupones => {
-          this.checkedKupon = kupones.data();
-          let kupon = kupones.data();
+  //             await this.liveKuponsService.registerUsedKupon(this.checked);
+  //             await this.liveKuponsService.deleteUsedKupon(kupon.id);
+  //             await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
 
-          if (kupon) {
-            if (kupon.code === code) {
-              this.checked = {
-                id: kupon.id,
-                usuarioPremium: this.authService.userInfo.premium,
-                categoria: kupon.categoria,
-                valor: kupon.valor,
-                precio: kupon.precio,
-                comercio: kupon.comercio,
-                comercioCode: kupon.comercioCode,
-                usuario: email,
-                isoDate: this.currentDate
-              };
+  //             this.checked = this.reset;
+  //             kupon = this.reset;
+  //             this.verify = this.verify2;
 
-              await this.liveKuponsService.registerUsedKupon(this.checked);
-              await this.liveKuponsService.deleteUsedKupon(email, code);
-              await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
-
-              this.checked = this.reset;
-              kupon = this.reset;
-              this.verify = this.verify2;
+  //   } catch (error) {
+  //     this.showAlert('El KuPon no pudo verificarse!', 'Contactate con KuPon');
+  //   }
+  // }
 
 
-            } else {
-              this.showAlert('Datos Erroneos!', 'El Usuario no cuenta con el KuPon');
-              console.log('Fail', this.checked);
-            };
-          } else {
-            this.showAlert('Datos erroneos!', 'Verifica los datos del KuPon');
-          }
-
-        });
-
-      });
-    } catch (error) {
-      // Aca sale un error si el kupon se ingresa vacio
-
-      this.showAlert('Datos erroneos!', 'Debes ingresar los datos del KuPon');
-    }
-  }
-
-  verificar() {
+  async verificar() {
     this.verifyBox = !this.verifyBox;
     this.verifyBtn = !this.verifyBtn;
+    await this.loadLive();
   }
 
-  async preverify() {
 
-    const email = this.verify.email.toLowerCase();
-    const code = this.verify.code.toLowerCase();
-
-    try {
-      await this.liveKuponsService.checkLiveKupons(email, code).then(cards => {
-        cards.subscribe(async kupones => {
-          this.checkedKupon = kupones.data();
-          const kupon = kupones.data();
-
-          if (kupon) {
-            if (kupon.code === code) {
-              this.alert('El KuPon ingresado es Correcto', 'Desea confirmar que será utilizado?');
-
-
-            } else {
-              this.showAlert('Datos Erroneos!', 'El Usuario no cuenta con el KuPon');
-              console.log('Fail', this.checked);
-            };
-          } else {
-            this.showAlert('Datos erroneos!', 'Verifica los datos del KuPon');
-          }
-
+  async loadLive() {
+    await this.liveKuponsService.checkLiveKupons(this.authService.userInfo.comercioCode).then(cards => {
+      cards.subscribe(kupones => {
+        this.comercioCards = kupones.map(kuponRef => {
+          const kupon = kuponRef.payload.doc.data();
+          return kupon;
         });
-
       });
-    } catch (error) {
-      // Aca sale un error si el kupon se ingresa vacio
+      this.comercioCards = this.orderPipe.transform(this.comercioCards, 'usuario', true);
+      console.log(this.comercioCards);
+    });
+  }
 
-      this.showAlert('Datos erroneos!', 'Debes ingresar los datos del KuPon');
-    }
+  async preverify(card) {
+    this.alert('El KuPon de descuento será confirmado como Utilizado', 'Desea continuar?', card);
   }
 
 
-  async alert(header, message) {
+  async alert(header, message, card) {
     const alert = await this.alertController.create({
       header,
       message,
@@ -291,12 +258,15 @@ async mostrarModal(card: Kupon) {
       {
         text: 'Confirmar',
         handler: () => {
-          this.verifyKupon();
+          // this.verifyKupon(card);
         }
       }]
     });
     await alert.present();
   }
 
+  click(card) {
+    console.log(card);
+  }
 }
 

@@ -1,0 +1,31 @@
+<ion-grid class="content" fixed *ngIf="cards.length !== 0">
+<h4>KuPones Usados</h4>
+
+<ion-col size="12" size-sm="12" size-md="12" size-lg="6" class="colContent" *ngFor="let card of cards">
+<ion-card class="cardContent" mode="md">
+  <img src="{{card.img}}" class="cardImg" />
+
+  <ion-card-content class="card">
+    <ion-card-subtitle class="cardSubTitle">Comercio: {{card.comercio}}</ion-card-subtitle>
+
+    <ion-card-title class="cardTitle">Precio: {{card.precio}}</ion-card-title>
+    <br class="br">
+
+    <ion-card-subtitle *ngIf="card.categoria !== 'gaming'" class="cardSubTitle">Descuento:
+      <span>{{card.valor}}</span></ion-card-subtitle>
+    <ion-card-subtitle *ngIf="card.categoria === 'gaming'" class="cardSubTitle">Valor:
+      <span>{{card.valor}}</span></ion-card-subtitle>
+
+          <ion-card-subtitle class="cardSubTitle">Fecha:
+      <span>{{card.isoDate}}</span></ion-card-subtitle>
+
+  </ion-card-content>
+</ion-card>
+
+</ion-col>
+
+</ion-grid>
+
+
+
+

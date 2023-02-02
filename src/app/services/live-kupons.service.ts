@@ -26,10 +26,10 @@ export class LiveKuponsService {
   //   return collection.doc(this.auth.currentUser.email).collection('live').doc(data.code).set(data);
   // }
 
-  createliveKupon2(data: any) {
+  createliveKupon2(data: any, id) {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const collection = this.firestore.collection('liveKupons');
-    return collection.doc().set(data);
+    return collection.doc(id).set(data);
   }
 
   async getliveKupons(userMail) {

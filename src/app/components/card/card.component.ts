@@ -23,6 +23,7 @@ export class CardComponent implements OnInit {
   cards: any [] = [];
   comercioCards: any[] = [];
   textoBuscar = 'inicio';
+  verifySearch = '';
   user: any;
   categories: Observable<any>;
   catSelected = '';
@@ -103,7 +104,8 @@ export class CardComponent implements OnInit {
     private liveKuponsService: LiveKuponsService,
     private orderPipe: OrderPipe,
     private datePipe: DatePipe
-  ) { this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm'); }
+  ) { this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
+     }
 
   async ngOnInit() {
 
@@ -139,6 +141,10 @@ export class CardComponent implements OnInit {
   onSearchChange(event) {
     this.textoBuscar = event.detail.value;
 }
+
+  onSearchChangeVerify(event) {
+    this.verifySearch = event.detail.value;
+  }
 
   cargarKupones() {
     this.kuponInput = !this.kuponInput;
@@ -189,34 +195,35 @@ async mostrarModal(card: Kupon) {
     await alert.present();
   }
 
-  // async verifyKupon(kupon) {
-  //   const id = kupon.
-  //   try {
-  //             this.checked = {
-  //               id: kupon.id,
-  //               usuarioPremium: this.authService.userInfo.premium,
-  //               categoria: kupon.categoria,
-  //               valor: kupon.valor,
-  //               precio: kupon.precio,
-  //               comercio: kupon.comercio,
-  //               comercioCode: kupon.comercioCode,
-  //               img: kupon.img,
-  //               usuario: kupon.usuario,
-  //               isoDate: this.currentDate
-  //             };
+  async verifyKupon(kupon) {
 
-  //             await this.liveKuponsService.registerUsedKupon(this.checked);
-  //             await this.liveKuponsService.deleteUsedKupon(kupon.id);
-  //             await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
+    try {
+              this.checked = {
+                // eslint-disable-next-line object-shorthand
+                id: kupon.id,
+                usuarioPremium: this.authService.userInfo.premium,
+                categoria: kupon.categoria,
+                valor: kupon.valor,
+                precio: kupon.precio,
+                comercio: kupon.comercio,
+                comercioCode: kupon.comercioCode,
+                img: kupon.img,
+                usuario: kupon.usuario,
+                isoDate: this.currentDate
+              };
 
-  //             this.checked = this.reset;
-  //             kupon = this.reset;
-  //             this.verify = this.verify2;
+              await this.liveKuponsService.registerUsedKupon(this.checked);
+              await this.liveKuponsService.deleteUsedKupon(kupon.id);
+              await this.showAlert('Datos Correctos!', 'El KuPon ha sido confirmado');
 
-  //   } catch (error) {
-  //     this.showAlert('El KuPon no pudo verificarse!', 'Contactate con KuPon');
-  //   }
-  // }
+              this.checked = this.reset;
+              kupon = this.reset;
+              this.verify = this.verify2;
+
+    } catch (error) {
+      this.showAlert('El KuPon no pudo verificarse!', 'Contactate con KuPon');
+    }
+  }
 
 
   async verificar() {
@@ -258,7 +265,7 @@ async mostrarModal(card: Kupon) {
       {
         text: 'Confirmar',
         handler: () => {
-          // this.verifyKupon(card);
+          this.verifyKupon(card);
         }
       }]
     });

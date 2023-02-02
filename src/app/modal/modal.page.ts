@@ -32,6 +32,7 @@ export class ModalPage implements OnInit {
   avgRating: Observable<any>;
   myDate = new Date();
   currentDate: any;
+  kuponId: any = '';
 
   kuponInfo = {
     categoria: '',
@@ -71,6 +72,7 @@ export class ModalPage implements OnInit {
     public auth: Auth,
     private iab: InAppBrowser) {
     this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
+    this.kuponId = this.datePipe.transform(this.myDate, 'yyyy-MM-dd-HH-mm-ss-SSS');
    }
 
   async ngOnInit() {
@@ -114,6 +116,7 @@ export class ModalPage implements OnInit {
     this.kuponInfo.code = this.info.code;
     this.kuponInfo.isoDate = this.currentDate;
     this.kuponInfo.usuario = this.auth.currentUser.email;
+    this.kuponInfo.id = this.kuponId + '-' + this.auth.currentUser.email;
   }
 
   starHandler(value) {
@@ -131,7 +134,7 @@ export class ModalPage implements OnInit {
   }
 
   async onClick() {
-    await this.liveKuponsService.createliveKupon2(this.kuponInfo);
+    await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
     this.showAlert('Ya tienes tu KuPon', 'Puedes verlo en "Mis KuPones". Disfrutalo cuando quieras!');
   }
 

@@ -41,20 +41,26 @@
     </ion-card-header>
   </ion-card>
 
-  <div *ngIf="comercioCards.length !== 0 && verifyBox">
-    <ion-card *ngFor="let card of comercioCards" class="comercioCards">
-      <ion-card-header class="verifyHeader">
-        <ion-card-subtitle class="verifyHeaderSubtitle">Usuario: {{card.usuario}}</ion-card-subtitle>
-        <ion-card-title class="verifyHeaderTitle">Valor: {{card.valor}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content class="verifyContent">
-        <p>Fecha: {{card.isoDate}}</p>
-        <ion-button (click)="preverify(card)" expand="block" fill="clear" shape="round">
-          Verificar KuPon
-        </ion-button>
+  <div *ngIf="comercioCards.length !== 0 && verifyBox" class="verifyBoxCard">
+          <ion-searchbar placeholder="Buscar Usuario!" inputmode="text" (ionChange)="onSearchChangeVerify($event)" [debounce]="250"
+        animated mode="ios" #cardContent id="cardContent">
+      </ion-searchbar>
+  <ion-col size="12" size-sm="12" size-md="12" size-lg="6" ngClass="colContent" *ngFor="let card of comercioCards | verifypipe:verifySearch">
+    <ion-card class="cardContent" mode="md" (click)="preverify(card)" >
+      <img src="{{card.img}}" class="cardImg" />
 
+      <ion-card-content class="card">
+        <ion-card-subtitle class="cardSubTitle">Usuario: {{card.usuario}}</ion-card-subtitle>
+
+        <ion-card-title class="cardTitle">Valor: {{card.valor}}</ion-card-title>
+        <br class="br">
+
+        <ion-card-subtitle class="cardSubTitle">Fecha:
+          <span>{{card.isoDate}}</span></ion-card-subtitle>
+        <ion-badge color="primary" class="precio ion-margin-vertical badge">Verificar KuPon</ion-badge>
       </ion-card-content>
     </ion-card>
+  </ion-col>
   </div>
 
 

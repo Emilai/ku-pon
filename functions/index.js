@@ -20,6 +20,50 @@ exports.checkout = functions.https.onCall((preference, context) => {
 
 
 
+// voy a tratar de configurar sendgrid
+
+import * as sgMail from '@sendgrid/mail';
+import { Change } from 'firebase-functions';
+import { user } from 'firebase-functions/v1/auth';
+import { userInfo } from 'os';
+import { getMaxListeners } from 'process';
+const API_KEY = functions.config().sendgrid.key;
+const TEMPLATE_ID = functions.config().sendgrid.template;
+sgMail.setApiKey(API_KEY)
+
+
+// funciones
+
+export const succesMailUser = functions.auth.liveKupon().onCreate(liveKupon => {
+ const msg = {
+   to: user.email,
+   from: 'nicokupon@gmail.com',
+   templateId: TEMPLATE_ID,
+   dynamic_template_data: {
+   subject: 'Nuevo Kupon Disponible',
+     name: user.displayName,
+   },
+ }
+ return sgMail.send(msg);
+})
+
+
+export const successKuponForUser = functions.firestore.collection('liveKupons').onCreate( async (change, context) => {
+  const msg = {
+    to: user.email,
+    from: 'nicokupon@gmail.com',
+    templateId: TEMPLATE_ID,
+    dynamic_template_data: {
+    subject: 'Nuevo Kupon Disponible',
+      name: user.displayName,
+    },
+  }
+  return sgMail.send(msg);
+})
+
+
+
+
 //////////////////////////////////////////////// Prueba 2
 
 // const functions = require("firebase-functions");
@@ -63,3 +107,6 @@ exports.checkout = functions.https.onCall((preference, context) => {
 // app.post('/process_payment', procesodepago)
 
 // exports.web = functions.https.onRequest(app)
+
+
+

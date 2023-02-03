@@ -35,7 +35,13 @@
     </ion-card-content>
   </ion-card> -->
 
-  <ion-card *ngIf="comercioCards.length !== 0 && verifyBox">
+    <ion-card *ngIf="comercioCards.length === 0 && verifyBox" class="verifyTitleBox" >
+    <ion-card-header class="verifyHeader">
+      <ion-card-title class="verifyHeaderTitle">Tu comercio no tiene KuPones Activos</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngIf="comercioCards.length !== 0 && verifyBox" class="verifyTitleBox" >
     <ion-card-header class="verifyHeader">
       <ion-card-title class="verifyHeaderTitle">KuPones Activos</ion-card-title>
     </ion-card-header>
@@ -133,7 +139,7 @@
         </ion-card>
 
         <div *ngIf="ageVerify">
-          <ion-card *ngIf="card.categoria === 'adultos'" class="cardContent" mode="md">
+          <ion-card *ngIf="card.categoria === 'adultos'" class="cardContent" mode="md" (click)="mostrarModal(card)">
             <img src="{{card.img}}" class="cardImg" />
 
             <ion-card-content class="card">
@@ -175,6 +181,10 @@
     </ion-item>
     <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Codigo de Comercio" [(ngModel)]="kuponInfo.comercioCode"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Mail de Comercio" [(ngModel)]="kuponInfo.mailComercio"></ion-input>
     </ion-item>
 
     <ion-item class="ion-margin-bottom">

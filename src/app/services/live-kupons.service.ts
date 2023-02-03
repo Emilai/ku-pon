@@ -48,11 +48,7 @@ export class LiveKuponsService {
     try {
       const liveKuponschecked =
       this.firestore.collection('liveKupons', ref => ref.where('comercioCode', '==', comercioCode)).snapshotChanges();
-      console.log(liveKuponschecked);
       return liveKuponschecked;
-      // const checkedKupons = this.firestore.collection('liveKupons').doc(email).collection('live').doc(id).get();
-      // this.chekedKupons = checkedKupons;
-      // return checkedKupons;
 
     } catch (error) {
       console.log('error por campo vacio en liveKuponService checkliveKupons', error);

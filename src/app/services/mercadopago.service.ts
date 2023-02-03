@@ -23,7 +23,6 @@ export class MercadopagoService {
   }
 
 
-
   async mercadopago(titulo, precio, img, nombre, email) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

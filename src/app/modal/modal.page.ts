@@ -15,6 +15,7 @@ import { map } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Auth } from '@angular/fire/auth';
+import { MailnotificationService } from '../services/mailnotification.service';
 
 
 
@@ -51,6 +52,7 @@ export class ModalPage implements OnInit {
     img: '',
     extras: [''],
     key: '',
+    mailComercio: '',
     precio: undefined,
     valor: '',
     premium: false,
@@ -70,7 +72,8 @@ export class ModalPage implements OnInit {
     private datePipe: DatePipe,
     private sanitizer: DomSanitizer,
     public auth: Auth,
-    private iab: InAppBrowser) {
+    private iab: InAppBrowser,
+    private mailNS: MailnotificationService) {
     this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
     this.kuponId = this.datePipe.transform(this.myDate, 'yyyy-MM-dd-HH-mm-ss-SSS');
    }
@@ -114,6 +117,7 @@ export class ModalPage implements OnInit {
     this.kuponInfo.valor = this.info.valor;
     this.kuponInfo.premium = this.info.premium;
     this.kuponInfo.code = this.info.code;
+    this.kuponInfo.mailComercio = this.info.mailComercio;
     this.kuponInfo.isoDate = this.currentDate;
     this.kuponInfo.usuario = this.auth.currentUser.email;
     this.kuponInfo.id = this.kuponId + '-' + this.auth.currentUser.email;
@@ -135,11 +139,21 @@ export class ModalPage implements OnInit {
 
   async onClick() {
     await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
+    await this.successMailToUser(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor);
+    await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
     this.showAlert('Ya tienes tu KuPon', 'Puedes verlo en "Mis KuPones". Disfrutalo cuando quieras!');
   }
 
   async pay() {
     this.openMercadoPago();
+  }
+
+  async successMailToUser(usuario, comercio, valor) {
+    await this.mailNS.mailToUser(usuario, comercio, valor);
+  }
+
+  async successMailToCompany(usuario, comercio, valor, mailComercio) {
+    await this.mailNS.mailToCompany(usuario, comercio, valor, mailComercio);
   }
 
  async requestPay() {

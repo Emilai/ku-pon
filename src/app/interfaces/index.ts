@@ -3,6 +3,7 @@ export interface Kupon {
     categoria: string;
     comercio: string;
     comercioCode: string;
+    mailComercio?: string;
     whatsapp?: string;
     instagram?: string;
     location?: string;

@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, HostListener, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, isPlatform, LoadingController, ModalController } from '@ionic/angular';
+import SwiperCore, { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
 import { DatePipe } from '@angular/common';
 import { Kupon } from 'src/app/interfaces';
 import { AuthService } from '../services/auth.service';
@@ -71,6 +72,7 @@ export class ModalPage implements OnInit {
     private mp: MercadopagoService,
     private datePipe: DatePipe,
     private sanitizer: DomSanitizer,
+    private loadingController: LoadingController,
     public auth: Auth,
     private iab: InAppBrowser,
     private mailNS: MailnotificationService) {
@@ -138,9 +140,14 @@ export class ModalPage implements OnInit {
   }
 
   async onClick() {
-    await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
-    await this.successMailToUser(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor);
-    await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+      await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
+      await this.successMailToUser(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor);
+      await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
+
+    await loading.dismiss();
     this.showAlert('Ya tienes tu KuPon', 'Puedes verlo en "Mis KuPones". Disfrutalo cuando quieras!');
   }
 

@@ -18,7 +18,7 @@
               <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
               <br>
 
-              <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>${{card.valor}}</span></ion-card-subtitle>
+              <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>{{card.valor}}</span></ion-card-subtitle>
               <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
               </ion-card-title>
               <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>

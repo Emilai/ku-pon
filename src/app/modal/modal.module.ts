@@ -8,6 +8,7 @@ import { ModalPageRoutingModule } from './modal-routing.module';
 
 import { ModalPage } from './modal.page';
 import { ComponentsModule } from '../components/components.module';
+import { SwiperModule } from 'swiper/angular';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ComponentsModule } from '../components/components.module';
     IonicModule,
     ModalPageRoutingModule,
     ComponentsModule,
+    SwiperModule,
     // CardComponent checkear para pasar data a modal desde Card
   ],
   declarations: [ModalPage]

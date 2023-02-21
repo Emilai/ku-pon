@@ -67,7 +67,7 @@ export class TablocationPage implements OnInit {
   }
 
   async loadMap() {
-    const latLng = new google.maps.LatLng(-34.8631143, -56.2263031);
+    const latLng = new google.maps.LatLng(-34.905569, -56.194760);
     const locationButton = document.createElement('button');
     locationButton.textContent = 'Mi Ubicación';
     locationButton.classList.add('custom-map-control-button');
@@ -87,7 +87,7 @@ export class TablocationPage implements OnInit {
 
     const mapOptions = {
       center: latLng,
-      zoom: 11,
+      zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
     };
@@ -136,14 +136,14 @@ export class TablocationPage implements OnInit {
             title: kupon.comercio,
             label: {
               text: kupon.comercio,
-              color: 'gold',
-              fontSize: '10px',
+              color: 'black',
+              fontSize: '12px',
               fontFamily: 'roboto',
               className: 'label',
               fontWeight: 'bold',
             },
             optimized: false,
-            icon: 'https://kupon.uy/kuponimg/icon2.png',
+            icon: 'https://kupon.uy/kuponimg/price-tag-export.png',
           });
           this.markers.push(marker);
           // console.log(marker);
@@ -157,7 +157,6 @@ export class TablocationPage implements OnInit {
       if (kupon.loc && Array.isArray(kupon.loc) === false) {
 
           const latLng = new google.maps.LatLng(kupon.loc.latitude, kupon.loc.longitude);
-
           const marker = new google.maps.Marker({
             map: this.map,
             animation: google.maps.Animation.DROP,
@@ -165,12 +164,14 @@ export class TablocationPage implements OnInit {
             title: kupon.comercio,
             label: {
               text: kupon.comercio,
-              color: 'gold',
-              fontSize: '10px',
+              className: 'label',
+              color: 'black',
+              fontFamily: 'roboto',
+              fontSize: '12px',
               fontWeight: 'bold',
             },
             optimized: false,
-            icon: 'https://kupon.uy/kuponimg/icon2.png',
+            icon: 'https://kupon.uy/kuponimg/price-tag-export.png',
           });
           this.markers.push(marker);
           // console.log(marker);

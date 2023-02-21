@@ -22,7 +22,20 @@
 
   <ion-card mode="md">
 
-    <ion-img src="{{info.img}}"></ion-img>
+        <ion-img *ngIf="info.extras[0] === ''" src="{{info.img}}" class="modImg"></ion-img>
+
+    <swiper *ngIf="info.extras[0] !== ''" [slidesPerView]="1" [autoplay]="true" [keyboard]="true" [pagination]="true" [zoom]="false" mode="md">
+      <ng-template swiperSlide>
+        <ion-img src="{{info.img}}" class="modImg"></ion-img>
+      </ng-template>
+
+      <ng-template swiperSlide *ngFor="let extras of info.extras">
+        <ion-img src="{{extras}}" class="modImg"></ion-img>
+      </ng-template>
+
+    </swiper>
+
+
     <div class="ratingDiv">
       <ion-chip class="ratingChip">
         <ion-label>Calificación: {{avgRating | async}}</ion-label>
@@ -46,7 +59,8 @@
 
     <ion-card-header class="cardHeader">
 
-      <ion-button (click)="pay()" shape="round" class="kuponBtn" *ngIf="info.precio > 0 && init_point && authService.userInfo.grupos[1] !== 'free'"
+      <ion-button (click)="pay()" shape="round" class="kuponBtn"
+        *ngIf="info.precio > 0 && init_point && authService.userInfo.grupos[1] !== 'free'"
         [disabled]="!authService.userInfo.premium && info.premium">
         Comprar KuPon: ${{info.precio}}
       </ion-button>
@@ -54,7 +68,13 @@
         *ngIf="info.precio > 0 && !authService.userInfo.premium && info.premium">
         Pasar a PREMIUM
       </ion-button> -->
-      <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="info.precio === 0 || authService.userInfo.grupos[1] === 'free'">
+      <ion-button (click)="pay()" shape="round" class="kuponBtn"
+        *ngIf="info.precio === 0 || authService.userInfo.grupos[1] === 'free' && info.categoria === 'gaming'">
+        Comprar KuPon: ${{info.precio}}
+      </ion-button>
+
+      <ion-button (click)="onClick()" shape="round" class="kuponBtn"
+        *ngIf="info.precio === 0 || authService.userInfo.grupos[1] === 'free' && info.categoria !== 'gaming'">
         Descargar KuPon GRATIS
       </ion-button>
 
@@ -80,11 +100,13 @@
 
       <hr class="hr">
 
-      <ion-card-title class="subtitle2 ion-margin-vertical">Descuento valor: <span>{{info.valor}}</span></ion-card-title>
-      <ion-card-subtitle *ngIf="info.normalprice">Precio normal: <span class="normalprice">{{info.normalprice}}</span></ion-card-subtitle>
-      <ion-card-subtitle *ngIf="info.discountprice" class="discountprice">Con este KuPon pagás: {{info.discountprice}}</ion-card-subtitle>
+      <ion-card-title class="subtitle2 ion-margin-vertical">KuPon valor: <span>{{info.valor}}</span></ion-card-title>
+      <ion-card-subtitle *ngIf="info.normalprice">Precio normal: <span class="normalprice">{{info.normalprice}}</span>
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="info.discountprice" class="discountprice">Con este KuPon pagás: {{info.discountprice}}
+      </ion-card-subtitle>
 
-<hr class="hr">
+      <hr class="hr">
 
     </ion-card-header>
 
@@ -97,14 +119,5 @@
     </ion-card-content>
 
   </ion-card>
-
-  <div *ngIf="info.extras[0]">
-    <ion-card *ngFor="let img of info.extras, index as i">
-      <img src="{{img}}" alt="imagen {{i}}">
-    </ion-card>
-  </div>
-
-
-
 
 </ion-content>

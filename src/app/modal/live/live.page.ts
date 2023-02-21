@@ -41,7 +41,7 @@ export class LivePage implements OnInit {
   }
 
   kuponCode() {
-    this.showAlert('Datos para verificar tu KuPon:', `Usuario: ${this.authService.userInfo.email}`, `Código: ${this.info.code}`);
+    this.showAlert('Datos para utilizar tu KuPon', 'Código:', this.info.code);
   }
 
   async showAlert(header, subHeader, message) {

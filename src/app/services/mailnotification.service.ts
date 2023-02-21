@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/quotes */
 
 import { Injectable } from '@angular/core';
+import { Http } from '@capacitor-community/http';
 
 @Injectable({
   providedIn: 'root'
@@ -50,9 +51,9 @@ export class MailnotificationService {
       body: raw,
     };
 
-    await fetch("https://kupon.herokuapp.com/https://api.sendgrid.com/v3/mail/send", requestOptions)
+    await fetch("https://kupon1.herokuapp.com/https://api.sendgrid.com/v3/mail/send", requestOptions)
       .then(response => {
-        console.log(response);
+        console.log('Mail a Usuario', response);
       })
       .catch(error => console.log('error', error));
   }
@@ -95,9 +96,9 @@ export class MailnotificationService {
       body: raw,
     };
 
-    await fetch("https://kupon.herokuapp.com/https://api.sendgrid.com/v3/mail/send", requestOptions)
+    await fetch("https://kupon1.herokuapp.com/https://api.sendgrid.com/v3/mail/send", requestOptions)
       .then(response => {
-        console.log(response);
+        console.log('Mail a Empresa', response);
       })
       .catch(error => console.log('error', error));
   }

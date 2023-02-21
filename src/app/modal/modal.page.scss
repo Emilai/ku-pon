@@ -39,6 +39,12 @@
  font-weight: bold;
 }
 
+.modImg {
+  object-fit: cover !important;
+  height: 350px !important;
+  width: 100% !important;
+}
+
 .hr {
   background-color: #757070;
   height: 3px;

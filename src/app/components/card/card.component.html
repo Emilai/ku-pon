@@ -205,9 +205,9 @@
       <ion-input type="text" placeholder="Img" [(ngModel)]="kuponInfo.img"></ion-input>
     </ion-item>
 
-    <ion-item class="ion-margin-bottom">
+    <!-- <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Extra Imgs" [(ngModel)]="kuponInfo.extras"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Key" [(ngModel)]="kuponInfo.key"></ion-input>
@@ -222,7 +222,12 @@
     </ion-item>
 
     <ion-item class="ion-margin-bottom">
-      <ion-input type="text" placeholder="Código" [(ngModel)]="kuponInfo.code"></ion-input>
+      <ion-checkbox [(ngModel)]="kuponInfo.compraOnline" slot="start"></ion-checkbox>
+      <ion-label>Es un KuPon de compra Online?</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="kuponInfo.compraOnline" class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Código de Categoría" [(ngModel)]="kuponInfo.onlineCode"></ion-input>
     </ion-item>
 
     <ion-button (click)="cargarKupon()" expand="block" fill="clear" shape="round">

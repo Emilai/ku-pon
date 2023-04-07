@@ -103,4 +103,50 @@ export class MailnotificationService {
       .catch(error => console.log('error', error));
   }
 
+
+  async mailToUserOnline(usuario, comercio, valor, codigo) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Authorization", "Bearer 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");
+
+    const raw = JSON.stringify({
+      "personalizations": [
+        {
+          "to": [
+            {
+              "email": usuario
+            }
+          ],
+          "dynamic_template_data": {
+            "usuario": usuario,
+            "comercio": comercio,
+            "valor": valor,
+            "codigo": codigo
+          }
+        }
+      ],
+      "from": {
+        "email": "hola@kupon.uy",
+        "name": "KuPon"
+      },
+      "reply_to": {
+        "email": "hola@kupon.uy",
+        "name": "KuPon"
+      },
+      "template_id": "d-98bdc02b9cdc4f7a9c7c9ebd39ea1d79"
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+    };
+
+    await fetch("https://kupon1.herokuapp.com/https://api.sendgrid.com/v3/mail/send", requestOptions)
+      .then(response => {
+        console.log('Mail a Usuario compra Online', response);
+      })
+      .catch(error => console.log('error', error));
+  }
 }

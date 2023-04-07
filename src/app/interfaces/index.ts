@@ -20,6 +20,8 @@ export interface Kupon {
     valor: string;
     premium: boolean;
     code: string;
+    compraOnline: boolean;
+    onlineCode?: string;
 }
 
 export interface Usuario {

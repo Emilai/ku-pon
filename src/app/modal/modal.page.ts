@@ -59,7 +59,8 @@ export class ModalPage implements OnInit {
     premium: false,
     code: '',
     isoDate: '',
-    usuario: ''
+    usuario: '',
+    compraOnline: false,
   };
 
   constructor(
@@ -119,6 +120,7 @@ export class ModalPage implements OnInit {
     this.kuponInfo.valor = this.info.valor;
     this.kuponInfo.premium = this.info.premium;
     this.kuponInfo.code = this.info.code;
+    this.kuponInfo.compraOnline = this.info.compraOnline;
     this.kuponInfo.mailComercio = this.info.mailComercio;
     this.kuponInfo.isoDate = this.currentDate;
     this.kuponInfo.usuario = this.auth.currentUser.email;
@@ -144,8 +146,14 @@ export class ModalPage implements OnInit {
     await loading.present();
 
       await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
-      await this.successMailToUser(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor);
+
       await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
+
+      if (this.kuponInfo.compraOnline) {
+        await this.successMailToUserOnline(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.code);
+      } else {
+        await this.successMailToUser(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor);
+      }
 
     await loading.dismiss();
     this.showAlert('Ya tienes tu KuPon', 'Puedes verlo en "Mis KuPones". Disfrutalo cuando quieras!');
@@ -157,6 +165,10 @@ export class ModalPage implements OnInit {
 
   async successMailToUser(usuario, comercio, valor) {
     await this.mailNS.mailToUser(usuario, comercio, valor);
+  }
+
+  async successMailToUserOnline(usuario, comercio, valor, codigo) {
+    await this.mailNS.mailToUserOnline(usuario, comercio, valor, codigo);
   }
 
   async successMailToCompany(usuario, comercio, valor, mailComercio) {

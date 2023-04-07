@@ -73,6 +73,8 @@ export class CardComponent implements OnInit {
     valor: '',
     premium: false,
     code: '',
+    compraOnline: false,
+    onlineCode: ''
   };
 
   kuponInfo2 = {
@@ -96,6 +98,8 @@ export class CardComponent implements OnInit {
     valor: '',
     premium: false,
     code: '',
+    compraOnline: false,
+    onlineCode: ''
   };
 
   constructor(private cardService: CardService, private modalCtrl: ModalController,
@@ -209,6 +213,7 @@ async mostrarModal(card: Kupon) {
                 precio: kupon.precio,
                 comercio: kupon.comercio,
                 comercioCode: kupon.comercioCode,
+                code: kupon.code,
                 img: kupon.img,
                 usuario: kupon.usuario,
                 isoDate: this.currentDate

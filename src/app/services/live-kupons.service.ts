@@ -110,8 +110,10 @@ export class LiveKuponsService {
 
   async getOnlineCode(comercioCode, onlineCode) {
     try {
-      return await this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode).get();
-
+       const actualCode = await this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode[0]).get();
+       this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode[0].delete());
+       console.log(actualCode)
+       return actualCode
     } catch (error) {
       console.log(error);
     }

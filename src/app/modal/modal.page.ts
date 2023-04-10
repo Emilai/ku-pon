@@ -246,7 +246,7 @@ export class ModalPage implements OnInit {
   codeGenerator() {
     //aca va la funcion que genera el codigo de KuPon
     const onlineCode = this.liveKuponsService.getOnlineCode(this.kuponInfo.comercioCode, this.kuponInfo.onlineCode);
-    console.log('Esto es un array de codigos:', onlineCode);
+    console.log('Este es tu codigo para usar por unica vez', onlineCode);
   }
 
 }

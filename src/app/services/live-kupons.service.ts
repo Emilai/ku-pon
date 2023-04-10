@@ -107,4 +107,14 @@ export class LiveKuponsService {
       console.log(error);
     }
   };
-}
+
+  async getOnlineCode(comercioCode, onlineCode) {
+    try {
+      return await this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode).get();
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  }

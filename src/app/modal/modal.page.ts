@@ -41,6 +41,7 @@ export class ModalPage implements OnInit {
     id: '',
     comercio: '',
     comercioCode: '',
+    onlineCode: '',
     whatsapp: '',
     instagram: '',
     web: '',
@@ -104,6 +105,7 @@ export class ModalPage implements OnInit {
     this.kuponInfo.categoria = this.info.categoria;
     this.kuponInfo.comercio = this.info.comercio;
     this.kuponInfo.comercioCode = this.info.comercioCode;
+    this.kuponInfo.onlineCode = this.info.onlineCode;
     this.kuponInfo.whatsapp = this.info.whatsapp;
     this.kuponInfo.instagram = this.info.instagram;
     this.kuponInfo.web = this.info.web;
@@ -145,6 +147,12 @@ export class ModalPage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
+    if (this.kuponInfo.compraOnline) {
+      console.log('esto es de compra online');
+      this.codeGenerator();
+    }else {
+      console.log('esto NO es de compra online');
+    }
       await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
 
       await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
@@ -235,5 +243,10 @@ export class ModalPage implements OnInit {
     });
   }
 
+  codeGenerator() {
+    //aca va la funcion que genera el codigo de KuPon
+    const onlineCode = this.liveKuponsService.getOnlineCode(this.kuponInfo.comercioCode, this.kuponInfo.onlineCode);
+    console.log('Esto es un array de codigos:', onlineCode);
+  }
 
 }

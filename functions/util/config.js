@@ -8,17 +8,3 @@ var config = {
   measurementId: "G-6SNCKPBWYT"
 }
 
-
-
-
-
-// var pago_token = 'TEST-2317168769426376-062008-59ce512347a3e53cf8b54391b3a9c1f1-1146004371'
-
-// const mercadopago = require ('mercadopago')
-// mercadopago.configurations.setAccessToken(pago_token)
-
-// module.exports = {
-//   config,
-//   pago_token,
-//   mercadopago
-// }

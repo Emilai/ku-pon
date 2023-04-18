@@ -143,7 +143,7 @@ export class TablocationPage implements OnInit {
               fontWeight: 'bold',
             },
             optimized: false,
-            icon: 'https://kupon.uy/kuponimg/price-tag-export.png',
+            icon: 'https://i.ibb.co/xDR9RtT/price-tag-export.png',
           });
           this.markers.push(marker);
           // console.log(marker);
@@ -171,7 +171,7 @@ export class TablocationPage implements OnInit {
               fontWeight: 'bold',
             },
             optimized: false,
-            icon: 'https://kupon.uy/kuponimg/price-tag-export.png',
+            icon: 'https://i.ibb.co/xDR9RtT/price-tag-export.png',
           });
           this.markers.push(marker);
           // console.log(marker);

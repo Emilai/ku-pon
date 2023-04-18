@@ -247,4 +247,7 @@ export class ModalPage implements OnInit {
     this.kuponInfo.code = onlineCode;
   }
 
+  share() {
+    console.log('Aca va la funcion de compartir');
+  }
 }

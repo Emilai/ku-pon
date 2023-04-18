@@ -248,6 +248,6 @@ export class ModalPage implements OnInit {
   }
 
   share() {
-    console.log('Aca va la funcion de compartir');
+    console.log('Aca va la funcion de compartir y es donde tenemos que incorporar el Ionic Social Share');
   }
 }

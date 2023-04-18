@@ -110,15 +110,19 @@
               <span>{{card.valor}}</span></ion-card-subtitle>
             <ion-card-subtitle *ngIf="card.categoria === 'gaming'" class="cardSubTitle">Valor:
               <span>{{card.valor}}</span></ion-card-subtitle>
+
             <ion-card-title class="cardTitle" *ngIf="card.precio > 0 && authService.userInfo.grupos[1] !== 'free'">
               Compralo por: <span>${{card.precio}}</span>
             </ion-card-title>
-            <ion-card-title class="cardTitle" *ngIf="card.precio === 0 || authService.userInfo.grupos[1] === 'free' && card.categoria !== 'gaming'">
+
+            <ion-card-title class="cardTitle" *ngIf="card.precio === 0 && card.categoria !== 'gaming' || authService.userInfo.grupos[1] === 'free' && card.categoria !== 'gaming'">
               <span>KuPon GRATIS</span>
             </ion-card-title>
-            <ion-card-title class="cardTitle" *ngIf="card.precio === 0 || authService.userInfo.grupos[1] === 'free' && card.categoria === 'gaming'">
+
+            <ion-card-title class="cardTitle" *ngIf="card.precio === 0 && card.categoria === 'gaming' || authService.userInfo.grupos[1] === 'free' && card.categoria === 'gaming'">
               Compralo por: <span>${{card.precio}}</span>
             </ion-card-title>
+
             <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
           </ion-card-content>
 

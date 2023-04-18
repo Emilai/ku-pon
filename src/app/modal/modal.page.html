@@ -69,12 +69,12 @@
         Pasar a PREMIUM
       </ion-button> -->
       <ion-button (click)="pay()" shape="round" class="kuponBtn"
-        *ngIf="info.precio === 0 || authService.userInfo.grupos[1] === 'free' && info.categoria === 'gaming'">
+        *ngIf="info.precio === 0 && info.categoria === 'gaming' || authService.userInfo.grupos[1] === 'free' && info.categoria === 'gaming'">
         Comprar KuPon: ${{info.precio}}
       </ion-button>
 
       <ion-button (click)="onClick()" shape="round" class="kuponBtn"
-        *ngIf="info.precio === 0 || authService.userInfo.grupos[1] === 'free' && info.categoria !== 'gaming'">
+        *ngIf="info.precio === 0 && info.categoria !== 'gaming' || authService.userInfo.grupos[1] === 'free' && info.categoria !== 'gaming'">
         Descargar KuPon GRATIS
       </ion-button>
 
@@ -119,9 +119,5 @@
     </ion-card-content>
 
   </ion-card>
-
-  <ion-button (click)="codeGenerator()" expand="block" fill="clear" shape="round">
-    Codigos!
-  </ion-button>
 
 </ion-content>

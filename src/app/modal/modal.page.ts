@@ -148,8 +148,7 @@ export class ModalPage implements OnInit {
     await loading.present();
 
     if (this.kuponInfo.compraOnline) {
-      console.log('esto es de compra online');
-      this.codeGenerator();
+      await this.codeGenerator();
     }else {
       console.log('esto NO es de compra online');
     }
@@ -243,10 +242,9 @@ export class ModalPage implements OnInit {
     });
   }
 
-  codeGenerator() {
-    //aca va la funcion que genera el codigo de KuPon
-    const onlineCode = this.liveKuponsService.getOnlineCode(this.kuponInfo.comercioCode, this.kuponInfo.onlineCode);
-    console.log('Este es tu codigo para usar por unica vez', onlineCode);
+  async codeGenerator() {
+    const onlineCode = await this.liveKuponsService.getOnlineCode(this.kuponInfo.comercioCode, this.kuponInfo.onlineCode).then(onlineCodeRef => onlineCodeRef);
+    this.kuponInfo.code = onlineCode;
   }
 
 }

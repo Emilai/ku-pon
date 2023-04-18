@@ -110,10 +110,19 @@ export class LiveKuponsService {
 
   async getOnlineCode(comercioCode, onlineCode) {
     try {
-       const actualCode = await this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode[0]).get();
-       this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode[0].delete());
-       console.log(actualCode)
-       return actualCode
+       // eslint-disable-next-line max-len
+       const actualCodes = await (await this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode).get().toPromise()).data().codigos;
+      const docRef = this.firestore.collection('onlineCodes').doc('comercios').collection(comercioCode).doc(onlineCode);
+      let actualCode;
+      if (Array.isArray(actualCodes) && actualCodes.length > 0) {
+        actualCode = actualCodes[0];
+        actualCodes.shift();
+        await docRef.set({ codigos: actualCodes });
+      } else {
+        console.error('actualCodes no es un array o no tiene elementos.');
+        // Manejar el caso en el que actualCodes no es un array o no tiene elementos según tus necesidades.
+      }
+       return actualCode;
     } catch (error) {
       console.log(error);
     }

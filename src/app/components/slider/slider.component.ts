@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { ModalPage } from 'src/app/modal/modal.page';
 import { Kupon } from 'src/app/interfaces';
 import { WSAEINVALIDPROCTABLE } from 'constants';
+import { DatePipe } from '@angular/common';
 
 SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
 
@@ -19,11 +20,16 @@ export class SliderComponent implements OnInit {
   cards: any[] = [];
   endorsers: any[] = [];
   sliders: any[] = [];
+  verifyDate: any;
+  myDate = new Date();
 
-  constructor(private cardService: CardService, private modalCtrl: ModalController) { }
+  constructor(private cardService: CardService, private modalCtrl: ModalController,
+    private datePipe: DatePipe) {
+    this.verifyDate = this.datePipe.transform(this.myDate, 'yyyyMMddHHmm');
+  }
 
   async ngOnInit() {
-    await this.cardService.getCards().then(cards => {
+    await this.cardService.getSliders().then(cards => {
       cards.subscribe(kupones => {
         this.cards = kupones.map(kuponRef => {
           const kupon = kuponRef.payload.doc.data();

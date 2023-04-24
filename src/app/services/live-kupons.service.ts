@@ -36,7 +36,8 @@ export class LiveKuponsService {
 
     try {
 
-      const liveKupons = this.firestore.collection('liveKupons', ref => ref.where('usuario', '==', userMail));
+      // eslint-disable-next-line max-len
+      const liveKupons = this.firestore.collection('liveKupons', ref => ref.where('usuario', '==', userMail).where('validDate', '>', this.myDate));
       return liveKupons.snapshotChanges();
 
     } catch (error) {
@@ -107,6 +108,7 @@ export class LiveKuponsService {
       console.log(error);
     }
   };
+
 
   async getOnlineCode(comercioCode, onlineCode) {
     try {

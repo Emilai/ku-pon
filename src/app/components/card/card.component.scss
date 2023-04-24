@@ -10,14 +10,14 @@
 
 .card {
   padding: 0;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 10px 0px 10px;
   font-size: 8px;
 }
 
 .cardImg {
   object-fit: cover;
-  height: 120px;
-  width: 120px;
+  height: 140px;
+  width: 140px;
 }
 
 .ageConsent {
@@ -47,6 +47,15 @@
 .precio {
   font-size: large;
   color: #fafafa;
+}
+
+.contadorventas {
+  font-size: 10px;
+  color: #fafafa;
+  margin-top: 10px;
+  position: relative;
+  right: -137px;
+  margin-bottom: 0;
 }
 
 span {
@@ -112,6 +121,7 @@ span {
   margin-top: 7px;
   margin-bottom: 0;
 }
+
 .verifyContent {
   text-align: center;
   padding: 0;

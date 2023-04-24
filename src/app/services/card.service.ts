@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Kupon } from '../interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 export interface Star {
   userId: any;
@@ -14,16 +15,32 @@ export interface Star {
 })
 export class CardService {
 
-  kuponData: Kupon;
+  myDate = new Date();
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) { }
+  kuponData: Kupon;
+  actualDate: any = 20210421135800;
+
+  constructor(private http: HttpClient, private firestore: AngularFirestore,
+    private datePipe: DatePipe) {
+    this.actualDate = this.datePipe.transform(this.myDate, 'yyyyMMddHHmm');
+  }
 
   async getCards() {
     try {
-      return await this.firestore.collection('kupones').snapshotChanges();
+      return await this.firestore.collection('kupones', ref => ref.where('validDate', '>', this.myDate)).snapshotChanges();
 
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  async getSliders() {
+    try {
+      // eslint-disable-next-line max-len
+      return await this.firestore.collection('kupones', ref => ref.where('validDate', '>', this.myDate).where('slider', '==', true)).snapshotChanges();
+
+    } catch (error) {
+      console.log('error en getSliders desde card.service: ',error);
     }
   };
 
@@ -45,17 +62,16 @@ export class CardService {
     }
   };
 
-
-  getSliders() {
-    return this.http.get<any[]>('../../assets/sliders.json');
-  }
-
   getOneCard() {
     return this.kuponData;
   }
 
   create(collection, data) {
     this.firestore.collection(collection).add(data);
+  }
+
+  updateKupon(id, data) {
+    this.firestore.collection('kupones').doc(id).set(data);
   }
 
   ///////////////////// Rating ///////////////////

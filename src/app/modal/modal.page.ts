@@ -17,6 +17,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Auth } from '@angular/fire/auth';
 import { MailnotificationService } from '../services/mailnotification.service';
+import { toDate } from 'date-fns';
+import { PushService } from '../services/push.service';
 
 
 
@@ -35,6 +37,7 @@ export class ModalPage implements OnInit {
   myDate = new Date();
   currentDate: any;
   kuponId: any = '';
+  vencimiento: any;
 
   kuponInfo = {
     categoria: '',
@@ -60,6 +63,7 @@ export class ModalPage implements OnInit {
     premium: false,
     code: '',
     isoDate: '',
+    validDate: undefined,
     usuario: '',
     compraOnline: false,
   };
@@ -77,9 +81,11 @@ export class ModalPage implements OnInit {
     private loadingController: LoadingController,
     public auth: Auth,
     private iab: InAppBrowser,
+    private pushService: PushService,
     private mailNS: MailnotificationService) {
     this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
     this.kuponId = this.datePipe.transform(this.myDate, 'yyyy-MM-dd-HH-mm-ss-SSS');
+
    }
 
   async ngOnInit() {
@@ -89,6 +95,9 @@ export class ModalPage implements OnInit {
     this.fav = kuponInFav;
     await this.authService.userData();
     await this.requestPay();
+
+    this.vencimiento = this.info.validDate.toDate();
+    this.vencimiento = this.datePipe.transform(this.vencimiento, 'dd/MM/yyyy');
 
     this.stars = this.cardService.getKuponStars(this.info.id);
 
@@ -124,9 +133,12 @@ export class ModalPage implements OnInit {
     this.kuponInfo.code = this.info.code;
     this.kuponInfo.compraOnline = this.info.compraOnline;
     this.kuponInfo.mailComercio = this.info.mailComercio;
+    this.kuponInfo.validDate = this.info.validDate;
     this.kuponInfo.isoDate = this.currentDate;
     this.kuponInfo.usuario = this.auth.currentUser.email;
     this.kuponInfo.id = this.kuponId + '-' + this.auth.currentUser.email;
+
+    // console.log(this.info.id);
   }
 
   starHandler(value) {
@@ -144,6 +156,13 @@ export class ModalPage implements OnInit {
   }
 
   async onClick() {
+
+    // info para Push a Administradores con cada venta
+    const pushTitle = `Nueva venta de ${this.kuponInfo.comercio}`;
+    const pushText = `El usuario ${this.auth.currentUser.email} compró un KuPon por ${this.kuponInfo.titulo}`;
+    const pushGroups = 'administradores';
+    this.info.contadorVentas = this.info.contadorVentas + 1;
+
     const loading = await this.loadingController.create();
     await loading.present();
 
@@ -155,6 +174,9 @@ export class ModalPage implements OnInit {
       await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
 
       await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
+      this.pushService.sendNotification(pushTitle, pushText, pushGroups);
+      console.log('grupos: ', pushGroups);
+      await this.cardService.updateKupon(this.info.id, this.info);
 
       if (this.kuponInfo.compraOnline) {
         await this.successMailToUserOnline(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.code);

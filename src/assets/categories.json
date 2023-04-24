@@ -25,9 +25,9 @@
             "icon":"male-female-outline"
                 },
         {
-            "categoria":"Diversión",
-            "catId":"diversion",
-            "icon":"happy-outline"
+            "categoria":"Mascotas",
+            "catId":"mascotas",
+            "icon":"paw-outline"
                 },
         {
             "categoria":"Otros",

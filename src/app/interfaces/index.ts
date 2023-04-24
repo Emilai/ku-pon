@@ -1,3 +1,5 @@
+
+
 export interface Kupon {
     id: string;
     categoria: string;
@@ -15,10 +17,13 @@ export interface Kupon {
     discountprice: string;
     img: string;
     extras?: string[];
+    slider: boolean;
     key: string;
     precio: number;
     valor: string;
     premium: boolean;
+    validDate: any;
+    contadorVentas: number;
     code: string;
     compraOnline: boolean;
     onlineCode?: string;

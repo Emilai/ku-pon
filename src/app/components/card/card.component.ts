@@ -11,6 +11,7 @@ import { LowerCasePipe } from '@angular/common';
 import { LiveKuponsService } from 'src/app/services/live-kupons.service';
 import { DatePipe } from '@angular/common';
 import { OrderPipe } from 'ngx-order-pipe';
+import { parseISO } from 'date-fns/esm';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -68,11 +69,14 @@ export class CardComponent implements OnInit {
     discountprice: '',
     img: '',
     extras:[''],
+    slider: false,
     key: '',
     precio: undefined,
     valor: '',
     premium: false,
     code: '',
+    contadorVentas: 0,
+    validDate: undefined,
     compraOnline: false,
     onlineCode: ''
   };
@@ -93,11 +97,14 @@ export class CardComponent implements OnInit {
     discountprice: '',
     img: '',
     extras: [''],
+    slider: false,
     key: '',
     precio: undefined,
     valor: '',
     premium: false,
     code: '',
+    contadorVentas: 0,
+    validDate: undefined,
     compraOnline: false,
     onlineCode: ''
   };
@@ -109,8 +116,9 @@ export class CardComponent implements OnInit {
     private lowerCase: LowerCasePipe,
     private liveKuponsService: LiveKuponsService,
     private orderPipe: OrderPipe,
-    private datePipe: DatePipe
+    public datePipe: DatePipe
   ) { this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
+
      }
 
   async ngOnInit() {
@@ -184,6 +192,10 @@ async mostrarModal(card: Kupon) {
   }
 
   async cargarKupon() {
+
+    this.kuponInfo.validDate = parseISO(this.kuponInfo.validDate);
+    console.log(this.kuponInfo.validDate);
+
     const loading = await this.loadingController.create();
     await loading.present();
     await this.cardService.create('kupones', this.kuponInfo);

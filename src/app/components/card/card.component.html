@@ -124,15 +124,19 @@
             </ion-card-title>
 
             <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+            <ion-badge color="primary" class="contadorventas ion-margin-vertical" *ngIf="card.contadorVentas">Vendidos: {{card.contadorVentas}}</ion-badge>
           </ion-card-content>
 
         </ion-card>
 
         <div *ngIf="ageVerify">
           <ion-card *ngIf="card.categoria === 'adultos'" class="cardContent" mode="md" (click)="mostrarModal(card)">
+            
             <img src="{{card.img}}" class="cardImg" />
 
             <ion-card-content class="card">
+              <ion-badge color="primary" class="contadorventas ion-margin-vertical" *ngIf="card.contadorVentas">Vendidos: {{card.contadorVentas}}</ion-badge>
+
               <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
 
               <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
@@ -149,6 +153,7 @@
                 <span>KuPon GRATIS</span>
               </ion-card-title>
               <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+              
             </ion-card-content>
 
           </ion-card>
@@ -209,12 +214,22 @@
       <ion-input type="text" placeholder="Img" [(ngModel)]="kuponInfo.img"></ion-input>
     </ion-item>
 
+    <ion-item class="ion-margin-bottom">
+      <ion-datetime [(ngModel)]="kuponInfo.validDate">
+        <span slot="title">KuPon vigente hasta:</span>
+      </ion-datetime>
+    </ion-item>
+
     <!-- <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Extra Imgs" [(ngModel)]="kuponInfo.extras"></ion-input>
     </ion-item> -->
+    <ion-item>
+    <ion-label>Incluir en Slider:</ion-label>
+    <ion-toggle slot="end" [(ngModel)]="kuponInfo.slider"></ion-toggle>
+  </ion-item>
 
     <ion-item class="ion-margin-bottom">
-      <ion-input type="text" placeholder="Key" [(ngModel)]="kuponInfo.key"></ion-input>
+      <ion-input type="text" placeholder="Palabras Clave" [(ngModel)]="kuponInfo.key"></ion-input>
     </ion-item>
 
     <ion-item class="ion-margin-bottom">

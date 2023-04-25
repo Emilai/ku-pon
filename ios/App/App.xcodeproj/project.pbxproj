@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		038EE57429E5A16D00230C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 038EE57329E5A16D00230C7B /* GoogleService-Info.plist */; };
+		035BF53829F7042B00C51A8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035BF53729F7042A00C51A8F /* GoogleService-Info.plist */; };
 		03C271DA28F5EE6D008C3832 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C271D928F5EE6D008C3832 /* StoreKit.framework */; };
 		258E0FB4ACE7BAB78A9AE9DB /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F55AD6B19584078FB73CFC /* Pods_App.framework */; };
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		0355044028F0539A00EC4E12 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
-		038EE57329E5A16D00230C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		035BF53729F7042A00C51A8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03C271D928F5EE6D008C3832 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		14C65FF24111E158723696AB /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
-				038EE57329E5A16D00230C7B /* GoogleService-Info.plist */,
+				035BF53729F7042A00C51A8F /* GoogleService-Info.plist */,
 				504EC3131FED79650016851F /* Info.plist */,
 				2FAD9762203C412B000D30F8 /* config.xml */,
 				50B271D01FEDC1A000F3C39B /* public */,
@@ -170,7 +170,7 @@
 				50379B232058CBB4000EE86E /* capacitor.config.json in Resources */,
 				504EC30D1FED79650016851F /* Main.storyboard in Resources */,
 				2FAD9763203C412B000D30F8 /* config.xml in Resources */,
-				038EE57429E5A16D00230C7B /* GoogleService-Info.plist in Resources */,
+				035BF53829F7042B00C51A8F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

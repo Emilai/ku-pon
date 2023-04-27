@@ -12,7 +12,7 @@ import { LiveKuponsService } from '../services/live-kupons.service';
 import { MercadopagoService } from '../services/mercadopago.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { Share } from '@capacitor/share';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Auth } from '@angular/fire/auth';
@@ -274,7 +274,13 @@ export class ModalPage implements OnInit {
     this.kuponInfo.code = onlineCode;
   }
 
-  share() {
-    console.log('Aca va la funcion de compartir');
+  async share() { 
+    await Share.share({
+  title: 'See cool stuff',
+  text: 'Really awesome thing you need to see right meow',
+  url: 'http://ionicframework.com/',
+  dialogTitle: 'Share with buddies',
+  files:  ['hhttps://i.ibb.co/WH9H0KZ/icon.png/']
+});;
   }
 }

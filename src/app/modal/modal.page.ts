@@ -276,6 +276,5 @@ export class ModalPage implements OnInit {
 
   share() {
     console.log('Aca va la funcion de compartir');
-
   }
 }

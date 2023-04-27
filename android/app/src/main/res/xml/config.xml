@@ -6,5 +6,13 @@
     <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser"/>
   </feature>
 
+  <feature name="LottieSplashScreen">
+    <param name="android-package" value="de.dustplanet.cordova.lottie.LottieSplashScreen"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   
+  <preference name="LottieFullScreen" value="true" />
+  <preference name="LottieHideAfterAnimationEnd" value="true" />
+  <preference name="LottieBackgroundColor" value="#770db4" />
 </widget>

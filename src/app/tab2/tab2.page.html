@@ -4,26 +4,19 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-    <h1 class="ion-padding sectionTitle">KuPones Favoritos</h1>
+    <h1 class="ion-padding sectionTitle" *ngIf="articles.length !== 0">KuPones Favoritos</h1>
     <ion-grid fixed>
       <ion-row>
-        <ion-col size="6" size-sm="6" size-md="4" size-lg="3" class="colContent" *ngFor="let card of articles">
-          <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)">
+        <ion-col size="4" size-sm="4" size-md="4" size-lg="3" class="colContent" *ngFor="let card of articles">
+          <ion-card class="cardContent" mode="md" (click)="mostrarModal(card)" *ngIf="card.validDate > myDate">
             <img src="{{card.img}}" class="cardImg" />
 
             <ion-card-content>
               <ion-card-subtitle class="cardSubTitle">{{card.comercio}}</ion-card-subtitle>
 
-              <ion-card-title class="cardTitle">{{card.titulo}}</ion-card-title>
-              <br>
-
-              <ion-card-subtitle class="cardSubTitle">Valor del KuPon: <span>{{card.valor}}</span></ion-card-subtitle>
-              <ion-card-title class="cardTitle" *ngIf="card.precio > 0">Compralo por: <span>${{card.precio}}</span>
-              </ion-card-title>
-              <ion-card-title class="cardTitle" *ngIf="card.precio === 0"><span>KuPon GRATIS</span>
-              </ion-card-title>
-              <ion-badge color="primary" class="precio ion-margin-vertical" *ngIf="card.premium">PREMIUM</ion-badge>
+              <ion-card-subtitle class="cardSubTitleValue">Descuento de: <span>{{card.valor}}</span></ion-card-subtitle>
             </ion-card-content>
 
           </ion-card>
@@ -32,9 +25,10 @@
     </ion-grid>
 
     <ion-card *ngIf="articles.length === 0">
-      <ion-card-header>
-                <ion-card-title>Aún no tienes KuPones Favoritos</ion-card-title>
-        <ion-card-subtitle>Elige algunos KuPones para utilizar cuando quieras!</ion-card-subtitle>
+      <ion-card-header class="noFavDiv">
+                <ion-card-title class="cardTitle">Aún no tienes KuPones Favoritos</ion-card-title>
+                <ion-img src="../../../assets/icon/favicon.png" class="img"></ion-img>
+        <ion-card-subtitle class="cardSubTitle2">Elige algunos KuPones para utilizar cuando quieras!</ion-card-subtitle>
       </ion-card-header>
     </ion-card>
 

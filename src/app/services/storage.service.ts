@@ -7,8 +7,11 @@ import { Kupon } from '../interfaces';
   providedIn: 'root'
 })
 export class StorageService {
+
+  myDate = new Date();
   private _storage: Storage | null = null;
   private _localKupon: Kupon[] = [];
+
 
   constructor(private storage: Storage) {
     this.init();
@@ -32,6 +35,7 @@ export class StorageService {
     if (exists) {
       this._localKupon = this._localKupon.filter( localKupon => localKupon.titulo !== kupon.titulo);
     } else {
+      kupon.validDate = new Date(kupon.validDate.seconds * 1000 + kupon.validDate.seconds / 1000000);
       this._localKupon = [kupon, ...this._localKupon];
     }
 

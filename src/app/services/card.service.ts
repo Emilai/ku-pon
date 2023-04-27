@@ -18,7 +18,7 @@ export class CardService {
   myDate = new Date();
 
   kuponData: Kupon;
-  actualDate: any = 20210421135800;
+  actualDate: any;
 
   constructor(private http: HttpClient, private firestore: AngularFirestore,
     private datePipe: DatePipe) {

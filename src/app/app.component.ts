@@ -24,7 +24,9 @@ export class AppComponent {
   ) {
     this.backButtonEvent();
     this.initializeApp();
+    this.showSplash();
   }
+
 
   backButtonEvent() {
     this.platform.backButton.subscribeWithPriority(10, () => {
@@ -65,5 +67,22 @@ export class AppComponent {
         }
       });
     });
+  }
+
+  private async showSplash() {
+    console.log('showSplash');
+    await this.platform.ready();
+
+    const lottie = (window as any).lottie;
+
+    if (this.platform.is('ios') && lottie) {
+      await lottie.splashscreen.hide();
+      await lottie.splashscreen.show('public/assets/kupon.json', false);
+    }
+
+    // if (this.platform.is('android') && lottie) {
+    //   await lottie.splashscreen.hide();
+    //   await lottie.splashscreen.show('public/assets/kupon.json', false);
+    // }
   }
 }

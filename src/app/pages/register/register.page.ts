@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Usuario } from 'src/app/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
+import { MailnotificationService } from 'src/app/services/mailnotification.service';
 
 @Component({
   selector: 'app-register',
@@ -29,6 +30,7 @@ export class RegisterPage implements OnInit {
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthService,
+    private mns: MailnotificationService,
     private router: Router
   ) { }
   get email() {
@@ -81,6 +83,7 @@ export class RegisterPage implements OnInit {
     const path = 'Usuarios';
     const id = user.user.uid;
     await this.authService.createUser(usuario, path, id);
+    await this.contacto(usuario.email, usuario.nombre, usuario.tel);
     await loading.dismiss();
 
 
@@ -121,5 +124,9 @@ export class RegisterPage implements OnInit {
 
   toggleShow() {
     this.hide = !this.hide;
+  }
+
+  contacto(email, nombre, tel) {
+    this.mns.mailContactCreation(email, nombre, tel);
   }
 }

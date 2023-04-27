@@ -5,11 +5,8 @@
   "bundledWebRuntime": false,
   "plugins": {
     "SplashScreen": {
-            "launchAutoHide": false,
-            "androidScaleType": "CENTER_CROP",
-            "splashFullScreen": true,
-            "splashImmersive": false,
-            "backgroundColor": "#f0eb63" 
+            "launchAutoHide": true,
+            "launchShowDuration": 0
         },
         "PushNotifications": {
             "presentationOptions": [

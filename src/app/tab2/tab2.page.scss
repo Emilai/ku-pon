@@ -5,9 +5,8 @@
 .cardContent {
   display: inline-block;
   text-align: center;
-  height: 380px;
-  width: 170px;
   margin: 0;
+  height: 100%;
 }
 
 .colContent{
@@ -40,9 +39,30 @@ span {
 .cardSubTitle {
     padding-top: 0px;
     padding-left: 0px;
+    font-size: 10px;
 }
 
+.cardSubTitle2 {
+    padding-top: 25px;
+    padding-left: 0px;
+    font-size: 12px;
+}
 
+.cardSubTitleValue {
+    padding-top: 0px;
+    padding-left: 0px;
+    font-size: 15px;
+    color: #fafafa;
+}
+
+.img{
+height: 80px;
+margin-top: 25px;
+}
+
+.noFavDiv{
+text-align: center;
+}
 
 .kuponesBtn {
   color: #fafafa;

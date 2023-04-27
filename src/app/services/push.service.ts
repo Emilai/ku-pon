@@ -97,8 +97,12 @@ export class PushService {
 
     fetch("https://fcm.googleapis.com/fcm/send", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+      .then(result => console.log('result: ',result))
+      .catch(error => {
+        console.log('error: ', error);
+        alert(error);
+      }
+        );
 
 
   }

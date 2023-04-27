@@ -11,6 +11,8 @@ import { Http } from '@capacitor-community/http';
 })
 export class MailnotificationService {
 
+  contactListId = '020e2d46-2f0c-40bb-8180-857c4d7869eb';
+
   constructor() { }
 
   async mailToUser(usuario, comercio, valor) {
@@ -149,4 +151,38 @@ export class MailnotificationService {
       })
       .catch(error => console.log('error', error));
   }
+
+
+  // ***************** Mail Contact Creation ***************
+
+  async mailContactCreation(mailUsuario, nombre, telefono) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Authorization", "Bearer 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");
+
+    const raw = JSON.stringify({
+      "list_ids": [this.contactListId],
+      "contacts": [
+        {
+          "email": mailUsuario,
+          "first_name": nombre,
+          "address_line_1": telefono
+        }
+      ]
+    });
+
+    const requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: raw,
+    };
+
+    await fetch("https://kupon1.herokuapp.com/https://api.sendgrid.com/v3/marketing/contacts", requestOptions)
+      .then(response => {
+        console.log('Registro de Usuario', response);
+      })
+      .catch(error => console.log('error', error));
+  }
 }
+

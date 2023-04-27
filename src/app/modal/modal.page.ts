@@ -96,7 +96,13 @@ export class ModalPage implements OnInit {
     await this.authService.userData();
     await this.requestPay();
 
-    this.vencimiento = this.info.validDate.toDate();
+    if (this.info.validDate.seconds) {
+      this.vencimiento = this.info.validDate.toDate();
+    } else {
+      this.vencimiento = this.info.validDate;
+    }
+    // this.vencimiento = this.info.validDate.toDate();
+    console.log('vencimiento::: ', this.vencimiento);
     this.vencimiento = this.datePipe.transform(this.vencimiento, 'dd/MM/yyyy');
 
     this.stars = this.cardService.getKuponStars(this.info.id);
@@ -175,7 +181,6 @@ export class ModalPage implements OnInit {
 
       await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
       this.pushService.sendNotification(pushTitle, pushText, pushGroups);
-      console.log('grupos: ', pushGroups);
       await this.cardService.updateKupon(this.info.id, this.info);
 
       if (this.kuponInfo.compraOnline) {
@@ -271,5 +276,6 @@ export class ModalPage implements OnInit {
 
   share() {
     console.log('Aca va la funcion de compartir');
+
   }
 }

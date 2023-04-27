@@ -294,5 +294,6 @@ async mostrarModal(card: Kupon) {
   click(card) {
     console.log(card);
   }
+
 }
 

@@ -16,7 +16,8 @@ import { Router } from '@angular/router';
 export class Tab2Page implements OnInit {
 
   user: any;
-
+  myDate = new Date();
+  cards: any;
 
   get articles(): Kupon[] {
     return this.storageService.getLocalKupons;
@@ -28,12 +29,13 @@ export class Tab2Page implements OnInit {
     private modalCtrl: ModalController,
     public authService: AuthService,
     private alertController: AlertController,
-    private loadingController: LoadingController) {}
+    private loadingController: LoadingController) { }
 
 
   async ngOnInit() {
     this.user = this.authService.auth.currentUser;
     await this.authService.userData();
+
   }
 
   async mostrarModal(card: Kupon) {

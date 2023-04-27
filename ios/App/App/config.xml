@@ -7,5 +7,13 @@
     <param name="onload" value="true"/>
   </feature>
 
+  <feature name="LottieSplashScreen">
+    <param name="ios-package" value="LottieSplashScreen"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   
+  <preference name="LottieFullScreen" value="true" />
+  <preference name="LottieHideAfterAnimationEnd" value="true" />
+  <preference name="LottieBackgroundColor" value="#770db4" />
 </widget>

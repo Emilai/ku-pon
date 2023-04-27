@@ -45,6 +45,7 @@
     "@ionic/storage-angular": "^3.0.6",
     "@types/scriptjs": "^0.0.2",
     "cordova-plugin-inappbrowser": "^5.0.0",
+    "cordova-plugin-lottie-splashscreen": "github:timbru31/cordova-plugin-lottie-splashscreen",
     "date-fns": "^2.29.3",
     "mercadopago": "^1.5.14",
     "ngx-order-pipe": "^2.2.0",

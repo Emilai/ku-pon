@@ -274,13 +274,22 @@ export class ModalPage implements OnInit {
     this.kuponInfo.code = onlineCode;
   }
 
-  async share() { 
+  async share() {
+
+    const titleText = 'Descubrí este descuento!';
+    const descripcion = this.info.descripcion;
+    const comercio = this.info.comercio;
+
     await Share.share({
-  title: 'See cool stuff',
-  text: 'Really awesome thing you need to see right meow',
-  url: 'http://ionicframework.com/',
-  dialogTitle: 'Share with buddies',
-  files:  ['hhttps://i.ibb.co/WH9H0KZ/icon.png/']
+  title: titleText,
+      text: `Descubrí este descuento!
+      
+
+${descripcion}
+      
+Descargate la App!`,
+      url: 'http://www.kupon.uy/',
+  dialogTitle: 'Compartir KuPon!'
 });;
   }
 }

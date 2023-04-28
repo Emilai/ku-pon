@@ -23,8 +23,9 @@ export class AppComponent {
     private zone: NgZone
   ) {
     this.backButtonEvent();
-    this.initializeApp();
     this.showSplash();
+    this.initializeApp();
+
   }
 
 
@@ -70,15 +71,23 @@ export class AppComponent {
   }
 
   private async showSplash() {
-    console.log('showSplash');
-    await this.platform.ready();
-
     const lottie = (window as any).lottie;
 
-    if (this.platform.is('ios') && lottie) {
+      if (this.platform.is('ios') && lottie) {
+        await lottie.splashscreen.hide();
+        await this.platform.ready();
+        await lottie.splashscreen.show('public/assets/kupon.json', false);
+      }
+
+    if (this.platform.is('android') && lottie) {
       await lottie.splashscreen.hide();
-      await lottie.splashscreen.show('public/assets/kupon.json', false);
+      await this.platform.ready();
+      // await lottie.splashscreen.show('public/assets/kupon.json', false);
     }
+
+    // if (this.platform.is('ios') && lottie) {
+    //   await lottie.splashscreen.show('public/assets/kupon.json', false);
+    // }
 
     // if (this.platform.is('android') && lottie) {
     //   await lottie.splashscreen.hide();

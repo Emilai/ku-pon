@@ -134,7 +134,7 @@ export class CardComponent implements OnInit {
       });
     });
 
-    await this.cardService.getConvenio().then(endorserss => {
+    await this.cardService.getPromo().then(endorserss => {
       endorserss.subscribe(endorsers => {
         this.endorsers = endorsers.map(endorsersRef => {
           const endors = endorsersRef.payload.doc.data();

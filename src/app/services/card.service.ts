@@ -46,16 +46,16 @@ export class CardService {
 
   async getEndorsers() {
     try {
-      return await this.firestore.collection('endorsers').snapshotChanges();
+      return await this.firestore.collection('endorser').snapshotChanges();
 
     } catch (error) {
       console.log(error);
     }
   };
 
-  async getConvenio() {
+  async getPromo() {
     try {
-      return await this.firestore.collection('convenio').snapshotChanges();
+      return await this.firestore.collection('promo').snapshotChanges();
 
     } catch (error) {
       console.log(error);

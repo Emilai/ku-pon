@@ -12,9 +12,9 @@ const config: CapacitorConfig = {
       LottieWidth: '1',
       LottieHeight: '1.35',
       LottieHideAfterAnimationEnd: 'true',
-      LottieBackgroundColorLight: '#770db4',
-      LottieBackgroundColorDark: '#770db4',
-      LottieBackgroundColor: '#770db4',
+      LottieBackgroundColorLight: '#121212',
+      LottieBackgroundColorDark: '#121212',
+      LottieBackgroundColor: '#121212',
     }
   }
 };

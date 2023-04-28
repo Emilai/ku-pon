@@ -17,7 +17,7 @@
   <preference name="LottieWidth" value="1" />
   <preference name="LottieHeight" value="1.35" />
   <preference name="LottieHideAfterAnimationEnd" value="true" />
-  <preference name="LottieBackgroundColorLight" value="#770db4" />
-  <preference name="LottieBackgroundColorDark" value="#770db4" />
-  <preference name="LottieBackgroundColor" value="#770db4" />
+  <preference name="LottieBackgroundColorLight" value="#121212" />
+  <preference name="LottieBackgroundColorDark" value="#121212" />
+  <preference name="LottieBackgroundColor" value="#121212" />
 </widget>

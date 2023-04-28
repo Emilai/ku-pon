@@ -8,7 +8,10 @@
 
   <feature name="LottieSplashScreen">
     <param name="android-package" value="de.dustplanet.cordova.lottie.LottieSplashScreen"/>
-    <param name="onload" value="false"/>
+    <param name="onload" value="true"/>
+    <preference name="LottieAnimationLocation" value="public/assets/kupon.json"/>
+    <preference name="LottieFullScreen" value="true"/>
+    <preference name="LottieHideAfterAnimationEnd" value="true"/>
   </feature>
 
   
@@ -16,7 +19,7 @@
   <preference name="LottieWidth" value="1" />
   <preference name="LottieHeight" value="1.35" />
   <preference name="LottieHideAfterAnimationEnd" value="true" />
-  <preference name="LottieBackgroundColorLight" value="#770db4" />
-  <preference name="LottieBackgroundColorDark" value="#770db4" />
-  <preference name="LottieBackgroundColor" value="#770db4" />
+  <preference name="LottieBackgroundColorLight" value="#121212" />
+  <preference name="LottieBackgroundColorDark" value="#121212" />
+  <preference name="LottieBackgroundColor" value="#121212" />
 </widget>

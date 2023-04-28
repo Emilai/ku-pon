@@ -51,7 +51,7 @@ export class CardComponent implements OnInit {
   verifyBox = false;
   verifyBtn = true;
 
-  endorsers: any[] = [];
+  promo: any[] = [];
 
   kuponInfo = {
     categoria: '',
@@ -136,7 +136,7 @@ export class CardComponent implements OnInit {
 
     await this.cardService.getPromo().then(endorserss => {
       endorserss.subscribe(endorsers => {
-        this.endorsers = endorsers.map(endorsersRef => {
+        this.promo = endorsers.map(endorsersRef => {
           const endors = endorsersRef.payload.doc.data();
           // eslint-disable-next-line @typescript-eslint/dot-notation
           endors['id'] = endorsersRef.payload.doc.id;
@@ -177,7 +177,7 @@ async mostrarModal(card: Kupon) {
 
   categorieFilter(categorie) {
     this.textoBuscar = categorie;
-    this.content.scrollToPoint(0, 300, 500);
+    this.content.scrollToPoint(0, 800, 500);
 
   }
 

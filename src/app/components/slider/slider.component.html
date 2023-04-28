@@ -6,6 +6,7 @@
     </ng-template>
 </swiper>
 
+
 <swiper [slidesPerView]="2" [autoplay]="true" [keyboard]="true" [pagination]="false" [zoom]="false" mode="md">
     <ng-template swiperSlide *ngFor="let card of cards">
       <ion-card (click)="mostrarModal(card)" class="card">

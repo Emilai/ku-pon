@@ -52,10 +52,9 @@
   </ion-col>
   </div>
 
-
-  <div *ngIf="endorsers">
-    <ion-card *ngFor="let endorser of endorsers" (click)="categorieFilter(endorser.filter)" class="punta">
-      <ion-img src="{{endorser.img}}"></ion-img>
+  <div *ngIf="promo">
+    <ion-card *ngFor="let prom of promo" (click)="categorieFilter(prom.filter)" class="promo">
+      <ion-img src="{{prom.img}}"></ion-img>
     </ion-card>
   </div>
 

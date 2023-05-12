@@ -21,7 +21,6 @@ import { toDate } from 'date-fns';
 import { PushService } from '../services/push.service';
 
 
-
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.page.html',
@@ -38,6 +37,7 @@ export class ModalPage implements OnInit {
   currentDate: any;
   kuponId: any = '';
   vencimiento: any;
+  saldo: number;
 
   kuponInfo = {
     categoria: '',
@@ -145,6 +145,8 @@ export class ModalPage implements OnInit {
     this.kuponInfo.id = this.kuponId + '-' + this.auth.currentUser.email;
 
     // console.log(this.info.id);
+
+    this.saldo = this.authService.userInfo.saldo;
   }
 
   starHandler(value) {
@@ -195,6 +197,11 @@ export class ModalPage implements OnInit {
 
   async pay() {
     this.openMercadoPago();
+  }
+
+  compraConSK() {
+    console.log('Comprando con Saldo Kuponero');
+    this.showAlertCompraSK('Deseas comprar este KuPon con tu Saldo KuPonero?', `Tu saldo actual es de $${this.saldo}`);
   }
 
   async successMailToUser(usuario, comercio, valor) {
@@ -291,5 +298,38 @@ Descargate la App!`,
       url: 'http://www.kupon.uy/',
   dialogTitle: 'Compartir KuPon!'
 });;
+  }
+
+  async showAlertCompraSK(header, message) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          console.log('Compra Cancelada');
+        }
+      },
+      {
+        text: 'Confirmar',
+        handler: () => {
+          // this.onClick();
+          console.log('Compra Confirmada con Saldo Kuponero');
+          this.descontarSaldo();
+          this.onClick();
+        }
+      }]
+    });
+    await alert.present();
+  }
+
+  async descontarSaldo() {
+    const path = 'Usuarios';
+    const usuario = this.authService.userInfo;
+
+    usuario.saldo = usuario.saldo - this.info.precio;
+    await this.authService.createUser(usuario, path, usuario.id);
+    console.log('Saldo Descontado');
   }
 }

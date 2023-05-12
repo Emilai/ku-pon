@@ -20,7 +20,17 @@
 
   <ion-card>
 
-    <ion-img src="{{info.img}}"></ion-img>
+        <ion-img *ngIf="info.extras[0] === ''" src="{{info.img}}" class="modImg"></ion-img>
+    <swiper *ngIf="info.extras[0] !== ''" [slidesPerView]="1" [autoplay]="true" [keyboard]="true" [pagination]="true" [zoom]="false" mode="md">
+      <ng-template swiperSlide>
+        <ion-img src="{{info.img}}" class="modImg"></ion-img>
+      </ng-template>
+
+      <ng-template swiperSlide *ngFor="let extras of info.extras">
+        <ion-img src="{{extras}}" class="modImg"></ion-img>
+      </ng-template>
+
+    </swiper>
 
     <div class="ion-padding">
       <ion-icon *ngIf="info.location" name="location-outline" class="icons" (click)="location()" target="_blank">
@@ -59,11 +69,5 @@
     </ion-card-content>
 
   </ion-card>
-
-    <div *ngIf="info.extras[0]">
-  <ion-card *ngFor="let img of info.extras, index as i">
-    <img src="{{img}}" alt="imagen {{i}}">
-  </ion-card>
-  </div>
 
 </ion-content>

@@ -39,6 +39,7 @@ export interface Usuario {
     code: string;
     grupos: string[];
     premium: boolean;
+    saldo: number;
     admin: boolean;
     superadmin: boolean;
 }

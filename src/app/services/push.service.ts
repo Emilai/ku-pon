@@ -32,6 +32,7 @@ export class PushService {
       if (result.receive === 'granted') {
         // Register with Apple / Google to receive push via APNS/FCM
         PushNotifications.register();
+        console.log('SE AUTORIZAN LAS NOTIFICACIONES');
       } else {
         console.log('no hay permiso para notificaciones');
       }
@@ -82,6 +83,8 @@ export class PushService {
     myHeaders.append("Authorization", "key=AAAATO1DkTs:APA91bFhaZb8HOxrChQL3ysw2MfGN_wQn9EglwxaGN1Jud9jffz5JMj1hXrwRTHLDatN3FIZQZDpuNF5iBCRP1JQK7uF4XNd-ft5qXUceTTYQDzlUNrBWzh35f8MbeDXZxUpj_lpSUJL");
 
     const raw = JSON.stringify({
+      "content_available": true,
+      "priority": "high",
       "notification": {
         "title": titulo,
         "body": texto
@@ -99,8 +102,7 @@ export class PushService {
       .then(response => response.text())
       .then(result => console.log('result: ',result))
       .catch(error => {
-        console.log('error: ', error);
-        alert(error);
+        console.log('error: ', error.toString());
       }
         );
 

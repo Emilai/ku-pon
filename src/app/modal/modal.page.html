@@ -32,7 +32,6 @@
       <ng-template swiperSlide *ngFor="let extras of info.extras">
         <ion-img src="{{extras}}" class="modImg"></ion-img>
       </ng-template>
-
     </swiper>
 
 
@@ -80,9 +79,12 @@
         Descargar KuPon GRATIS
       </ion-button>
 
-      <!-- <ion-button (click)="onClick()" shape="round" class="kuponBtn" *ngIf="authService.userInfo.grupos[1] === 'free'">
-        Descargar KuPon GRATIS
-      </ion-button> -->
+    <div class="divSaldoKuponero" *ngIf="authService.userInfo.saldo >= info.precio && authService.userInfo.grupos[1] !== 'free'">
+      <ion-chip class="" (click)="compraConSK()">
+        <ion-label>Comprar con tu Saldo KuPonero!</ion-label> <br>
+        <ion-icon name="wallet-outline" color="warning"></ion-icon>
+      </ion-chip>
+    </div>
 
       <ion-card-subtitle class="comercio">{{info.comercio}}</ion-card-subtitle>
 

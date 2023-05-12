@@ -4,6 +4,8 @@ import { Kupon } from 'src/app/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 import { CardService } from 'src/app/services/card.service';
 import { LiveKuponsService } from 'src/app/services/live-kupons.service';
+import SwiperCore, { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
+
 
 
 @Component({

@@ -18,6 +18,7 @@ export class RegisterPage implements OnInit {
     nombre: '',
     code: '',
     empresa: '',
+    saldo: 0,
     tel: undefined
   };
   codes: any;
@@ -76,6 +77,7 @@ export class RegisterPage implements OnInit {
       code: codeToLowerCase,
       grupos: ['General'],
       premium: false,
+      saldo: this.userInfo.saldo,
       admin: false,
       superadmin: false
     };
@@ -113,7 +115,7 @@ export class RegisterPage implements OnInit {
     const codigo = this.userInfo.code.toLowerCase();
 
     if (this.codes[codigo]) {
-      this.userInfo.empresa = this.codes[codigo];
+      this.userInfo.saldo = this.codes[codigo];
       this.register();
     } else if (codigo === ''){
       this.register();

@@ -10,22 +10,27 @@
   <ion-grid fixed>
     <ion-row>
 
-      <ion-col size="8" class="ion-padding">
+      <ion-col size="12" class="ion-padding col1">
         <ion-card-content>
-          <ion-card-title>{{authService.userInfo.nombre}}</ion-card-title>
+          <ion-card-title class="nombre">Hola {{authService.userInfo.nombre}}!</ion-card-title>
           <ion-card-subtitle>{{authService.userInfo.email}}</ion-card-subtitle>
+          <!-- <ion-card-subtitle *ngIf="authService.userInfo.saldo" class="saldo">Saldo KuPonero: ${{authService.userInfo.saldo}}</ion-card-subtitle> -->
+          <ion-chip color="primary" mode="ios" outline="true" *ngIf="authService.userInfo.saldo">
+            <ion-label>Saldo KuPonero: ${{authService.userInfo.saldo}}</ion-label>
+            <ion-icon name="wallet-outline" color="warning"></ion-icon>
+          </ion-chip>
 
         </ion-card-content>
       </ion-col>
 
-      <ion-col size="4" class="chip">
+      <!-- <ion-col size="4" class="chip">
         <ion-card-subtitle>
           <ion-chip color="primary" mode="ios" outline="true">
             <ion-label *ngIf="authService.userInfo.premium === false">Lite</ion-label>
             <ion-label *ngIf="authService.userInfo.premium === true">Premium</ion-label>
           </ion-chip>
         </ion-card-subtitle>
-      </ion-col>
+      </ion-col> -->
 
     </ion-row>
   </ion-grid>
@@ -62,7 +67,7 @@
     </ion-item>
     <ion-list slot="content">
       <ion-item>
-        <p>Si el KuPon tiene costo, podes comprarlo con cualquiera de nuestros medios de pago. Una vez lo tengas, lo podrás utilizar en el comercio indicado.</p>
+        <p>Si el KuPon tiene costo, podes comprarlo con cualquiera de nuestros medios de pago. Si tienes "Saldo KuPonero" también puedes pagarlo con el mismo. Una vez tengas tu KuPon, lo podrás utilizar en el comercio indicado.</p>
       </ion-item>
     </ion-list>
   </ion-accordion>
@@ -96,12 +101,23 @@
     </ion-item>
     <ion-list slot="content">
       <ion-item>
-        <p>Cada KuPon tiene condiciones de uso. Verifícalas para poder utilizarlo sin ningún problema!</p>
+        <p>Cada KuPon tiene condiciones de uso como por ejemplo su vigencia. Verifícalas para poder utilizarlo sin ningún problema!</p>
       </ion-item>
     </ion-list>
   </ion-accordion>
 
   <ion-accordion value="five">
+    <ion-item slot="header">
+      <ion-label>Que es el Saldo KuPonero</ion-label>
+    </ion-item>
+    <ion-list slot="content">
+      <ion-item>
+        <p>Es dinero que puedes usar en la App. Algunas veces te podremos obsequiar Saldo KuPonero mediante sorteos, promociones y/o a través de nuestras redes sociales.</p>
+      </ion-item>
+    </ion-list>
+  </ion-accordion>
+
+  <ion-accordion value="six">
     <ion-item slot="header">
       <ion-label>Contáctanos</ion-label>
     </ion-item>

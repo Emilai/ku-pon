@@ -193,6 +193,7 @@ async mostrarModal(card: Kupon) {
 
   async cargarKupon() {
 
+    const returnDate = this.kuponInfo.validDate;
     this.kuponInfo.validDate = parseISO(this.kuponInfo.validDate);
     console.log(this.kuponInfo.validDate);
 
@@ -202,6 +203,7 @@ async mostrarModal(card: Kupon) {
     await loading.dismiss();
     // this.kuponInfo = this.kuponInfo2;
     this.showAlert('Kupon Registrado', 'Vamo Arriba!!!');
+    this.kuponInfo.validDate = returnDate;
   }
 
   async showAlert(header, message) {

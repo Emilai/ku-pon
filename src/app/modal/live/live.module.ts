@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LivePageRoutingModule } from './live-routing.module';
 
 import { LivePage } from './live.page';
+import { SwiperComponent, SwiperModule } from 'swiper/angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LivePageRoutingModule
+    LivePageRoutingModule,
+    SwiperModule
   ],
   declarations: [LivePage]
 })

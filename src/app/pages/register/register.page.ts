@@ -50,9 +50,10 @@ export class RegisterPage implements OnInit {
     (await this.authService.codes()).subscribe(userData => {
       const codeInfo = userData.data();
       this.codes = codeInfo;
-      // console.log(this.codes);
+      // console.log('Aca estan los codigos del header: ',this.codes);
     });
 }
+
 
   async register() {
     const loading = await this.loadingController.create();

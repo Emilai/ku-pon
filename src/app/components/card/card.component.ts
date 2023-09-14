@@ -34,6 +34,7 @@ export class CardComponent implements OnInit {
   currentDate: any;
   myDate = new Date();
   ageVerify = false;
+  promoImg = true;
 
   verify = {
     email: '',
@@ -250,6 +251,7 @@ async mostrarModal(card: Kupon) {
   async verificar() {
     this.verifyBox = !this.verifyBox;
     this.verifyBtn = !this.verifyBtn;
+    this.promoImg = !this.promoImg;
     await this.loadLive();
   }
 

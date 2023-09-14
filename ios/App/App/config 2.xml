@@ -3,19 +3,13 @@
   <access origin="*" />
   
   <feature name="InAppBrowser">
-    <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser"/>
+    <param name="ios-package" value="CDVWKInAppBrowser"/>
+    <param name="onload" value="true"/>
   </feature>
 
   <feature name="LottieSplashScreen">
-    <param name="android-package" value="de.dustplanet.cordova.lottie.LottieSplashScreen"/>
-    <param name="onload" value="true"/>
-    <preference name="LottieAnimationLocation" value="public/assets/kupon.json"/>
-    <preference name="LottieFullScreen" value="true"/>
-    <preference name="LottieHideAfterAnimationEnd" value="true"/>
-  </feature>
-
-  <feature name="BarcodeScanner">
-    <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner"/>
+    <param name="ios-package" value="LottieSplashScreen"/>
+    <param name="onload" value="false"/>
   </feature>
 
   

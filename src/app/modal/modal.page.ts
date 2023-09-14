@@ -182,6 +182,7 @@ export class ModalPage implements OnInit {
       await this.liveKuponsService.createliveKupon2(this.kuponInfo, this.kuponInfo.id);
 
       await this.successMailToCompany(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, this.kuponInfo.mailComercio);
+    await this.successMailToUs(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, 'gamingkupon@gmail.com');
       this.pushService.sendNotification(pushTitle, pushText, pushGroups);
       await this.cardService.updateKupon(this.info.id, this.info);
 
@@ -214,6 +215,14 @@ export class ModalPage implements OnInit {
 
   async successMailToCompany(usuario, comercio, valor, mailComercio) {
     await this.mailNS.mailToCompany(usuario, comercio, valor, mailComercio);
+  }
+
+  async successMailToUs(usuario, comercio, valor, mailComercio) {
+    await this.mailNS.mailToCompany(usuario, comercio, valor, mailComercio);
+  }
+
+  async errorMailToUs(usuario, comercio, valor, mailComercio) {
+    await this.mailNS.errorMailToUs(usuario, comercio, valor, mailComercio);
   }
 
  async requestPay() {
@@ -277,9 +286,14 @@ export class ModalPage implements OnInit {
   }
 
   async codeGenerator() {
-    const onlineCode = await this.liveKuponsService.getOnlineCode(this.kuponInfo.comercioCode, this.kuponInfo.onlineCode).then(onlineCodeRef => onlineCodeRef);
+    let onlineCode = await this.liveKuponsService.getOnlineCode(this.kuponInfo.comercioCode, this.kuponInfo.onlineCode).then(onlineCodeRef => onlineCodeRef);
     this.kuponInfo.code = onlineCode;
-  }
+
+    // eslint-disable-next-line no-cond-assign
+    if (onlineCode = 'A la brevedad te enviaremos tu código') {
+      this.errorMailToUs(this.kuponInfo.usuario, this.kuponInfo.comercio, this.kuponInfo.valor, 'gamingkupon@gmail.com');
+      }
+    }
 
   async share() {
 

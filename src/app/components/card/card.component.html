@@ -51,12 +51,14 @@
     </ion-card>
   </ion-col>
   </div>
-
+<div *ngIf="promoImg">
   <div *ngIf="promo">
     <ion-card *ngFor="let prom of promo" (click)="categorieFilter(prom.filter)" class="promo">
       <ion-img src="{{prom.img}}"></ion-img>
     </ion-card>
   </div>
+</div>
+
 
 
   <ion-grid fixed *ngIf="!(kuponInput || verifyBox)">

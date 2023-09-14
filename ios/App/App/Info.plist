@@ -28,6 +28,8 @@
 	<string>Used for loading user location so can find in map stores near.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To upload users avatar image for profile</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Scanning QR promotional Codes</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

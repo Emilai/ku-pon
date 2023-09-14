@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private loadingController: LoadingController,
     private alertController: AlertController,
+    private barcodeScanner: BarcodeScanner
     ) { }
 
   async ngOnInit() {
@@ -29,18 +31,39 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  async qrCode() {
 
-    const codigo = this.inputCode.toLowerCase();
+  scan() {
+    this.barcodeScanner.scan({
+      showFlipCameraButton: true, // iOS and Android
+      showTorchButton: true, // iOS and Android
+      prompt: 'Escanea tu QR promocional de KuPon!', // Android
+    }).then(barcodeData => {
+      // this.inputCode = barcodeData.text;
+      this.qrCode(barcodeData.text);
+    }).catch(err => {
+      this.showAlert('Error', 'El código no ha podido ser escaneado');
+      console.log('Error: ', err);
+    });
+
+  }
+  async qrCode(codigo) {
+
+    const codigoQr = codigo.toLowerCase();
     const path = 'Usuarios';
 
-    if (this.codes[codigo]) {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    if (this.codes[codigoQr]) {
       // console.log(this.authService.userInfo);
-      this.authService.userInfo.saldo = this.authService.userInfo.saldo + this.codes[codigo];
+      this.authService.userInfo.saldo = this.authService.userInfo.saldo + this.codes[codigoQr];
       await this.authService.createUser(this.authService.userInfo, path, this.authService.userInfo.id);
+
+      await loading.dismiss();
       this.showAlert('Saldo Kuponero cargado!', `Tu nuevo saldo es de $${this.authService.userInfo.saldo}`);
 
     } else {
+      await loading.dismiss();
       this.showAlert('Codigo erroneo', 'Por favor intente denuevo');
     }
   }

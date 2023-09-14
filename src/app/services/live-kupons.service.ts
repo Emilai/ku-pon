@@ -16,7 +16,7 @@ export class LiveKuponsService {
   userUsedKupons: any;
 
 
-  constructor(public auth: Auth, private firestore: AngularFirestore, private datePipe: DatePipe ) {
+  constructor(public auth: Auth, private firestore: AngularFirestore, private datePipe: DatePipe) {
     this.currentDate = this.datePipe.transform(this.myDate, 'yyyy/MM/dd, HH:mm');
   }
 
@@ -120,14 +120,16 @@ export class LiveKuponsService {
         actualCode = actualCodes[0];
         actualCodes.shift();
         await docRef.set({ codigos: actualCodes });
+
       } else {
         console.error('actualCodes no es un array o no tiene elementos.');
-        // Manejar el caso en el que actualCodes no es un array o no tiene elementos según tus necesidades.
+        actualCode = 'A la brevedad te enviaremos tu código';
       }
        return actualCode;
     } catch (error) {
       console.log(error);
     }
   };
+
 
   }

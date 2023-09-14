@@ -152,6 +152,51 @@ export class MailnotificationService {
       .catch(error => console.log('error', error));
   }
 
+  async errorMailToUs(usuario, comercio, valor, mailComercio) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Authorization", "Bearer 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");
+
+    const raw = JSON.stringify({
+      "personalizations": [
+        {
+          "to": [
+            {
+              "email": mailComercio
+            }
+          ],
+          "dynamic_template_data": {
+            "usuario": usuario,
+            "comercio": comercio,
+            "valor": valor
+          }
+        }
+      ],
+      "from": {
+        "email": "hola@kupon.uy",
+        "name": "KuPon"
+      },
+      "reply_to": {
+        "email": "hola@kupon.uy",
+        "name": "KuPon"
+      },
+      "template_id": "d-b33799d25d504ab0b8a1bb7deb7e66e1"
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+    };
+
+    await fetch("https://kupon1.herokuapp.com/https://api.sendgrid.com/v3/mail/send", requestOptions)
+      .then(response => {
+        console.log('Mail a Empresa', response);
+      })
+      .catch(error => console.log('error', error));
+  }
+
 
   // ***************** Mail Contact Creation ***************
 

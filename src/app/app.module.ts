@@ -6,6 +6,7 @@ import { DatePipe, LowerCasePipe } from '@angular/common';
 import { OrderModule } from 'ngx-order-pipe';
 
 import { IonicModule, IonicRouteStrategy, IonModal } from '@ionic/angular';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -59,7 +60,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
         provideStorage(() => getStorage()),
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-        DatePipe, LowerCasePipe, InAppBrowser],
+        DatePipe, LowerCasePipe, InAppBrowser, BarcodeScanner],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
